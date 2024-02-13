@@ -1,0 +1,25 @@
+
+.container{
+    // height:100vh;
+    width:100vw;
+    // border:1px solid black;
+    display: flex;
+    flex-direction: column;
+    row-gap:5px;
+    border-radius:16px;
+    background-color: rgba(0, 0, 0, 1);
+}
+.table{
+    background-color: rgba(0,0,0,1);
+}
+.table-row{
+    height:10%;
+    width:100%;
+}
+.data{
+    color:white;
+    // padding-top:20px;
+    background-color:rgba(0, 0, 0, 1);
+    font-size:16px;
+    font-weight:500;
+}

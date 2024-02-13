@@ -1,0 +1,19 @@
+<div class="container"> 
+    <div class="search-bar">
+        
+    </div>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr class="table-row">
+        <th class="heading" scope="col" *ngFor="let item of heading">{{item}}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="table-row" *ngFor="let item of data">
+            <td class="data" *ngFor="let user of getObject(data[0])">
+                {{item[user]}}
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
