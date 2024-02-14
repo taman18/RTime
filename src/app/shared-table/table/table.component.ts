@@ -1,24 +1,21 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: [ './table.component.scss' ],
 })
-export class TableComponent {
+export class TableComponent implements OnInit{
   @Input() data:any;
+  @Input() userData:any;
   public heading:any;
-  public getObject(obj: any): string[] {
-      return Object.keys(obj);
+  public keys:any;
+  constructor () {
   }
-  constructor(){ 
-  }
-  ngOnInit(){
-    this.heading=this.data[0];
-    this.heading=Object.keys(this.data[0]);
-    // console.log(this.heading);
+  ngOnInit () {
+    this.heading=this.userData.thead;
+    console.log(this.heading);
+    this.data=this.userData.tbody;
     console.log(this.data);
-
-    // console.log(Object.keys(this.data));
-}
+  }
 }

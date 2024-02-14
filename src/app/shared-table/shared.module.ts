@@ -6,13 +6,13 @@ import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
-    TableComponent
+    TableComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports:[
-    TableComponent
-  ]
+    TableComponent,
+  ],
 })
 export class SharedModule { }

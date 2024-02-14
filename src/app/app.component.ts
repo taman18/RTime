@@ -7,10 +7,75 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'zoho-admin';
-  public data: any = [
-    { "Sr. No": 1, "Name": "Taman", "Reporting Manager": "Satyam", "Status":"Active"},
-    { "Sr. No": 2, "Name": "John", "Reporting Manager": "Alice", "Status":"InActive" },
-    { "Sr. No": 3, "Name": "Jane", "Reporting Manager": "Bob", "Status":"Active" },
-    { "Sr. No": 4, "Name": "Vishakha", "Reporting Manager": "Jayant", "Status":"Active" },
-  ];
+  public tableData: any = {
+    thead: [
+      {
+        id:'id',
+        text:'Id',
+        type:'inputText',
+      },
+      {
+        id: 'name',
+        text: 'Name',
+        type: 'inputText',
+      },
+      {
+        id: 'email',
+        text: 'Email',
+        type: 'inputText',
+      },
+      {
+        id: 'status',
+        text: 'status',
+        type: 'inputText',
+      },
+      {
+        id: 'created At',
+        text: 'Created At',
+        type: 'time',
+      },
+      {
+        id:'updated At',
+        text:'Updated At',
+        type: 'time',
+      },
+      {
+        id:'profile_picture',
+        text:'Profile Picture',
+        type: 'image',
+      },
+      {
+        id:'role',
+        text: 'Role',
+        type: 'inputText',
+      },
+    ],
+    tbody: [
+          {
+            id:'name',
+            name:'Taman',
+            email:'taman@',
+            role: 'development',
+            profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+          },
+          {
+            id:'name',
+            name:'Vishakha',
+            email: 'vishakha@',
+            profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+          },
+          {
+            id:'name',
+            name:'Nitesh',
+            email: 'nitesh@',
+            // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+          },
+          {
+            id:'name',
+            name:'satyam',
+            email: 'nitesh@',
+            profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+          },
+          ]
+}
 }
