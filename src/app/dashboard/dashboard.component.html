@@ -44,16 +44,21 @@
       </div>
 
       <!--Active Users-->
-      <div class="active-users">
-         <div class="active">
-            <div class ="img-active">
-               <img src="../assets/images/Ellipse 524.png"/>
-            </div>
-            <div class ="active-text">
-               Tom Holand
-            </div>
+      
+   <div class="active-users">
+      <div class="active" *ngFor="let user of activeUsers">
+         <div class="img-active">
+           <img [src]="user.imageUrl" alt="{{ user.name }}"/>
+         </div>
+         <div class="active-text">
+           {{ user.name }}
          </div>
       </div>
+   </div>
+       
+
+
+
 
    </div>
 </div>
