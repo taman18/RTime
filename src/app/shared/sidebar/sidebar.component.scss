@@ -1,0 +1,68 @@
+// .Relinns_logo
+// {
+//     width:3%;
+//     height:60%;
+// }
+// svg{
+//     margin-right: 6%;
+// }
+
+
+.Relinns_logo {
+    width: 3%;
+    height: 60%;
+  }
+  
+  svg {
+    margin-right: 6%;
+  }
+  
+  // Default styles for toolbar and sidenav
+  $primary-color: black;
+  $toolbar-background-color: black;
+  $toolbar-text-color: white;
+  $sidenav-width: 15%;
+  
+  // Define media query breakpoints
+  $mobile-breakpoint: 768px;
+  
+  // Apply styles
+  mat-toolbar {
+    background-color: $toolbar-background-color;
+  
+    mat-toolbar-row {
+      button {
+        color: $toolbar-text-color;
+      }
+    }
+  }
+  
+  mat-sidenav {
+    background-color: $toolbar-background-color;
+    width: $sidenav-width;
+  }
+  
+  mat-nav-list {
+    a {
+      span {
+        color: $toolbar-text-color;
+      }
+    }
+  }
+  
+  // Mobile responsiveness
+  @media screen and (max-width: $mobile-breakpoint) {
+    .Relinns_logo {
+      width: 10%; // Adjust logo size for better visibility on smaller screens
+      height: auto;
+    }
+  
+    svg {
+      margin-right: 0;
+    }
+  
+    mat-sidenav {
+      width: 80%; // Adjust sidenav width for better usability on smaller screens
+    }
+  }
+  

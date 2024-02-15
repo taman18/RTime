@@ -102,14 +102,13 @@ p{
 }
 
 .active-users{
-        width:98%;
-        height:22%;
-        background-color:var(--sub-bg-color);
-        padding:25px;
-        border-radius:18px;
-        margin:12px 12px;
-        display:flex;
-        
+    width:98%;
+    height:22%;
+    background-color:var(--sub-bg-color);
+    padding:25px;
+    border-radius:18px;
+    margin:12px 12px;
+    display:flex;     
 }
 
 .active{
@@ -127,5 +126,16 @@ p{
 p{
     color:var(--text-color);
 }
+
+.add-new{
+    // border-radius:%;
+    background-color:var(--bg-color);
+    height:60px;
+    width:60px;
+    // justify-content: center;
+    // align-items: center;
+}
+
+
 
 

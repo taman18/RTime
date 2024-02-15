@@ -1,4 +1,7 @@
+<!--Dashboard Design-->
+
 <div class="container-fluid">
+
    <!-- Main Content -->
    <div class="content">
       <div id="navbar">
@@ -6,10 +9,15 @@
             <p> 23/06/2023-12:23 AM </p>
          </div>
       </div>
+
       <div class="aggregate-users">
          <div id="users">
             <p> Total Users</p> <br />
-            1,629
+            {{data.totalUsers}}
+         </div>
+         <img src="../assets/images/web.svg" alt="web-icon"/>
+         <div>
+            
          </div>
          <!--Other Users-->
          <div class="all-users">
@@ -26,6 +34,7 @@
                1,267
             </div>
          </div>
+
          <!--Other 3 users-->
          <div class="all-users1">
             <div class="other-users1">
@@ -44,19 +53,24 @@
       </div>
 
       <!--Active Users-->
-      
-   <div class="active-users">
-      <div class="active" *ngFor="let user of activeUsers">
-         <div class="img-active">
-           <img [src]="user.imageUrl" alt="{{ user.name }}"/>
+      <div class="active-users">
+         <div class="active" *ngFor="let user of activeUsers">
+            <div class="img-active">
+               <img [src]="user.imageUrl" alt="{{ user.name }}" />
+            </div>
+            <div class="active-text">
+               {{ user.name }}
+            </div>
          </div>
-         <div class="active-text">
-           {{ user.name }}
+         <div class="active">
+            <div class="add-new">
+               <i class="bi bi-plus"></i>           
+            </div>
+            <div class="add-new-text">
+               <p>Add New</p>
+            </div>
          </div>
       </div>
-   </div>
-       
-
 
 
 

@@ -14,4 +14,7 @@ export class DashboardComponent {
     { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
     { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' }, 
   ];
+  data = {
+    totalUsers: '1,629',  
+  }
 }
