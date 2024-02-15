@@ -51,31 +51,31 @@ export class AppComponent {
       },
     ],
     tbody: [
-          {
-            id:'name',
-            name:'Taman',
-            email:'taman@',
-            role: 'development',
-            profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-          },
-          {
-            id:'name',
-            name:'Vishakha',
-            email: 'vishakha@',
-            profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-          },
-          {
-            id:'name',
-            name:'Nitesh',
-            email: 'nitesh@',
-            // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-          },
-          {
-            id:'name',
-            name:'satyam',
-            email: 'nitesh@',
-            profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-          },
-          ]
-}
+      {
+        id:'name',
+        name:'Taman',
+        email:'taman@',
+        role: 'development',
+        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+      },
+      {
+        id:'name',
+        name:'Vishakha',
+        email: 'vishakha@',
+        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+      },
+      {
+        id:'name',
+        name:'Nitesh',
+        email: 'nitesh@',
+        // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+      },
+      {
+        id:'name',
+        name:'satyam',
+        email: 'nitesh@',
+        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+      },
+    ],
+  };
 }

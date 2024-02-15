@@ -1,12 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared-table/shared.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    SharedModule,
+  ],
 })
-export class UserManagementModule { }
+export class UserManagementModule  {
+
+}
+

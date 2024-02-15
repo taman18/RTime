@@ -1,13 +1,10 @@
-<div class="main-table-container">
-  <div class="table-container">
+<div class="outer-div">
+  <div class="main-container">
     <div class="search-bar">
-      <div class="search">
-        
-      </div>
+      <input class="search-input search" type="text" placeholder="Search..." />
       <div class="search-btn-div">
         <button class="search-button">Export Report</button>
       </div>
-      
     </div>
     <table class="myTable table-striped table-dark">
       <thead>
@@ -15,23 +12,32 @@
           <th class="heading" scope="col" *ngFor="let item of heading">
             {{ item.text }}
           </th>
-          <th class="heading">button</th>
+          <th class="heading" *ngIf="showActionButtons">button</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let row of data">
           <td class="table-data" *ngFor="let col of heading">
-            <span *ngIf="col.type == 'inputText'">{{ row[col.id] }}</span>
-            <span *ngIf="col.type == 'image'">
+            <span *ngIf="col.type === 'inputText'">{{ row[col.id] }}</span>
+            <span *ngIf="col.type === 'image'">
               <img
                 *ngIf="row[col.id]"
                 class="table-image"
                 src="{{ row[col.id] }}"
                 alt="img"
-            /></span>
+              />
+            </span>
+            <span *ngIf="col.type === 'toggle'">
+              <!-- <input type="checkbox" name="" id=""> -->
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+            </span>
+
             <!-- <span *ngIf="col.type=='time'">2</span>   -->
           </td>
-          <td class="table-data">
+          <td class="table-data" *ngIf="showActionButtons">
             <button class="button" id="edit">Edit</button>
             <button class="button" id="delete">Delete</button>
             <button class="button" id="block">Block</button>
