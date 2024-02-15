@@ -36,14 +36,19 @@ body{
   --text-color: black;
   --bg-color:rgb(241, 235, 235);
   --sub-bg-color:white;
+  --secondary-bg-color: rgb(208, 207, 207);
 }
 
 body.dark-theme{
   --text-color: white;
   --bg-color: #121212;
   --sub-bg-color: black;
+  --secondary-bg-color: #111111;
 }
 
+*{
+  font-family: NotoSans-Regular;
+}
 /* Dark Theme Styles */
 // .dark-theme {
 //   background-color: #121212;
