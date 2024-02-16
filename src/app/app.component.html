@@ -1,15 +1,14 @@
-<div class="d-flex flex-column">
-    <!-- <app-navbar></app-navbar> -->
-    <div class="d-flex">
-        <app-sidebar></app-sidebar>
-        <app-dashboard></app-dashboard>
+<div class="d-flex">
+    <div>
+<app-sidebar></app-sidebar>
+    </div>
+    <div>
+        <router-outlet></router-outlet> 
     </div>
 </div>
-<app-profile></app-profile>
-<div class="container">
-    <router-outlet></router-outlet> 
-  </div>
+
+<!-- <div class="container"> -->
+<!-- </div> -->
 <div class="app-container">
     <app-theme-toggle></app-theme-toggle>
-    <!-- Other content of your app -->
 </div>

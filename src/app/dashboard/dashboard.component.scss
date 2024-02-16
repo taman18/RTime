@@ -1,7 +1,38 @@
 .container-fluid {
-    display: flex;
     padding: 20px;
     background-color: var(--bg-color);
+}
+
+.top-section{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--bg-color);
+}
+
+.date-container{
+    color: var(--text-color);
+    display: inline-block;
+    background-color: var(--sub-bg-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-left:10px;
+}
+
+.refresh-container{
+    background-color: var(--sub-bg-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: var(--primary-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:10px;
+}
+
+.refresh-img{
+    height:40px;
+    width:40px;
+    padding-right:2px;
 }
 
 //Total Users Section
@@ -153,3 +184,43 @@ h6 {
 .filter-dropdown-container {
     text-align: right;
 }
+
+.top-div {
+    height: 50px;
+    width: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .time {
+    height: 80%;
+    width: 180px;
+    // border: 1px solid white;
+    color:  var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  var(--bg-color);;
+    border-radius: 8px;
+  }
+  .refresh {
+    height: 80%;
+    width: 100px;
+    // border: 1px solid white;
+    background-color:  var(--bg-color);;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3px;
+    border: none;
+  }
+  .refresh-img {
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+  }
+  .refresh-btn {
+    color: rgba(19, 181, 66, 1);
+  }

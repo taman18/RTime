@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import {DashboardModule} from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 
@@ -19,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
     AppComponent,
     ThemeToggleComponent,
     ProfileComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
