@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TableComponent implements OnInit {
   @Input() data: any;
   @Input() userData: any;
-  @Input() showActionButtons = false;
+  @Input() showActionButtons = true;
   public heading: any;
   public keys: any;
   ngOnInit () {

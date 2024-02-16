@@ -6,7 +6,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './shared-table/shared.module';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+
 
 
 @NgModule({
@@ -15,6 +17,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
     UserManagementComponent,
     NavbarComponent,
     LoginComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

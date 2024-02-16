@@ -1,15 +1,7 @@
-<div class="main-container">
-    <div class="login-div">
-        <div class="google">
-            <img class="google-img" src="./assets/google.png" alt="google">
-        </div>
-        <div class="txt">
-            <p class="google-txt">Sign in with your Google Account</p>
-        </div>
-        <div class="google-lower">
-            <img class="login-img" src="./assets/user.png" alt="login">
-            <button class="login-btn">Continue With Google</button>
-        </div>
-        
-    </div>
-</div>
+<div class="top-div">
+    <div class="time">{{ date }} - {{ time }} {{ meridiem}}</div>
+    <button class="refresh">
+      <img class="refresh-img" src="./assets/refresh btn.jpg" alt="refresh" />
+      <span class="refresh-btn" (click)="refreshTime()">Refresh</span>
+    </button>
+  </div>

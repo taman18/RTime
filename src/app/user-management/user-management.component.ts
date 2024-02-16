@@ -37,11 +37,11 @@ export class UserManagementComponent {
         text: 'Role',
         type: 'inputText',
       },
-      {
-        id:'action',
-        text:'Action',
-        type:'toggle',
-      },
+      // {
+      //   id:'action',
+      //   text:'Action',
+      //   type:'toggle',
+      // },
     ],
     tbody: [
       {
