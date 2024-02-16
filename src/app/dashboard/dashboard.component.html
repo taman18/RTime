@@ -1,183 +1,175 @@
 <!--Dashboard Design-->
 
-<div class="container-fluid">
-
-   <!--TopBar-->
-   <div class="top-section">
-      <div class="date-container">16/02/2024 - 03:33 PM</div>
-      <div class="refresh-container"><img class="refresh-img" src="../assets/images/refresh2.png" alt="">
-         <span>Refresh</span>
-      </div>
+<div class="d-flex">
+   <div>
+      <app-sidebar></app-sidebar>
    </div>
+   <div class="container-fluid">
 
-
-   <!-- Main Content -->
-   <div class="users-section">
-      <div class="users-container">
-         <div class="total-users total-count">
-            <p> Total Users </p> <br />
-            <h3>{{data.totalUsers}}</h3>
-         </div>
-
-         <div>
-            <img src="../assets/images/web.svg" alt="web-icon" />
+      <!--TopBar-->
+      <div class="top-section">
+         <div class="date-container">16/02/2024 - 03:33 PM</div>
+         <div class="refresh-container"><img class="refresh-img" src="../assets/images/refresh2.png" alt="">
+            <span>Refresh</span>
          </div>
       </div>
 
-      <!--Other Users-->
 
-      <div class="row">
+      <!-- Main Content -->
+      <div class="users-section">
+         <div class="users-container">
+            <div class="total-users total-count">
+               <p> Total Users </p> <br />
+               <h3>{{data.totalUsers}}</h3>
+            </div>
 
-         <!--First User-->
-         <div class="col-lg-4">
-            <div class="d-flex justify-content-between align-items-center total-users">
-               <div class="text-container">
-                  <p style="margin-bottom: 8px;">
-                     Today's Nora Users
-                  </p>
-                  <h3 class="users-count">279</h3>
-               </div>
-               <div class="percent-count percent-up">
-                  <img alt="" src="../assets/images/Vector.svg">
-                  <span>100%</span>
-               </div>
+            <div>
+               <img src="../assets/images/web.svg" alt="web-icon" />
             </div>
          </div>
 
-         <!--Second User-->
-         <div class="col-lg-4">
-            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
-               <div class="text-container">
-                  <p style="margin-bottom: 8px;">
-                     Today's Adam Users
-                  </p>
-                  <h3 class="users-count">2,392</h3>
-               </div>
-               <div class="percent-count percent-down">
-                  <img alt="" src="../assets/images/bi_arrow-down.svg">
-                  <span>35%</span>
-               </div>
-            </div>
-         </div>
+         <!--Other Users-->
 
-         <!--Third User-->
-         <div class="col-lg-4">
-            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
-               <div class="text-container">
-                  <p style="margin-bottom: 8px;">
-                     Today's Sarah Users
-                  </p>
-                  <h3 class="users-count">1,267</h3>
-               </div>
-               <div class="percent-count percent-down">
-                  <img alt="" src="../assets/images/bi_arrow-down.svg">
-                  <span>18%</span>
-               </div>
-            </div>
-         </div>
+         <div class="row">
 
-      </div>
-      <!--Other Left Users-->
-
-      <div class="row">
-
-         <!--Fourth User-->
-         <div class="col-lg-4">
-            <div class="d-flex justify-content-between align-items-center total-users">
-               <div class="text-container">
-                  <p style="margin-bottom: 8px;">
-                     Today's Nora Users
-                  </p>
-                  <h3 class="users-count">279</h3>
-               </div>
-               <div class="percent-count percent-up">
-                  <img alt="" src="../assets/images/Vector.svg">
-                  <span>100%</span>
-               </div>
-            </div>
-         </div>
-
-         <!--Fifth User-->
-         <div class="col-lg-4">
-            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
-               <div class="text-container">
-                  <p style="margin-bottom: 8px;">
-                     Today's Adam Users
-                  </p>
-                  <h3 class="users-count">2,392</h3>
-               </div>
-               <div class="percent-count percent-down">
-                  <img alt="" src="../assets/images/bi_arrow-down.svg">
-                  <span>35%</span>
-               </div>
-            </div>
-         </div>
-
-         <!--Sixth User-->
-         <div class="col-lg-4">
-            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
-               <div class="text-container">
-                  <p style="margin-bottom: 8px;">
-                     Today's Sarah Users
-                  </p>
-                  <h3 class="users-count">1,267</h3>
-               </div>
-               <div class="percent-count percent-down">
-                  <img alt="" src="../assets/images/bi_arrow-down.svg">
-                  <span>18%</span>
-               </div>
-            </div>
-         </div>
-
-         <div>
-
-            <!--Active Users-->
-            <div class="add-users-section">
-               <div class="d-flex">
-                  <div class="active text-center" *ngFor="let user of activeUsers">
-                     <div class="img-active">
-                        <img [src]="user.imageUrl" alt="{{ user.name }}" />
-                     </div>
-                     <div class="active-text">
-                        <h6>{{ user.name }}</h6>
-                     </div>
+            <!--First User-->
+            <div class="col-lg-4">
+               <div class="d-flex justify-content-between align-items-center total-users">
+                  <div class="text-container">
+                     <p style="margin-bottom: 8px;">
+                        Today's Nora Users
+                     </p>
+                     <h3 class="users-count">279</h3>
                   </div>
-
-                  <div class="active">
-                     <div class="add-user-icon ">
-                        <img src="../assets/images/fa6-solid_plus.svg" alt="">
-                     </div>
-                     <h6 class="add-new-text mb-3">
-                        Add New
-                     </h6>
+                  <div class="percent-count percent-up">
+                     <img alt="" src="../assets/images/Vector.svg">
+                     <span>100%</span>
                   </div>
                </div>
             </div>
 
-            <!--Charts-->
-            <!-- <div class="filter-dropdown-container d-flex justify-content-end position-relative">
-               <div class="filter-dropdown">
-                  <span class="sports-text">
-                     Cricket
-                  </span>
-                  <img class="chevron-down" src="../assets/images/Vector1.svg">
+            <!--Second User-->
+            <div class="col-lg-4">
+               <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+                  <div class="text-container">
+                     <p style="margin-bottom: 8px;">
+                        Today's Adam Users
+                     </p>
+                     <h3 class="users-count">2,392</h3>
+                  </div>
+                  <div class="percent-count percent-down">
+                     <img alt="" src="../assets/images/bi_arrow-down.svg">
+                     <span>35%</span>
+                  </div>
                </div>
-            </div> -->
-
-            <!--Bar Chart-->
-            <div class=row>
             </div>
 
-
-
-
-
-
-
-
-
-
-
+            <!--Third User-->
+            <div class="col-lg-4">
+               <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+                  <div class="text-container">
+                     <p style="margin-bottom: 8px;">
+                        Today's Sarah Users
+                     </p>
+                     <h3 class="users-count">1,267</h3>
+                  </div>
+                  <div class="percent-count percent-down">
+                     <img alt="" src="../assets/images/bi_arrow-down.svg">
+                     <span>18%</span>
+                  </div>
+               </div>
+            </div>
 
          </div>
+         <!--Other Left Users-->
+
+         <div class="row">
+
+            <!--Fourth User-->
+            <div class="col-lg-4">
+               <div class="d-flex justify-content-between align-items-center total-users">
+                  <div class="text-container">
+                     <p style="margin-bottom: 8px;">
+                        Today's Nora Users
+                     </p>
+                     <h3 class="users-count">279</h3>
+                  </div>
+                  <div class="percent-count percent-up">
+                     <img alt="" src="../assets/images/Vector.svg">
+                     <span>100%</span>
+                  </div>
+               </div>
+            </div>
+
+            <!--Fifth User-->
+            <div class="col-lg-4">
+               <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+                  <div class="text-container">
+                     <p style="margin-bottom: 8px;">
+                        Today's Adam Users
+                     </p>
+                     <h3 class="users-count">2,392</h3>
+                  </div>
+                  <div class="percent-count percent-down">
+                     <img alt="" src="../assets/images/bi_arrow-down.svg">
+                     <span>35%</span>
+                  </div>
+               </div>
+            </div>
+
+            <!--Sixth User-->
+            <div class="col-lg-4">
+               <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+                  <div class="text-container">
+                     <p style="margin-bottom: 8px;">
+                        Today's Sarah Users
+                     </p>
+                     <h3 class="users-count">1,267</h3>
+                  </div>
+                  <div class="percent-count percent-down">
+                     <img alt="" src="../assets/images/bi_arrow-down.svg">
+                     <span>18%</span>
+                  </div>
+               </div>
+            </div>
+
+               <!--Active Users-->
+               <div class="add-users-section">
+                  <div class="d-flex">
+                     <div class="active text-center" *ngFor="let user of activeUsers">
+                        <div class="img-active">
+                           <img [src]="user.imageUrl" alt="{{ user.name }}" />
+                        </div>
+                        <div class="active-text">
+                           <h6>{{ user.name }}</h6>
+                        </div>
+                     </div>
+
+                     <div class="active">
+                        <div class="add-user-icon ">
+                           <img src="../assets/images/fa6-solid_plus.svg" alt="">
+                        </div>
+                        <h6 class="add-new-text mb-3">
+                           Add New
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+
+               <!--Charts-->
+               <!-- <div class="filter-dropdown-container d-flex justify-content-end position-relative">
+                  <div class="filter-dropdown">
+                     <span class="sports-text">
+                        Cricket
+                     </span>
+                     <img class="chevron-down" src="../assets/images/Vector1.svg">
+                  </div>
+               </div> -->
+
+               <!--Bar Chart-->
+               <div class=row>
+               </div>
+            
+         </div>
       </div>
+

@@ -1,6 +1,6 @@
 <div class="sidebar-wrapper">
   <div class="image"> 
-      <img class="relinns-logo" src="./assets/relinns logo.jpg" alt="relinns">
+      <img class="relinns-logo" src="../assets/images/relinns.jpg" alt="relinns">
   </div>
  <div class="side-data">
   <ul>
@@ -33,13 +33,46 @@
   <div class="toggle-icon">
       <p class="theme">Theme</p>
       <label class="switch">
-          <input type="checkbox" />
+          <input type="checkbox" (change)="toggleTheme()">
           <span class="slider round"></span>
       </label>
   </div>
-  <div class="profile">
-      <img class="user-image" src="./assets/user-image.png" alt="user">
+  <div class="profile" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <img class="user-image" src="../assets/images/Ellipse 524.png" alt="user">
       <p>Akhil</p>
   </div>
   
  </div>
+
+
+
+ <!-- Modal -->
+<div class="modal fade profile-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content profile-bg">
+      <div class="modal-header p-0">
+        <span>Profile</span>
+        <div><button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button></div>
+      </div>
+      <div class="profile-image text-center ">
+        <img class="profile-picture" src=" ./assets/images/Ellipse 524.png" alt="Profile Picture">
+      </div>
+      <h2 class="text-center">
+        KARDi Admin
+      </h2>
+      <h5 class="text-center">
+        admin@trykardi.com
+      </h5>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="height:48px; border-radius: 12px;">Logout</button>
+      </div>
+      <div class = "password">
+        <a class="text-center" href="https://trykardi.com/">Change Password</a>
+      </div>
+
+      <div class = "password">
+        <a class="text-center" href="https://trykardi.com/">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+</div>
