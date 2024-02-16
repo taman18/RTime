@@ -1,141 +1,155 @@
-* , body{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
 .container-fluid {
     display: flex;
-}
-
-.body{
-    margin:0px;
-}
-
-.content {
-    box-sizing: border-box;
-    width:100%;
-    height: 100vh;
+    padding: 20px;
     background-color: var(--bg-color);
-    color:var(--text-color);
 }
 
-#navbar{
-    width: 100%;
-    height: 13%;
+//Total Users Section
+
+.users-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px;
+    flex-direction: row;
+}
+
+.total-users {
+    padding: 22px 24px;
+    border-radius: 14px;
     background-color: var(--bg-color);
-    color: #fff;
-    box-sizing: border-box;
-    display:flex;
+
+}
+
+.total-count {
+    width: 97%;
+}
+
+h3 {
+    font-family: NotoSans-Bold;
+    font-size: 20px;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.percent-down {
+    color: var(--tart-orange);
+    background-color: var(--light-pink);
+}
+
+.percent-up {
+    color: var(--primary-green);
+    background-color: var(--light-green);
+
+}
+
+.percent-count {
+    font-size: 14px;
+    border-radius: 40px;
+    max-height: 25px;
+    padding: 4px 6px;
+    display: flex;
     align-items: center;
+
 }
 
-.date{
-    width: 20%;
-    height: 55%;
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    justify-content: space-between;
+}
+
+.col-lg-4 {
+    flex: 0 0 auto;
+    width: 33.3333333%;
+}
+
+.users-section {
+    width: 98%;
+    height: 60%;
     background-color: var(--sub-bg-color);
-    color: #fff;
-    box-sizing: border-box;
-    display:flex;
+    padding: 25px;
+    border-radius: 18px;
+    margin: 0px 12px;
+    margin-top: 20px;
+}
+
+.add-users-section {
+    background-color: var(--bg-color);
+    margin-top: 1.5rem;
+    padding: 20px;
+    border-radius: 18px;
+    overflow-x: auto;
+    display: flex;
+
+}
+
+.active {
+    display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
-    margin:12px;
+    flex-direction: column;
+    margin-right: 50px;
+
 }
 
-#users{
-    width: 94%;
-    background-color: var(--bg-color);
-    height:26%;
-    border-radius:10px;
-    padding:10px;
-    color:var(--text-color);
-    margin:20px;
-    margin-bottom:3px;
-}
-
-.other-users{
-    width: 30%;
-    background-color: var(--bg-color);
-    height:10%;
-    margin:20px;
-    margin-top:5px;
-    margin-bottom:7px;
-    border-radius:10px;
-    padding:10px;  
-    color:var(--text-color);
-    
-}
-
-.all-users{
-    display:flex;
-}
-
-.all-users1{
-    display:flex;
-    margin-bottom:1px;
-}
-
-.other-users1{
-    width: 30%;
-    background-color: var(--bg-color);
-    height:10%;
-    margin:20px;
-    margin-top:1px;
-    border-radius:10px;
-    padding:10px;  
-    color:var(--text-color);
-}
-
-p{
-    color:#4D4D4D;
-}
-
-.aggregate-users{
-    width:98%;
-    height:60%;
-    background-color:var(--sub-bg-color);;
-    // position:relative;
-    padding:25px;
-    border-radius:18px;
-    margin:0px 12px;
-}
-
-.active-users{
-    width:98%;
-    height:22%;
-    background-color:var(--sub-bg-color);
-    padding:25px;
-    border-radius:18px;
-    margin:12px 12px;
-    display:flex;     
-}
-
-.active{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction:column;
-    width:13%;
-}
-
-.img-active{
+.img-active {
     width: 40px;
+    position: relative;
 }
 
-p{
-    color:var(--text-color);
+p {
+    color: var(--text-color);
+    color: #4D4D4D;
+    font-weight: 600;
+    margin-bottom: 0px;
 }
 
-.add-new{
-    // border-radius:%;
-    background-color:var(--bg-color);
-    height:60px;
-    width:60px;
-    // justify-content: center;
-    // align-items: center;
+h6 {
+    margin-top: 8px;
+    color: var(--text-color);
 }
 
+.add-user-icon {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: auto;
+    padding-top: 14px;
+}
 
+.add-new-text {
+    margin-top: 14px;
+    font-size: 16px;
+    font-family: NotoSans-SemiBold;
+    color: var(--primary-color);
+    width: 100px;
+    font-weight: 500;
+}
 
+// Charts
 
+.filter-dropdown {
+    margin: 14px 0 4px;
+    height: 35px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    gap: 6px;
+    background-color: var(--sub-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sports-text {
+    font-size: 14px;
+    font-family: NotoSans-SemiBold;
+}
+
+.filter-dropdown-container {
+    text-align: right;
+}

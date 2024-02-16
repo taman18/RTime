@@ -1,68 +1,63 @@
-// .Relinns_logo
-// {
-//     width:3%;
-//     height:60%;
-// }
-// svg{
-//     margin-right: 6%;
-// }
+.sidebar-wrapper {
+  width: 100%;
+  height: 100%;
+  // background-color: #555;
+}
 
+li{
+  list-style-type:none;
+}
 
-.Relinns_logo {
-    width: 3%;
-    height: 60%;
-  }
-  
-  svg {
-    margin-right: 6%;
-  }
-  
-  // Default styles for toolbar and sidenav
-  $primary-color: black;
-  $toolbar-background-color: black;
-  $toolbar-text-color: white;
-  $sidenav-width: 15%;
-  
-  // Define media query breakpoints
-  $mobile-breakpoint: 768px;
-  
-  // Apply styles
-  mat-toolbar {
-    background-color: $toolbar-background-color;
-  
-    mat-toolbar-row {
-      button {
-        color: $toolbar-text-color;
+.sidebar-wrapper {
+  width: 200px;
+  background-color: var(--sub-bg-color);
+  color: var(--text-color);
+  padding-top:30px;
+  padding-left:10px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #555;
       }
-    }
-  }
-  
-  mat-sidenav {
-    background-color: $toolbar-background-color;
-    width: $sidenav-width;
-  }
-  
-  mat-nav-list {
-    a {
+
       span {
-        color: $toolbar-text-color;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 10px;
+        }
       }
     }
   }
-  
-  // Mobile responsiveness
-  @media screen and (max-width: $mobile-breakpoint) {
-    .Relinns_logo {
-      width: 10%; // Adjust logo size for better visibility on smaller screens
-      height: auto;
-    }
-  
-    svg {
-      margin-right: 0;
-    }
-  
-    mat-sidenav {
-      width: 80%; // Adjust sidenav width for better usability on smaller screens
-    }
+}
+
+@media screen and (max-width: 770px) {
+  .nav-text {
+    display: none !important;
   }
   
+}
+@media screen and (max-width: 450px) {
+  
+  svg
+  {
+    width: 12px;
+    height:20px;
+    padding:0px;
+    margin:0px;
+    
+  }
+
+  
+  
+}

@@ -31,12 +31,22 @@ $zoho-admin-theme: mat.define-light-theme((
 @include mat.all-component-themes($zoho-admin-theme);
 
 /* You can add global styles to this file, and also import other style files */
+body{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
 body{
   --text-color: black;
   --bg-color:rgb(241, 235, 235);
   --sub-bg-color:white;
   --secondary-bg-color: rgb(208, 207, 207);
+  --tart-orange:#ff4747;
+  --light-pink: #ef42421f;
+  --primary-green: #13b542;
+  --light-green: #13b5421a;
+  --primary-color: #5371ff;
 }
 
 body.dark-theme{
@@ -44,6 +54,11 @@ body.dark-theme{
   --bg-color: #121212;
   --sub-bg-color: black;
   --secondary-bg-color: #111111;
+  --tart-orange:#ff4747;
+  --light-pink: #ef42421f;
+  --primary-green: #13b542;
+  --light-green: #13b5421a;
+  --primary-color: #5371ff;
 }
 
 *{

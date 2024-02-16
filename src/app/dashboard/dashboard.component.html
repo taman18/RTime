@@ -1,78 +1,182 @@
+
+
 <!--Dashboard Design-->
 
 <div class="container-fluid">
 
    <!-- Main Content -->
-   <div class="content">
-      <div id="navbar">
-         <div class="date">
-            <p> 23/06/2023-12:23 AM </p>
+   <div class="users-section">
+      <div class="users-container">
+         <div class="total-users total-count">
+            <p> Total Users </p> <br />
+            <h3>{{data.totalUsers}}</h3>
          </div>
-      </div>
 
-      <div class="aggregate-users">
-         <div id="users">
-            <p> Total Users</p> <br />
-            {{data.totalUsers}}
-         </div>
-         <img src="../assets/images/web.svg" alt="web-icon"/>
          <div>
-            
-         </div>
-         <!--Other Users-->
-         <div class="all-users">
-            <div class="other-users">
-               <p>Today's Nora Users</p> <br />
-               279
-            </div>
-            <div class="other-users">
-               <p>Today's Adam Users </p><br />
-               2,392
-            </div>
-            <div class="other-users">
-               <p>Today's Sarah Users</p> <br />
-               1,267
-            </div>
-         </div>
-
-         <!--Other 3 users-->
-         <div class="all-users1">
-            <div class="other-users1">
-               <p>Today's Nora Users </p><br />
-               279
-            </div>
-            <div class="other-users1">
-               <p>Today's Adam Users </p><br />
-               2,392
-            </div>
-            <div class="other-users1">
-               <p>Today's Sarah Users </p><br />
-               1,267
-            </div>
+            <img src="../assets/images/web.svg" alt="web-icon" />
          </div>
       </div>
 
-      <!--Active Users-->
-      <div class="active-users">
-         <div class="active" *ngFor="let user of activeUsers">
-            <div class="img-active">
-               <img [src]="user.imageUrl" alt="{{ user.name }}" />
-            </div>
-            <div class="active-text">
-               {{ user.name }}
+      <!--Other Users-->
+
+      <div class="row">
+
+         <!--First User-->
+         <div class="col-lg-4">
+            <div class="d-flex justify-content-between align-items-center total-users">
+               <div class="text-container">
+                  <p style="margin-bottom: 8px;">
+                     Today's Nora Users
+                  </p>
+                  <h3 class="users-count">279</h3>
+               </div>
+               <div class="percent-count percent-up">
+                  <img alt="" src="../assets/images/Vector.svg">
+                  <span>100%</span>
+               </div>
             </div>
          </div>
-         <div class="active">
-            <div class="add-new">
-               <i class="bi bi-plus"></i>           
-            </div>
-            <div class="add-new-text">
-               <p>Add New</p>
+
+         <!--Second User-->
+         <div class="col-lg-4">
+            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+               <div class="text-container">
+                  <p style="margin-bottom: 8px;">
+                     Today's Adam Users
+                  </p>
+                  <h3 class="users-count">2,392</h3>
+               </div>
+               <div class="percent-count percent-down">
+                  <img alt="" src="../assets/images/bi_arrow-down.svg">
+                  <span>35%</span>
+               </div>
             </div>
          </div>
+
+         <!--Third User-->
+         <div class="col-lg-4">
+            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+               <div class="text-container">
+                  <p style="margin-bottom: 8px;">
+                     Today's Sarah Users
+                  </p>
+                  <h3 class="users-count">1,267</h3>
+               </div>
+               <div class="percent-count percent-down">
+                  <img alt="" src="../assets/images/bi_arrow-down.svg">
+                  <span>18%</span>
+               </div>
+            </div>
+         </div>
+
       </div>
+      <!--Other Left Users-->
+
+      <div class="row">
+
+         <!--Fourth User-->
+         <div class="col-lg-4">
+            <div class="d-flex justify-content-between align-items-center total-users">
+               <div class="text-container">
+                  <p style="margin-bottom: 8px;">
+                     Today's Nora Users
+                  </p>
+                  <h3 class="users-count">279</h3>
+               </div>
+               <div class="percent-count percent-up">
+                  <img alt="" src="../assets/images/Vector.svg">
+                  <span>100%</span>
+               </div>
+            </div>
+         </div>
+
+         <!--Fifth User-->
+         <div class="col-lg-4">
+            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+               <div class="text-container">
+                  <p style="margin-bottom: 8px;">
+                     Today's Adam Users
+                  </p>
+                  <h3 class="users-count">2,392</h3>
+               </div>
+               <div class="percent-count percent-down">
+                  <img alt="" src="../assets/images/bi_arrow-down.svg">
+                  <span>35%</span>
+               </div>
+            </div>
+         </div>
+
+         <!--Sixth User-->
+         <div class="col-lg-4">
+            <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
+               <div class="text-container">
+                  <p style="margin-bottom: 8px;">
+                     Today's Sarah Users
+                  </p>
+                  <h3 class="users-count">1,267</h3>
+               </div>
+               <div class="percent-count percent-down">
+                  <img alt="" src="../assets/images/bi_arrow-down.svg">
+                  <span>18%</span>
+               </div>
+            </div>
+         </div>
+
+         <div>
+
+            <!--Active Users-->
+            <div class="add-users-section">
+               <div class="d-flex">
+                  <div class="active text-center" *ngFor="let user of activeUsers">
+                     <div class="img-active">
+                        <img [src]="user.imageUrl" alt="{{ user.name }}" />
+                     </div>
+                     <div class="active-text">
+                        <h6>{{ user.name }}</h6>
+                     </div>
+                  </div>
+
+                  <div class="active">
+                     <div class="add-user-icon ">
+                        <img src="../assets/images/fa6-solid_plus.svg" alt="">
+                     </div>
+                     <h6 class="add-new-text mb-3">
+                        Add New
+                     </h6>
+                  </div>
+               </div>
+            </div>
+
+            <!--Charts-->
+            <div class="filter-dropdown-container d-flex justify-content-end position-relative">
+               <div class="filter-dropdown">
+                  <span class="sports-text">
+                     Cricket
+                  </span>
+                  <!--Vector1.svg-->
+                  <img class="chevron-down" src="../assets/images/Vector1.svg">
+               </div>
+            </div>
+
+            <!--Bar Chart-->
+            <div class = row>
+               
 
 
 
-   </div>
-</div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+         </div>

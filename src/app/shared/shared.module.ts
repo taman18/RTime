@@ -5,11 +5,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
-    SidebarComponent
+    SidebarComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,7 @@ import { MatListModule } from '@angular/material/list';
     MatListModule
   ],
   exports: [
-    SidebarComponent
+    SidebarComponent,NavbarComponent
   ]
 })
 export class SharedModule { }
