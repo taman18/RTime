@@ -1,113 +1,28 @@
-:host{
-    display: flex;
-    flex-direction: column;
-}
 .main-container {
-    background-color: rgba(17, 17, 17, 1);
-    height: 100vh;
+  padding:20px;
+  .top-section {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    // row-gap:2px;
-    width:calc(100vw - 200px);
-    
-  
-    .internal-container {
-      height: 90%;
-      width: 100%;
-    //   border: 1px solid white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  
-      .top-div {
-        height: 10%;
-        width: 100%;
-        // border: 1px solid white;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding:5px;
-      }
-  
-      .user-management {
-        height: 10%;
-        width: 100%;
-        // border: 1px solid white;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        color: rgba(255, 255, 255, 1);
-        // padding-left: 10px;
-      }
-  
-      .user-table {
-        height: 70%;
-        width: 100%;
-        // border: 1px solid white;
-        margin-left:5px;
-        margin-right:5px;
-      }
-  
-      .paggination-div {
-        height: 10%;
-        width: 100%;
-        // border: 1px solid white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-  
-    .time {
-      height: 50px;
-      width: 200px;
-      // border: 1px solid white;
-      color: rgba(255, 255, 255, 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 1);
+    width:calc(100vw - 240px);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .date-container {
+      color: var(--primary-white);
+      display: inline-block;
+      background-color: var(--primary-black);
+      padding: 8px 16px;
       border-radius: 8px;
     }
-  
-    .refresh {
-      height: 50px;
-      width: 100px;
-    //   border: 1px solid white;
-      background-color: rgba(0, 0, 0, 1);
+    .refresh-container {
+      background-color: var(--primary-black);
+      padding: 8px 16px;
       border-radius: 8px;
+      color: var(--primary-green);
       display: flex;
       justify-content: center;
       align-items: center;
-      column-gap: 3px;
-      border: none;
-  
-      .refresh-img {
-        height: 20px;
-        width: 20px;
-        background-size: cover;
-      }
-  
-      .refresh-btn {
-        color: rgba(19, 181, 66, 1);
-      }
-    }
-  
-    .user-txt {
-      height: 100%;
-      width: 40%;
-    //   border: 1px solid white;
-      display: flex;
-      align-items: center;
-    //   justify-content: flex-start;
-    margin-top:10px;
-    margin-left:8px;
-  
-      .head {
-        font-size: 20px;
-        color: rgba(255, 255, 255, 1);
+      span {
+        margin-left: 5px;
       }
     }
   }
-  
+}
