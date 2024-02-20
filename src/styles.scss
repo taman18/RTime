@@ -47,6 +47,8 @@ body{
   --primary-green: #13b542;
   --light-green: #13b5421a;
   --primary-color: #5371ff;
+  --sidebar-hover:rgb(241, 235, 235);
+  --icons:rgb(241, 235, 235);
 }
 
 body.dark-theme{
@@ -59,6 +61,8 @@ body.dark-theme{
   --primary-green: #13b542;
   --light-green: #13b5421a;
   --primary-color: #5371ff;
+  --sidebar-hover:#555;
+  --icons:white;
   
 }
 

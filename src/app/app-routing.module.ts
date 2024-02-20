@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
