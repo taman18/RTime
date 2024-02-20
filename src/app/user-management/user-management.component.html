@@ -1,14 +1,16 @@
 <div class="main-container">
   <div class="top-section">
       <div class="date-container">
-          23/06/2023 - 12:23 AM
+        {{ date }} - {{ time }} {{ meridiem}}
       </div>
       <div class="refresh-container cursor-pointer">
           <img src="assets/refresh.svg" alt="refresh">
           <span>Refresh</span>
       </div>
   </div>
-<div class="content-container">
-    <router-outlet></router-outlet>
-</div>
+  <div class="user-container">User Management</div>
+   <div class="table">
+       <app-table [userData]="tableData" [showButton]="button" ></app-table>
+   </div>
+
 </div>

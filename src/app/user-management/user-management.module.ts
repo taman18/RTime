@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared-table/shared.module';
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -10,6 +8,7 @@ import { SharedModule } from '../shared-table/shared.module';
     SharedModule,
   ],
 })
+
 export class UserManagementModule  {
 
 }

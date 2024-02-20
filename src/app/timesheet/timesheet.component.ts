@@ -1,41 +1,41 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-user-management',
-  templateUrl: './user-management.component.html',
-  styleUrls: [ './user-management.component.scss' ],
+  selector: 'app-timesheet',
+  templateUrl: './timesheet.component.html',
+  styleUrls: [ './timesheet.component.scss' ],
 })
-export class UserManagementComponent {
+export class TimesheetComponent {
   public date:any;
   public time:any;
   public meridiem:any;
-  public button:boolean = true;
+  public button:boolean = false;
   public tableData: any = {
     thead: [
       {
-        id:'profile_picture',
-        text:'Profile Picture',
-        type: 'image',
-      },
-      {
-        id:'id',
-        text:'Id',
-        type:'inputText',
-      },
-      {
-        id: 'name',
-        text: 'Name',
+        id:'Project_Id',
+        text:'Project Id',
         type: 'inputText',
       },
       {
-        id: 'email',
-        text: 'Email',
+        id:'Project_Name',
+        text:'Project Name',
+        type:'inputText',
+      },
+      {
+        id: 'User_Name',
+        text: 'User Name',
+        type: 'inputText',
+      },
+      {
+        id: 'Description',
+        text: 'Decription',
         type: 'inputText',
       },
 
       {
-        id:'role',
-        text: 'Role',
+        id:'Log_Hours',
+        text: 'Log Hours',
         type: 'inputText',
       },
       // {
@@ -46,35 +46,25 @@ export class UserManagementComponent {
     ],
     tbody: [
       {
-        id:'name',
-        name:'Taman',
-        email:'taman@relinns.com',
-        role: 'development',
-        // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+        Project_Id:'F102164',
+        Project_Name: 'R Time',
+        User_Name: 'Aakash',
+        Description: 'Navbar UI',
+        Log_Hours:'9 hrs 34 minutes',
       },
       {
-        id:'name',
-        name:'Vishakha',
-        email: 'vishakha@relinns.com',
-        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+        Project_Id:'F1402164',
+        Project_Name: 'Bot penguin',
+        User_Name: 'Raman',
+        Description: 'Integration of all components',
+        Log_Hours:'10 hrs 56 minutes',
       },
       {
-        id:'name',
-        name:'Nitesh',
-        email: 'nitesh@relinns.com',
-        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-      },
-      {
-        id:'name',
-        name:'satyam',
-        email: 'nitesh@relinns.com',
-        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-      },
-      {
-        id:'name',
-        name:'Ankit',
-        email: 'ankit@relinns.com',
-        // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+        Project_Id:'D475164',
+        Project_Name: 'Kardi',
+        User_Name: 'Varun',
+        Description: 'API integration',
+        Log_Hours:'9 hrs 12 minutes',
       },
     ],
   };
@@ -104,7 +94,6 @@ export class UserManagementComponent {
 
   }
   receivedData: string | undefined;
-
   handleData (data: string) {
     this.receivedData = data;
     console.log(this.receivedData);
