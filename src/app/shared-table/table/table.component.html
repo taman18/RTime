@@ -18,11 +18,21 @@
       <tbody>
         <tr *ngFor="let row of data">
           <td class="table-data" *ngFor="let col of heading">
-            <span *ngIf="col.type === 'inputText'"
-              ><a class="clicked-data" (click)="showUser(row)">{{
-                row[col.id]
-              }}</a></span
-            >
+            <span *ngIf="col.type === 'inputText'">
+              <a class="clicked-data" *ngIf="col.id === 'name' || col.id=== 'Project_Id'; else otherContent" (click)="showUser(row)">
+                {{ row[col.id] }}
+              </a>
+              <ng-template #otherContent>
+                <!-- Content to show when col.id is not 'name' -->
+                <span>
+                  <!-- Add your alternate content or action here -->
+                  {{ row[col.id] }}
+                </span>
+              </ng-template>
+            </span>
+            
+            
+            
             <span *ngIf="col.type === 'image'">
               <a href="#" (click)="showUser(row)">
                 <img

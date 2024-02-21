@@ -9,7 +9,9 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared-table/shared.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
+import { UserBioComponent } from './user-bio/user-bio.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+
 
 
 
@@ -18,16 +20,18 @@ import { UserManagementComponent } from './user-management/user-management.compo
 @NgModule({
   declarations: [
     AppComponent,
-    UserManagementComponent,
     LoginComponent,
     SidebarComponent,
     TimesheetComponent,
+    UserBioComponent,
+    UserManagementComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    SharedModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    SharedModule,
+
   ],
   providers: [],
   bootstrap: [ AppComponent ],

@@ -69,6 +69,9 @@
     width:35px;
     border-radius: 20px;
 }
+.table-image:hover{
+  transform: scale(2);
+}
 .switch {
     position: relative;
     display: inline-block;
@@ -402,6 +405,11 @@ background-color: rgba(206, 43, 221, 1);
 }
 .clicked-data{
   text-decoration: none;
+  color:#5371ff;
+  cursor:pointer;
+}
+.clicked-data:hover{
+  color:#5371ff;
 }
 @media (max-width:800px) {
   .outer-div{
@@ -424,4 +432,13 @@ background-color: rgba(206, 43, 221, 1);
       position:relative;
       // min-width:calc(100vw - 240px);
     }
+}
+@media screen and (max-width:700px) {
+  .main-container{
+    // width: 100% !important;
+    margin-left:10px !important;
+    padding-left:20px !important;
+    position:relative;
+    // min-width:calc(100vw - 240px);
+  }
 }

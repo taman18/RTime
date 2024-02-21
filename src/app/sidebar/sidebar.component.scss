@@ -328,7 +328,9 @@ input:checked + .toggle-slider:before {
   }
   .admin-location{
         position: relative;
-    top:20px;
+        top:20px;
+        display:flex;
+        align-items: center;
   }
 }
 /* sidebar.component.css */

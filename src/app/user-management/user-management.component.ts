@@ -107,7 +107,7 @@ export class UserManagementComponent {
 
   handleData (data: string) {
     this.receivedData = data;
-    console.log(this.receivedData);
+    // console.log(this.receivedData);
   }
   isSidebarCollapsed = false;
 

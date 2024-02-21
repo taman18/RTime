@@ -9,7 +9,7 @@ export class TimesheetComponent {
   public date:any;
   public time:any;
   public meridiem:any;
-  public button:boolean = false;
+  // public button:boolean = false;
   public tableData: any = {
     thead: [
       {
@@ -96,6 +96,6 @@ export class TimesheetComponent {
   receivedData: string | undefined;
   handleData (data: string) {
     this.receivedData = data;
-    console.log(this.receivedData);
+    // console.log(this.receivedData);
   }
 }
