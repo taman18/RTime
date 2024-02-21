@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,12 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class ThemeService {
   private darkMode = false;
+  private isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  presentTheme = localStorage.getItem('theme') || (this.isDarkMode ? 'dark' : 'light');
+  currentTheme: BehaviorSubject<string> = new BehaviorSubject(this.presentTheme);
 
-  isDarkMode() {
+  isDarkModeOne () {
     return this.darkMode;
   }
 
-  setDarkMode(isDarkMode: boolean) {
+  setDarkMode (isDarkMode: boolean) {
     this.darkMode = isDarkMode;
     if (isDarkMode) {
       document.body.classList.add('dark-theme');

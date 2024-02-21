@@ -1,0 +1,16 @@
+<div class="main-container">
+  <div class="top-section">
+      <div class="date-container">
+        {{ date }} - {{ time }} {{ meridiem}}
+      </div>
+      <div class="refresh-container cursor-pointer">
+          <img src="assets/refresh.svg" alt="refresh">
+          <span>Refresh</span>
+      </div>
+  </div>
+  <div class="user-container">User Management</div>
+   <div class="table">
+    <app-table [userData]="tableData"></app-table>
+   </div>
+
+</div>

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import {Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: [ './login.component.scss' ],
 })
 export class LoginComponent {
-  constructor(private routes: Router){
-    console.log("");
+  constructor (private routes: Router) {
+    console.log('');
   }
-  loginWithGoogle(){
-    this.routes.navigate(['/dashboard']);
+  loginWithGoogle () {
+    this.routes.navigate([ '/dashboard' ]);
   }
 }

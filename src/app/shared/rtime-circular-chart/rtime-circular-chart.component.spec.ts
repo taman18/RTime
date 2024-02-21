@@ -8,9 +8,9 @@ describe('RtimeCircularChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RtimeCircularChartComponent ]
+      declarations: [ RtimeCircularChartComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(RtimeCircularChartComponent);
     component = fixture.componentInstance;

@@ -1,89 +1,77 @@
-<div class="sidebar-wrapper">
-  <div class="image"> 
-      <img class="relinns-logo" src="../assets/images/relinns logo.png" alt="relinns">
-  </div>
- <div class="side-data">
-  <ul>
-      <a>
-       <li>
-         <span class="nav-text">
-          <img class="side-icons" src="../assets/images/user-icon.svg" alt="user Management">
-           <span class="side-text">User Management</span>
-         </span>
-       </li>
-       </a>
-     <a><li>
-      
-       <span class="nav-text timesheet">
-        <img class="side-icons timesheet-container" src="../assets/images/customer-icon.svg" alt="timesheet">
-        <span class="side-text">Timesheet</span>
-       </span>
-     </li></a>
-     <a><li>
-      
-      <span class="nav-text">
-       <img class="side-icons" src="../assets/images/master-icon.svg" alt="timesheet">
-       <span class="side-text">Master Control</span>
-      </span>
-    </li></a>
-     </ul>
- </div>
- <div class="theme">
-  <div class="theme-name">Theme</div>
-  <div class="theme-icon">
-    <label class="toggle-container">
-  
-      <input type="checkbox" class="toggle-input" (change)="toggleTheme()">
-      
-      <span class="toggle-slider"></span>
-    </label>
-  </div>
-  
- </div>
-
-  <div class="profile" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      <img class="user-image" src="../assets/images/user-image.png" alt="user">
-      <div class="profile-info">
-        <p class="admin-name">Vishakha</p>
-        <p class="admin-location">Chandigarh, India</p>
-      </div>
+<div class="main-container">
+  <div class="sidebar-wrapper">
+    <div class="image">
+      <img class="relinns-logo" src="./assets/relinns logo.png" alt="relinns" />
      
-  </div>
+    </div>
+    <div class="side-data">
+      <ul>
+        <a >
+          <li >
+            <span class="nav-text">
+              <img
+                class="side-icons"
+                src="./assets/dashboard-icon.svg"
+                alt="DashBoard"
+              />
+              <span class="side-text">DashBoard</span>
+            </span>
+          </li>
+        </a>
+        <a >
+          <li routerLink="/usermanagement" routerLinkActive="active-link" class="side-link">
+            <span class="nav-text">
+              <img
+                class="side-icons"
+                src="./assets/user-icon.svg"
+                alt="user Management"
+              />
+              <span class="side-text">User Management</span>
+            </span>
+          </li>
+        </a>
+          <li routerLink="/timesheet" routerLinkActive="active-link" class="side-link">
+            <span class="nav-text timesheet">
+              <img
+                class="side-icons timesheet-container"
+                src="./assets/customer-icon.svg"
+                alt="timesheet"
+              />
+              <span class="side-text">Timesheet</span>
+            </span>
+          </li>
+        <!-- <a><li> -->
   
- </div>
-
- <!-- Modal -->
-<div class="modal fade profile-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content profile-bg">
-      <div class="modal-header p-0">
-        <span>Profile</span>
-        <div><button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button></div>
+        <!-- <span class="nav-text">
+           <img class="side-icons" src="./assets/master-icon.svg" alt="timesheet">
+           <span class="side-text">Master Control</span>
+          </span> -->
+        <!-- </li></a> -->
+      </ul>
+    </div>
+    <div class="theme">
+      <div class="theme-name">Theme</div>
+      <div class="theme-icon">
+        <label class="toggle-container">
+          <input type="checkbox" class="toggle-input" (change)="toggleTheme()" [checked]="isDarkMode" />
+  
+          <span class="toggle-slider"></span>
+        </label>
       </div>
-      <div class="profile-image text-center ">
-        <img class="profile-picture" src=" ./assets/images/Ellipse 524.png" alt="Profile Picture">
+    </div>
+  
+    <div class="profile">
+      <div class="user-image-container">
+        <a href=""><img class="user-image" src="./assets/user-image.png" alt="user" /></a>
       </div>
-      <h2 class="text-center">
-        KARDi Admin
-      </h2>
-      <h5 class="text-center">
-        admin@trykardi.com
-      </h5>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" style="height:48px; border-radius: 12px;">Logout</button>
-      </div>
-      <div class = "password">
-        <a class="text-center" href="https://trykardi.com/">Change Password</a>
-      </div>
-
-      <div class = "password">
-        <a class="text-center" href="https://trykardi.com/">Edit Profile</a>
+      
+      
+      <div class="profile-info">
+        <p class="admin-name">Akhil Rawat</p>
+        <p class="admin-location">Chandigarh, India</p>
       </div>
     </div>
   </div>
+  <div class="router-container">
+  </div>
 </div>
-
-
-
-
-

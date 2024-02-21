@@ -8,9 +8,9 @@ describe('RtimeLineChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RtimeLineChartComponent ]
+      declarations: [ RtimeLineChartComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(RtimeLineChartComponent);
     component = fixture.componentInstance;

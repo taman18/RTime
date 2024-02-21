@@ -1,59 +1,69 @@
-.main-container{
-    height: 100vh;
-    width:100vw;
-    // border:2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-color);
-    
-}
-.login-div{
-    height:80%;
-    width:40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius:10px;
-    background-color: var(--sub-bg-color);
-}
-.google{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height:30%;
-}
-.google-img{
-    height:110px;
-    width:150px;
-}
-.txt{
-    display: flex;
-    justify-content: center;
-}
-.google-txt{
-    font-size:18px;
-    font-weight: bold;
-}
-.google-lower{
-    height: 60%;
-    width:70%;
+.main-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(230, 220, 207);
+
+  .login-div {
+    width: 80%; // Adjust width for smaller screens
+    max-width: 400px; // Set a maximum width
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-around;
-    align-items: center;
-    border-radius:10px;
-}
-.login-img{
-    height:100px;
-    width:120px;
-}
-.login-btn{
-    background-color: rgba(83, 113, 255, 1);
-    color: white;
-    border:none;
     border-radius: 10px;
-    height:50px;
-    padding-left: 10px;
-    padding-right: 10px;
+    background-color: white;
+
+    .google {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30%;
+    }
+
+    .google-img {
+      width: 100%; // Make the image fill its container
+      max-width: 130px; // Set a maximum width
+    }
+
+    .txt {
+    //   margin-top: 10px; // Add some space between image and text
+      text-align: center;
+    }
+
+    .google-txt {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .google-lower {
+      height: 70%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      border-radius: 10px;
+      
+      .login-img {
+        width: 100%; // Make the image fill its container
+        max-width: 120px; // Set a maximum width
+      }
+
+      .login-btn {
+        width: 100%; // Make the button fill its container
+        max-width: 200px; // Set a maximum width
+        background-color: rgba(83, 113, 255, 1);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        height: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
 }

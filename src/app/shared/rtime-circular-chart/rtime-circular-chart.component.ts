@@ -1,20 +1,19 @@
 import * as Plotly from 'plotly.js-dist-min';
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MatDateRangePicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDateRangePicker, MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { DropdownService } from 'src/app/services/dropdown.service';
-import { SharedService } from 'src/app/services/shared.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { SharedService } from 'src/app/services/shared.service';
 
 
 @Component({
   selector: 'app-rtime-circular-chart',
   templateUrl: './rtime-circular-chart.component.html',
-  styleUrls: ['./rtime-circular-chart.component.scss']
+  styleUrls: [ './rtime-circular-chart.component.scss' ],
 })
-export class RtimeCircularChartComponent implements OnInit, AfterViewInit {
+export class RtimeCircularChartComponent implements AfterViewInit {
   showCalendar = true;
   showCountryDropdown = false;
   selectedCountry = { name: '', dial_code: '' };
@@ -34,7 +33,7 @@ export class RtimeCircularChartComponent implements OnInit, AfterViewInit {
   @Input() title = 'Teams';
   @Input() labelContainer = [
     { color: '#4DAAE2', title: 'Team 1', value: 30 },
-    { color: '#282828', title: 'Team 2', value: 70},
+    { color: '#282828', title: 'Team 2', value: 70 },
 
   ];
 
@@ -62,7 +61,7 @@ export class RtimeCircularChartComponent implements OnInit, AfterViewInit {
     paper_bgcolor: 'rgba(0, 0, 0, 0)',
     showlegend: false,
     reponsive: true,
-    hoverinfo: 'label'+'percent',
+    hoverinfo: 'label percent',
     margin: {
       l: 0,
       r: 0,
@@ -93,11 +92,6 @@ export class RtimeCircularChartComponent implements OnInit, AfterViewInit {
         this.showCountryDropdown = false;
       }
     });
-  }
-
-
-  ngOnInit () {
-    // this.graphId = `${ this.id }Chart`;
   }
 
   ngAfterViewInit () {

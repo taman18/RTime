@@ -11,7 +11,7 @@ export class SharedService {
 
   activeMenu: BehaviorSubject<string> = new BehaviorSubject('dashboard');
 
-  // eslint-disable-next-line no-useless-escape
+  // eslint-disable-next-line
   public emailRegex = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // eslint-disable-next-line no-useless-escape
   public passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{6,})/gm;

@@ -1,17 +1,16 @@
 import * as Plotly from 'plotly.js-dist-min';
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MatDateRangePicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDateRangePicker, MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { DropdownService } from 'src/app/services/dropdown.service';
-import { SharedService } from 'src/app/services/shared.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-rtime-line-chart',
   templateUrl: './rtime-line-chart.component.html',
-  styleUrls: ['./rtime-line-chart.component.scss']
+  styleUrls: [ './rtime-line-chart.component.scss' ],
 })
 export class RtimeLineChartComponent implements OnInit, AfterViewInit {
   showCalendar = true;
@@ -52,18 +51,18 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
     cutout: 70,
   };
 
-  //line chart 
-  ngOnInit(): void {
+  //line chart
+  ngOnInit (): void {
     const trace1: Partial<Plotly.ScatterData> = { // Explicitly type trace1
-      x: [1, 2, 3, 4],
-      y: [10, 15, 13, 17],
-      type: 'scatter'
+      x: [ 1, 2, 3, 4 ],
+      y: [ 10, 15, 13, 17 ],
+      type: 'scatter',
     };
 
     const trace2: Partial<Plotly.ScatterData> = { // Explicitly type trace2
-      x: [1, 2, 3, 4],
-      y: [16, 5, 11, 9],
-      type: 'scatter'
+      x: [ 1, 2, 3, 4 ],
+      y: [ 16, 5, 11, 9 ],
+      type: 'scatter',
     };
 
     const config = {
@@ -73,39 +72,39 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
 
     const layout = {
       xaxis: {
-        showgrid: false // Disable grid lines on the x-axis
+        showgrid: false, // Disable grid lines on the x-axis
       },
       yaxis: {
-        showgrid: false // Disable grid lines on the y-axis
+        showgrid: false, // Disable grid lines on the y-axis
       },
-        height: 228,
-        width: 450,
-        plot_bgcolor: 'rgba(0, 0, 0, 0)',
-        paper_bgcolor: 'rgba(0, 0, 0, 0)',
-        showlegend: false,
-        margin: {
-          l: 0,
-          r: 0,
-          t: 0,
-          b: 0,
-        },
-      };
+      height: 228,
+      width: 450,
+      plot_bgcolor: 'rgba(0, 0, 0, 0)',
+      paper_bgcolor: 'rgba(0, 0, 0, 0)',
+      showlegend: false,
+      margin: {
+        l: 0,
+        r: 0,
+        t: 0,
+        b: 0,
+      },
+    };
 
-    const data: Partial<Plotly.ScatterData>[] = [trace1, trace2]; // Explicitly type data
+    const data: Partial<Plotly.ScatterData>[] = [ trace1, trace2 ]; // Explicitly type data
 
-    Plotly.newPlot('myDiv', data ,layout, config);
+    Plotly.newPlot('myDiv', data, layout, config);
   }
 
   @ViewChild('plotlyContainer') plotlyContainer: ElementRef | undefined;
   // @ViewChild('picker') picker: MatDateRangePicker<any>;
   graphId = 'graph';
 
-  @HostListener('document:click', ['$event']) onDocumentClick(event: any) {
+  @HostListener('document:click', [ '$event' ]) onDocumentClick (event: any) {
     this.showCountryDropdown = false;
   }
 
   activeDropDown = '';
-  constructor(
+  constructor (
     private sharedService: SharedService,
     private dropdownService: DropdownService,
   ) {
@@ -125,11 +124,11 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
   //   // this.graphId = `${ this.id }Chart`;
   // }
 
-  ngAfterViewInit() {
+  ngAfterViewInit () {
     this.renderGraph();
   }
 
-  getCountries() {
+  getCountries () {
     // this.sharedService.getAllCountries()
     //   .then((countries) => {
     //     this.countries = countries;
@@ -140,25 +139,25 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
     //   });
   }
 
-  onCountrySelect(country: any) {
+  onCountrySelect (country: any) {
     this.selectedCountry = country;
     this.countries = this.countries.filter((c: any) => c !== country);
     this.countries.sort((a: any, b: any) => a.name.localeCompare(b.name));
-    this.countries = [country, ...this.countries];
+    this.countries = [ country, ...this.countries ];
     this.showCountryDropdown = !this.showCountryDropdown;
   }
 
-  calendarClick() {
+  calendarClick () {
     this.dropdownService.openDropdown.next('');
     // this.picker.open();
   }
 
-  public searchEvent() {
+  public searchEvent () {
     this.countries = this.searchedCountries;
     this.countries = this.searchedCountries.filter((country: any) => (country.name || '').match(new RegExp(this.searchText, 'gi')));
   }
 
-  renderGraph() {
+  renderGraph () {
     // const graphDiv: any = document.getElementById(`${this.graphId}`);
     // const config = {
     //   displayModeBar: false,
@@ -176,14 +175,14 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
     // }], this.layout, config);
   }
 
-  onStartDateChange(event: MatDatepickerInputEvent<Date>) {
+  onStartDateChange (event: MatDatepickerInputEvent<Date>) {
     this.startDateChange.emit(event.value);
   }
-  onEndDateChange(event: MatDatepickerInputEvent<Date>) {
+  onEndDateChange (event: MatDatepickerInputEvent<Date>) {
     this.endDateChange.emit(event.value);
   }
 
-  onDropdownClick(event: any) {
+  onDropdownClick (event: any) {
     event.stopPropagation();
     if (this.showCountryDropdown) {
       this.dropdownService.openDropdown.next('');

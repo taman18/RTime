@@ -1,22 +1,24 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { RtimeLineChartComponent } from './rtime-line-chart/rtime-line-chart.component';
-import { RtimeCircularChartComponent } from './rtime-circular-chart/rtime-circular-chart.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgModule } from '@angular/core';
+import { RtimeCircularChartComponent } from './rtime-circular-chart/rtime-circular-chart.component';
+import { RtimeLineChartComponent } from './rtime-line-chart/rtime-line-chart.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     SidebarComponent,
     RtimeLineChartComponent,
-    RtimeCircularChartComponent
+    RtimeCircularChartComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,
@@ -27,12 +29,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   exports: [
     SidebarComponent,
     RtimeCircularChartComponent,
-    RtimeLineChartComponent
-  ]
+    RtimeLineChartComponent,
+    TableComponent,
+  ],
 })
 export class SharedModule { }
