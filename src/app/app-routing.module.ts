@@ -1,7 +1,6 @@
 
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 const routes: Routes = [

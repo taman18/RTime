@@ -36,4 +36,7 @@ export class TableComponent implements OnInit {
   // blockModal () {
 
   // }
+  showUser (name:any) {
+    console.log(name);
+  }
 }

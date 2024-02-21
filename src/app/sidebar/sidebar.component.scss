@@ -3,6 +3,7 @@
     height: 100vh;
     // background-color: #555;
     position:fixed;
+    overflow: auto !important ;
   }
   
   li{
@@ -43,7 +44,6 @@
       }
     }
   }
-
 
   .image{
     display: flex;
@@ -289,3 +289,55 @@ input:checked + .toggle-slider:before {
 .side-link:hover{
   background-color: black;
 }
+// .side-text{
+//   display: none !important;
+//   // width:100px !important;
+// }
+
+.sidebar-wrapper-new{
+  .side-text{
+    display: none !important;
+    // width:100px !important;
+  }
+  .theme-name{
+    display: none;
+  }
+  width: 100px !important  ;
+}
+@media (max-width:1200px) and (max-height:600px)  {
+  .side-text{
+    display: none !important;
+    // width:100px !important;
+  }
+  .theme-name{
+    display: none;
+  }
+  .sidebar-wrapper{
+    width:100px;
+  }
+  .admin-location{
+    padding-left:15px;
+  }
+  .user-image{
+    position: relative;
+    top:20px;
+  }
+  .admin-name{
+    position: relative;
+    top:20px;
+  }
+  .admin-location{
+        position: relative;
+    top:20px;
+  }
+}
+/* sidebar.component.css */
+.sidebar {
+  /* Your sidebar styles here */
+  transition: width 0.3s ease; /* Add transition for smooth animation */
+}
+
+.sidebar.collapsed {
+  width: 50px; /* Set the collapsed width */
+}
+

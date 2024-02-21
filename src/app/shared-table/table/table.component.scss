@@ -17,9 +17,11 @@
     background-color: rgba(0, 0, 0, 1);
     padding:10px;
     border-radius:16px;
-    margin-left:200px;
+    // margin-left:200px;
     // min-width:1000px;
-    
+    position:relative;
+    overflow: auto !important;
+    min-width:100%;
 }
 .search-bar{
     height:100%;
@@ -70,8 +72,8 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 25px;
+    width: 45px;
+    height: 20px;
   }
   
   /* Hide default HTML checkbox */
@@ -147,12 +149,12 @@
       border-radius: 20px;
     }
 
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 25px;
-    }
+    // .switch {
+    //   position: relative;
+    //   display: inline-block;
+    //   width: 50px;
+    //   height: 25px;
+    // }
 
     .slider {
       position: absolute;
@@ -215,6 +217,7 @@
 
     .heading {
       width: 10%;
+      padding:0;
     }
   }
 }
@@ -228,8 +231,8 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     left: 2px;
     top:2.5px;
     // bottom: 4px;
@@ -261,11 +264,13 @@
   }
   .table-data{
     background-color: rgba(0, 0, 0, 1);
+    padding:0;
+    // padding:10px;
   }
 .data{
     height: 100%;
     color: rgba(255, 255, 255, 0.5);
-    padding:3px;
+    // padding:3px;
 }
 .search-icon{
     height:18px;
@@ -279,6 +284,7 @@
 }
 .heading{
     width:10%;
+    color: #ffffff80;;
 }
 .button{
   border-radius: 14px;
@@ -393,4 +399,29 @@ background-color: rgba(206, 43, 221, 1);
       border-radius: 38px;
     }
   }
+}
+.clicked-data{
+  text-decoration: none;
+}
+@media (max-width:800px) {
+  .outer-div{
+    overflow:auto !important;
+  }
+
+}
+.arrow{
+  margin-left:5px;
+}
+.table-striped td{
+  // border:1px solid white;
+  padding:15px;
+}
+@media screen and (max-width:1000px) {
+    .main-container{
+      // width: 100% !important;
+      margin-left:10px !important;
+      padding-left:20px !important;
+      position:relative;
+      // min-width:calc(100vw - 240px);
+    }
 }

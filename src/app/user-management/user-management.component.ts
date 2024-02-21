@@ -38,11 +38,11 @@ export class UserManagementComponent {
         text: 'Role',
         type: 'inputText',
       },
-      // {
-      //   id:'action',
-      //   text:'Action',
-      //   type:'toggle',
-      // },
+      {
+        id:'action',
+        text:'Action',
+        type:'toggle',
+      },
     ],
     tbody: [
       {
@@ -108,5 +108,10 @@ export class UserManagementComponent {
   handleData (data: string) {
     this.receivedData = data;
     console.log(this.receivedData);
+  }
+  isSidebarCollapsed = false;
+
+  toggleSidebar () {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 }

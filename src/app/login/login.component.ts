@@ -32,6 +32,5 @@ export class LoginComponent {
     this.time = `${ currentHour  }:${  currentMinute  }:${  currentSecond }`;
     // console.log();
     // console.log(this.time+' '+meridiem);
-
   }
 }
