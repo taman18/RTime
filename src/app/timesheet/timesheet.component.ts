@@ -1,15 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TimesheetService } from '../services/timesheet.service';
 
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
   styleUrls: [ './timesheet.component.scss' ],
 })
-export class TimesheetComponent {
+export class TimesheetComponent implements OnInit {
   public date:any;
   public time:any;
+  userData: any;
   public meridiem:any;
   // public button:boolean = false;
+
+
+
+  constructor (private timesheetService:TimesheetService) {
+    // this.getData();
+    // console.log('hi');
+    this.refreshTime();
+
+  }
+  ngOnInit () {
+    this.getData();
+  }
+
+
+
+
+  getData () {
+    this.timesheetService.getData().subscribe(
+      (response) => {
+        console.log('taman');
+        this.userData = response;
+        console.log(this.userData);
+
+      },
+      (error) => {
+        console.log('taman');
+        console.error('Error fetching data', error);
+        console.log('hi');
+      },
+    );
+    const data = this.timesheetService.getData();
+    console.log(data);
+  }
+
+
+
+
   public tableData: any = {
     thead: [
       {
@@ -68,9 +107,8 @@ export class TimesheetComponent {
       },
     ],
   };
-  constructor () {
-    this.refreshTime();
-  }
+
+
   refreshTime () {
     this.getDate();
   }

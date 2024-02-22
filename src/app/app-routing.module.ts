@@ -1,11 +1,14 @@
-
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { UserBioComponent } from './user-bio/user-bio.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 
+
 const routes: Routes = [
+  { path: 'login', component:  LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'userbio', component: UserBioComponent },
   { path: 'user-management', component: UserManagementComponent },
   { path: 'timesheet', component: TimesheetComponent },

@@ -1,9 +1,8 @@
 <div class="large-container">
+  <div class="side">
+    <app-sidebar></app-sidebar>
+  </div>
 
-    <div class="side">
-        <app-sidebar></app-sidebar>
-    </div>
-    
   <div class="main-container">
     <div class="top-section">
       <div class="date-container">{{ date }} - {{ time }} {{ meridiem }}</div>
@@ -12,21 +11,31 @@
         <span class="refresh-txt">Refresh</span>
       </div>
     </div>
-      
-      <div class="userBio">
-        <div class="username">{{userData.name}}</div>
-        <div class="user-image-div">
-        <img *ngIf="userData.profile_picture" class="user-image" src="{{userData.profile_picture}}" alt="user" />
-        </div>
-        <div class="user-email">{{userData.email}}</div>
-        <!-- <div class="user-bio">{{userData.bio}}</div> -->
+
+    <div class="userBio">
+      <div class="left">
+
       </div>
-      <div class="table">
-        <div class="timesheet-container">User Logs <img src="assets/calendar.svg" alt=""></div>
-          <app-table [userData]="tableData"></app-table>
+      <div class="right">
+        
       </div>
-    
+      <div class="username">{{ userData.name }}</div>
+      <div class="user-image-div">
+        <img
+          *ngIf="userData.profile_picture"
+          class="user-image"
+          src="{{ userData.profile_picture }}"
+          alt="user"
+        />
+      </div>
+      <div class="user-email">{{ userData.email }}</div>
+      <!-- <div class="user-bio">{{userData.bio}}</div> -->
+    </div>
+    <div class="table">
+      <div class="timesheet-container">
+        User Logs <img src="assets/calendar.svg" alt="" />
+      </div>
+      <app-table [userData]="tableData"></app-table>
+    </div>
   </div>
-
-
 </div>

@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
-
+import { LoginService } from '../services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.scss' ],
 })
 export class LoginComponent {
+
   public date:any;
   public time:any;
   public meridiem:any;
-  constructor () {
+
+  constructor (private loginService: LoginService) {
     this.refreshTime();
   }
   refreshTime () {
@@ -32,5 +34,8 @@ export class LoginComponent {
     this.time = `${ currentHour  }:${  currentMinute  }:${  currentSecond }`;
     // console.log();
     // console.log(this.time+' '+meridiem);
+  }
+  signIn () {
+    this.loginService.login();
   }
 }
