@@ -68,6 +68,7 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
     const config = {
       responsive: true,
       displayModeBar: false,
+      scrollZoom: false,
     };
 
     const layout = {

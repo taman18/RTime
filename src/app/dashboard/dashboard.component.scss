@@ -60,7 +60,7 @@
 }
 
 .total-count {
-  width: 97%;
+  width: 100%;
 }
 
 h3 {
@@ -89,6 +89,17 @@ h3 {
   display: flex;
   align-items: center;
 
+}
+
+.active-user {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: var(--primary-green);
+  border: 3px solid var(--primary-black);
+  position: absolute;
+  right: 23px;
+  bottom: 1px;
 }
 
 .row {
@@ -146,7 +157,6 @@ h3 {
 
 p {
   color: var(--text-color);
-  color: #4D4D4D;
   font-weight: 600;
   margin-bottom: 0px;
 }

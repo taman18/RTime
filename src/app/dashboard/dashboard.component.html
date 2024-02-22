@@ -20,12 +20,12 @@
       <div class="users-container">
          <div class="total-users total-count">
             <p> Total Users </p> <br />
-            <h3>{{data.totalUsers}}</h3>
+            <h3>{{totalUserCount}}</h3>
          </div>
-
+      <!-- 
          <div>
             <img src="../assets/images/web.svg" alt="web-icon" />
-         </div>
+         </div> -->
       </div>
 
       <!--Other Users-->
@@ -33,7 +33,7 @@
       <div class="row">
 
          <!--First User-->
-         <div class="col-lg-6">
+         <div class="col-md-6 ">
             <div class="d-flex justify-content-between align-items-center total-users">
                <div class="text-container">
                   <p style="margin-bottom: 8px;">
@@ -41,15 +41,15 @@
                   </p>
                   <h3 class="users-count">279</h3>
                </div>
-               <div class="percent-count percent-up">
+               <!-- <div class="percent-count percent-up">
                   <img alt="" src="../assets/images/Vector.svg">
                   <span>100%</span>
-               </div>
+               </div> -->
             </div>
          </div>
 
          <!--Second User-->
-         <div class="col-lg-6">
+         <div class="col-md-6">
             <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
                <div class="text-container">
                   <p style="margin-bottom: 8px;">
@@ -57,10 +57,10 @@
                   </p>
                   <h3 class="users-count">2,392</h3>
                </div>
-               <div class="percent-count percent-down">
+               <!-- <div class="percent-count percent-down">
                   <img alt="" src="../assets/images/bi_arrow-down.svg">
                   <span>35%</span>
-               </div>
+               </div> -->
             </div>
          </div>
 
@@ -71,7 +71,7 @@
       <div class="row">
 
          <!--Third User-->
-         <div class="col-lg-6">
+         <div class="col-md-6 ">
             <div class="d-flex justify-content-between align-items-center total-users">
                <div class="text-container">
                   <p style="margin-bottom: 8px;">
@@ -79,15 +79,15 @@
                   </p>
                   <h3 class="users-count">279</h3>
                </div>
-               <div class="percent-count percent-up">
+               <!-- <div class="percent-count percent-up">
                   <img alt="" src="../assets/images/Vector.svg">
                   <span>100%</span>
-               </div>
+               </div> -->
             </div>
          </div>
 
          <!--Fourth User-->
-         <div class="col-lg-6">
+         <div class="col-md-6 ">
             <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
                <div class="text-container">
                   <p style="margin-bottom: 8px;">
@@ -95,10 +95,10 @@
                   </p>
                   <h3 class="users-count">2,392</h3>
                </div>
-               <div class="percent-count percent-down">
+               <!-- <div class="percent-count percent-down">
                   <img alt="" src="../assets/images/bi_arrow-down.svg">
                   <span>35%</span>
-               </div>
+               </div> -->
             </div>
          </div>
 
@@ -109,12 +109,16 @@
    <div class="active-users">
       <div class="add-users-section">
          <div class="d-flex">
-            <div class="active text-center" *ngFor="let user of activeUsers">
-               <div class="img-active">
+            <div class="active text-center" *ngFor="let users of totalActiveUsers">
+               <!-- <div class="img-active">
                   <img [src]="user.imageUrl" alt="{{ user.name }}" />
-               </div>
+               </div> -->
+               <div class="position-relative img-active">
+                  <img [src]="users.result.profilePic" alt="{{ users.result.name }}"/>
+                  <div class="active-user"></div>
+                </div>
                <div class="active-text">
-                  <h6>{{ user.name }}</h6>
+                  <h6>{{ users.result.name }}</h6>
                </div>
             </div>
 

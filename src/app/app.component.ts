@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { DashboardService } from './services/dashboard.service';
+import { User } from './users';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.scss' ],
 })
 export class AppComponent {
-  title = 'zoho-admin';
+  title = 'RTime';
+
   public tableData: any = {
     thead: [
       {
-        id:'id',
-        text:'Id',
-        type:'inputText',
+        id: 'id',
+        text: 'Id',
+        type: 'inputText',
       },
       {
         id: 'name',
@@ -35,44 +37,44 @@ export class AppComponent {
         type: 'time',
       },
       {
-        id:'updated At',
-        text:'Updated At',
+        id: 'updated At',
+        text: 'Updated At',
         type: 'time',
       },
       {
-        id:'profile_picture',
-        text:'Profile Picture',
+        id: 'profile_picture',
+        text: 'Profile Picture',
         type: 'image',
       },
       {
-        id:'role',
+        id: 'role',
         text: 'Role',
         type: 'inputText',
       },
     ],
     tbody: [
       {
-        id:'name',
-        name:'Taman',
-        email:'taman@',
+        id: 'name',
+        name: 'Taman',
+        email: 'taman@',
         role: 'development',
         profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
       },
       {
-        id:'name',
-        name:'Vishakha',
+        id: 'name',
+        name: 'Vishakha',
         email: 'vishakha@',
         profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
       },
       {
-        id:'name',
-        name:'Nitesh',
+        id: 'name',
+        name: 'Nitesh',
         email: 'nitesh@',
         // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
       },
       {
-        id:'name',
-        name:'satyam',
+        id: 'name',
+        name: 'satyam',
         email: 'nitesh@',
         profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
       },
