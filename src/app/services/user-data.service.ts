@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserDataService {
-  public token = '';
+  public token = ' ';
 
-  private apiUrl = 'http://192.168.1.23:8000/admin/user?email=';
+  private apiUrl = 'http://192.168.1.40:8000/admin/user?email=';
   constructor (private http: HttpClient) {
     // console.log('hi');
   }

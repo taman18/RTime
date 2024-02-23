@@ -11,20 +11,19 @@
         <span class="refresh-txt">Refresh</span>
       </div>
     </div>
-
     <div class="userBio">
       <div class="left"></div>
       <div class="right"></div>
-      <div class="username">{{ allData.result?.name }}</div>
-      <div class="user-image-div">
+      <div class="username" *ngIf='allData'>{{ allData.result.name }}</div>
+      <div class="user-image-div" *ngIf='allData'>
         <img
           class="user-image"
           src="{{ allData.result.profilePic }}"
           alt="user"
         />
       </div>
-      <div class="user-email username">{{ allData.result?.email }}</div>
-      <div class="user-role username">{{ allData.result.role?.name }}</div>
+      <div class="user-email username" *ngIf='allData'>{{ allData.result.email }}</div>
+      <div class="user-role username" *ngIf='allData'>{{ allData.result.role.name }}</div>
       <!-- <div class="user-bio">{{userData.bio}}</div> -->
     </div>
 

@@ -82,7 +82,6 @@ export class UserBioComponent implements OnInit {
         logout_time: '20:54',
         duration: '10:06 min',
       },
-
     ],
   };
   // Check if data exists in local storage
