@@ -98,7 +98,7 @@ h3 {
   background-color: var(--primary-green);
   border: 3px solid var(--primary-black);
   position: absolute;
-  right: 23px;
+  right: 0;
   bottom: 1px;
 }
 
@@ -136,7 +136,16 @@ h3 {
 
 }
 
+.profile-img{
+  border-radius: 50%;
+  height:60px;
+  width:60px;
+}
+
+
 .active {
+  height:88px;
+  width:75px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,8 +159,15 @@ h3 {
 
 }
 
+.active-text{
+  // height:28px;
+  max-width:100px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .img-active {
-  width: 40px;
   position: relative;
 }
 
@@ -332,4 +348,10 @@ h6 {
     color: var(--text-color);
   }
 
+}
+
+@media screen and (max-width: 768px) {
+  .row{
+    gap: 1rem;
+  }
 }

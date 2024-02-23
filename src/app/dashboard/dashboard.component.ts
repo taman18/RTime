@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { ActiveUser, ApiResponse, IncorrectTimeSheetResponse, TimeSheetHoursResponse, User } from '../users';
+import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { Router } from '@angular/router';
-import { User } from '../users';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.scss' ],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   totalUserCount: number = 0;
-  totalActiveUsers: any = [];
+  totalActiveUsers: ActiveUser[] = [];
+  filledTimeSheet: number  = 0;
+  missedTimeSheet: number  = 0;
+  totalTimeSheetHours: TimeSheetHoursResponse[] = [];
+  totalCountOfIncorrectTimesheet: IncorrectTimeSheetResponse[] = [];
+
 
   activeUsers = [
     { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
@@ -50,11 +55,12 @@ export class DashboardComponent {
     this.time = `${ currentHour }:${ currentMinute }:${ currentSecond }`;
   }
 
-
-
   ngOnInit () {
     this.getTotalUsers();
     this.getActiveUsers();
+    this.getFilledMissedTimeSheetToday();
+    this.getTotalTimesheetHours();
+    this.getTotalCountOfIncorrectTimesheet();
   }
 
   getTotalUsers ()
@@ -67,9 +73,37 @@ export class DashboardComponent {
   //Recent 5 Active Users
   getActiveUsers ()
   {
-    this.dashboardService.getFiveActiveUsers().subscribe((users: any) => {
+    this.dashboardService.getFiveActiveUsers().subscribe((users: {result : ActiveUser[]}) => {
       this.totalActiveUsers = users.result;
+      console.log(this.totalActiveUsers);
+    });
+  }
+
+  getFilledMissedTimeSheetToday ()
+  {
+    this.dashboardService.getFilledMissedTimeSheet().subscribe((users:ApiResponse) => {
+      this.filledTimeSheet = users.result.todayNumberOfFilledUsers;
+      this.missedTimeSheet = users.result.todayNumberOfUnfilledUsers;
       console.log(users);
     });
   }
+
+  getTotalTimesheetHours ()
+  {
+    this.dashboardService.getTotalTimesheetHoursToday().subscribe((users: {result : TimeSheetHoursResponse[]}) => {
+      this.totalTimeSheetHours = users.result;
+      console.log(users);
+    });
+  }
+
+  getTotalCountOfIncorrectTimesheet ()
+  {
+    this.dashboardService.getTotalCountOfIncorrectTimesheetYesterday().subscribe((users: {result : IncorrectTimeSheetResponse[]}) => {
+      this.totalCountOfIncorrectTimesheet = users.result;
+      console.log(users);
+    });
+  }
+
+
+
 }
