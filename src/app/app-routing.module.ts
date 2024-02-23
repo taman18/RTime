@@ -9,7 +9,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 const routes: Routes = [
   { path: 'login', component:  LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'userbio', component: UserBioComponent },
+  { path: 'userbio/:id', component: UserBioComponent },
   { path: 'user-management', component: UserManagementComponent },
   { path: 'timesheet', component: TimesheetComponent },
   // Add more routes as needed

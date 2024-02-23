@@ -12,38 +12,55 @@ export class TimesheetComponent implements OnInit {
   userData: any;
   public meridiem:any;
   // public button:boolean = false;
-
+  public tableHeading:[] = [];
+  public tableBody:[] = [];
 
 
   constructor (private timesheetService:TimesheetService) {
-    // this.getData();
+    this.timesheetService.getData();
     // console.log('hi');
     this.refreshTime();
 
   }
   ngOnInit () {
-    this.getData();
+    // this.getData();
+    this.getUesrData();
+  }
+
+  getUesrData () {
+    this.timesheetService.getData().subscribe(
+      (userdata: any) => {
+        console.log('hi');
+        console.log(userdata.result.data);
+        for(const i of userdata.result.data)
+        {
+
+        }
+        console.log(this.tableHeading);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
   }
 
 
-
-
   getData () {
-    this.timesheetService.getData().subscribe(
-      (response) => {
-        console.log('taman');
-        this.userData = response;
-        console.log(this.userData);
+  //   this.timesheetService.getData().subscribe(
+  //     (response) => {
+  //       console.log('taman');
+  //       this.userData = response;
+  //       console.log(this.userData);
 
-      },
-      (error) => {
-        console.log('taman');
-        console.error('Error fetching data', error);
-        console.log('hi');
-      },
-    );
-    const data = this.timesheetService.getData();
-    console.log(data);
+  //     },
+  //     (error) => {
+  //       console.log('taman');
+  //       console.error('Error fetching data', error);
+  //       console.log('hi');
+  //     },
+  //   );
+  //   const data = this.timesheetService.getData();
+  //   console.log(data);
   }
 
 
@@ -107,8 +124,6 @@ export class TimesheetComponent implements OnInit {
       },
     ],
   };
-
-
   refreshTime () {
     this.getDate();
   }

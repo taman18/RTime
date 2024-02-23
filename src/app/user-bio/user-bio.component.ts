@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-user-bio',
@@ -8,18 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class UserBioComponent implements OnInit {
   public storedUserData:any;
   public userData:any;
-  ngOnInit (): void {
-    this.storedUserData = localStorage.getItem('userData');
-    if(this.storedUserData) {
-      const userData = JSON.parse(this.storedUserData);
-      this.userData = userData;
-      console.log(this.userData);
-    }
-  }
-
+  public email = '';
   public date:any;
   public time:any;
   public meridiem:any;
+  public allData:any;
   public tableData: any = {
     thead: [
       {
@@ -95,8 +90,36 @@ export class UserBioComponent implements OnInit {
 
   // Now `userData` contains the object previously stored in local storage
   // Use it as needed
-  constructor () {
+  constructor (
+    private userdataService: UserDataService,
+    private activatedRoute: ActivatedRoute,
+  ) {
     this.refreshTime();
+
+  }
+
+  ngOnInit (): void {
+    this.email = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    this.getUesrData();
+    // this.storedUserData = localStorage.getItem('userData');
+    if(this.storedUserData) {
+      // const userData = JSON.parse(this.storedUserData);
+      // this.userData = userData;
+      // console.log(this.userData);
+    }
+  }
+
+  getUesrData () {
+    this.userdataService.getData(this.email).subscribe(
+      (userdata: any) => {
+        // console.log('hi');
+        this.allData = userdata;
+        console.log(this.allData);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
   }
 
   refreshTime () {

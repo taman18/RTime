@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AllUsersService } from '../services/all-users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: [ './user-management.component.scss' ],
 })
-export class UserManagementComponent {
+export class UserManagementComponent implements OnInit {
   public date:any;
   public time:any;
   public meridiem:any;
@@ -61,7 +63,7 @@ export class UserManagementComponent {
       {
         id:'name',
         name:'Nitesh',
-        email: 'nitesh@relinns.com',
+        email: 'nitesh2@relinns.com',
         profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
       },
       {
@@ -74,13 +76,31 @@ export class UserManagementComponent {
         id:'name',
         name:'Ankit',
         email: 'ankit@relinns.com',
-        // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
+        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
       },
     ],
   };
-  constructor () {
+  constructor (
+    private router: Router,
+    private allusers: AllUsersService,
+  ) {
     this.refreshTime();
   }
+  getUesrData () {
+    this.allusers.getData().subscribe(
+      (userdata: any) => {
+        // console.log('hi');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
+  ngOnInit () {
+    // this.getData();
+    this.getUesrData();
+  }
+
   refreshTime () {
     this.getDate();
   }
@@ -113,5 +133,9 @@ export class UserManagementComponent {
 
   toggleSidebar () {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
+
+  onProfileClick (event: string) {
+    this.router.navigate([ `/userbio/${  event }` ]);
   }
 }
