@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DashboardService } from './services/dashboard.service';
-import { User } from './users';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

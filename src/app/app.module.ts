@@ -2,7 +2,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardModule } from './modules/screens/dashboard/dashboard.module';
 import { DashboardService } from './services/dashboard.service';
 import { DropdownService } from './services/dropdown.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,15 +11,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './modules/shared/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './modules/shared/shared.module';
 import { SharedService } from './services/shared.service';
 import { ThemeService } from './services/theme.service';
-import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
-import { TimesheetComponent } from './timesheet/timesheet.component';
-import { UserManagementComponent } from './user-management/user-management.component';
-import { UserManagementModule } from './user-management/user-management.module';
+import { ThemeToggleComponent } from './modules/shared/theme-toggle/theme-toggle.component';
+import { TimesheetComponent } from './modules/screens/timesheet/timesheet.component';
+import { UserBioComponent } from './modules/screens/user-bio/user-bio.component';
+import { UserManagementComponent } from './modules/screens/user-management/user-management.component';
+import { UserManagementModule } from './modules/screens/user-management/user-management.module';
 
 
 
@@ -30,6 +31,7 @@ import { UserManagementModule } from './user-management/user-management.module';
     ProfileComponent,
     UserManagementComponent,
     TimesheetComponent,
+    UserBioComponent,
   ],
   imports: [
     BrowserModule,
