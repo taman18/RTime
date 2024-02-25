@@ -135,7 +135,11 @@ export class UserManagementComponent implements OnInit {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 
-  onProfileClick (event: string) {
+  onProfileClick (event: any) {
     this.router.navigate([ `/userbio/${  event }` ]);
+  }
+  refreshBtn () {
+    // console.log('clicked')
+    this.getUesrData();
   }
 }

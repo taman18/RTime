@@ -299,6 +299,9 @@ input:checked + .toggle-slider:before {
     display: none !important;
     // width:100px !important;
   }
+  .profile-info{
+    display: none !important;
+  }
   .theme-name{
     display: none;
   }
@@ -308,6 +311,9 @@ input:checked + .toggle-slider:before {
   .side-text{
     display: none !important;
     // width:100px !important;
+  }
+  .profile-info{
+    display: none !important;
   }
   .theme-name{
     display: none;
@@ -332,11 +338,12 @@ input:checked + .toggle-slider:before {
         display:flex;
         align-items: center;
   }
+
 }
 /* sidebar.component.css */
 .sidebar {
   /* Your sidebar styles here */
-  transition: width 0.3s ease; /* Add transition for smooth animation */
+  transition: width 0.4s ease; /* Add transition for smooth animation */
 }
 
 .sidebar.collapsed {

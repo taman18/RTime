@@ -5,7 +5,7 @@
       <div class="date-container">
         {{ date }} - {{ time }} {{ meridiem}}
       </div>
-      <div class="refresh-container cursor-pointer">
+      <div class="refresh-container cursor-pointer" (click)=refreshBtn()>
           <img src="assets/refresh.svg" alt="refresh">
           <span class="refresh-txt">Refresh</span>
       </div>

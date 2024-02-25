@@ -143,4 +143,8 @@ export class UserBioComponent implements OnInit {
     // console.log(this.time+' '+meridiem);
 
   }
+  refreshBtn () {
+    console.log('clicked');
+    this.getUesrData();
+  }
 }

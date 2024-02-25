@@ -6,6 +6,7 @@ import { UserBioComponent } from './user-bio/user-bio.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 
 
+
 const routes: Routes = [
   { path: 'login', component:  LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
