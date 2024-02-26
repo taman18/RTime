@@ -3,15 +3,17 @@
 }
 .main-container {
     position: relative;
-    left:15%;
     top:5%;
+    width:100% !important;
     padding:20px;
+    margin-top:7px;
     .top-section {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
       margin-bottom:15px;
       
+      // border:1px solid white;
       .date-container {
         color: var(--primary-white);
         display: inline-block;
@@ -70,7 +72,7 @@
   column-gap: 10px;
   background-color: #000;
   border-radius:10px;
-  cursor: pointer;
+  margin-bottom:10px;
 }
 .user-mngt-txt{
   font-weight: 500;
@@ -82,21 +84,21 @@
 }
 .arrow{
   padding-left:10px;
+  cursor: pointer;
 }
 .user-data{
-  height:50%;
+  height:25rem;
   width:100%;
   // border:1px solid white;
-  // background-color: #000;
+  background-color: #000;
   border-radius: 10px;
-  display:flex; 
+  display:flex;
+  flex-direction: column; 
   // justify-content:space-between;
   column-gap:20px;
   // flex-wrap: wrap;
 }
-.table{
-  // margin-top:10px;
-}
+
 .user-pic{
   height: 100%;
   width:40%;
@@ -131,9 +133,48 @@
 {
   .main-container{
     position: absolute !important;
-    left:100px !important;
     width: calc(100vw - 100px) !important;
     overflow: auto !important;
     height:fit-content; 
   }
+  .large-container{
+    position: relative;
+    left:100px;
+    width:calc(100vw - 200px);
+  }
+}
+.large-container{
+  position: absolute;
+  left:200px;
+  width:calc(100vw - 200px);
+  // border:1px solid white;
+}
+.user-image-div{
+  width:100%;
+  // border:1px solid rgb(194, 64, 64);
+  height: 40%;
+  padding:20px;
+  display:flex;
+}
+.user-name{
+  padding:20px 0 0 20px;
+  font-weight: 400;
+  color: white;
+  font-size:16px;
+}
+.user-id{
+  padding:20px 0 0 20px;
+  font-weight: 400;
+  color: #ffffff80;
+  font-size:16px;
+}
+.details{
+  width:96%;
+  border:1px solid white;
+  margin-left:20px;
+  height:50%;
+  border-radius: 14px;
+  padding:15px;
+  border: 1px solid rgba(255, 255, 255, .1019607843);
+  background: linear-gradient(0deg, #121212, #121212), linear-gradient(0deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1));
 }

@@ -28,7 +28,7 @@ export class TimesheetComponent implements OnInit {
         type: 'inputText',
       },
       {
-        id:'_projectId',
+        id:'_projectName',
         text:'Project Name',
         type:'inputText',
       },
@@ -74,9 +74,8 @@ export class TimesheetComponent implements OnInit {
   async getUesrData () {
     await this.timesheetService.getData().then(
       (userdata: any) => {
-        // console.log(userdata.result);
         this.apiData = userdata.result;
-        this.myData.tbody = userdata.result;
+        this.myData.tbody = userdata.result.data;
         console.log(this.myData.tbody);
       },
       (error) => {

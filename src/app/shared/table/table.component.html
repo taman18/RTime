@@ -52,6 +52,16 @@
                 <span class="slider round"></span>
               </label>
             </span>
+            <span *ngIf="col.id==='_projectId'">
+              <p>{{row[col.id]._id}}</p>
+            </span>
+            
+
+            <!-- <span *ngIf="col.id==='_projectName'">
+              <p>{{row[col.id]._id}}</p>
+            </span> -->
+
+
           </td>
           <!-- <td class="table-data" *ngIf="button">
             <div class="d-flex">

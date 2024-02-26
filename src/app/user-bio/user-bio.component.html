@@ -1,45 +1,41 @@
 <div class="large-container">
-
   <div class="main-container">
     <div class="top-section">
       <div class="date-container">{{ date }} - {{ time }} {{ meridiem }}</div>
-      <div class="refresh-container cursor-pointer" (click)=refreshBtn()>
-        <img src="/assets/refresh.svg" alt="refresh">
+      <div class="refresh-container cursor-pointer" (click)="refreshBtn()">
+        <img src="/assets/refresh.svg" alt="refresh" />
         <span class="refresh-txt">Refresh</span>
-    </div>
+      </div>
     </div>
     <div class="userBio">
-      <div class="upper" (click)="goBack()">
-        <img class="arrow" src="/assets/single-left-arrow-blue.svg" alt="arrow">
+      <div class="upper">
+        <img
+          class="arrow"
+          src="/assets/single-left-arrow-blue.svg"
+          alt="arrow"
+          (click)="goBack()"
+        />
         <p class="user-mngt-txt">User Management Details</p>
       </div>
       <div class="user-data">
-          <div class="user-pic">
-          </div>
-          <div class="user-roles">
-            
-          </div>
-
+        
+        <div class="user-image-div" *ngIf="allData">
+          <img
+            class="user-image"
+            src="{{ allData.result.profilePic }}"
+            alt="user"
+          />
+          <div class="bio">
+            <div class="user-name" *ngIf="allData">{{ allData.result.name }}</div>
+            <div class="user-id" *ngIf="allData">#{{ allData.result._id }}</div>
+            </div>
+        </div>
+        <div class="details">
+          
+        </div>
+        <!-- <div class="user-role username" *ngIf='allData'>{{ allData.result.role.name }}</div> -->
+        <!-- <div class="user-bio">{{userData.bio}}</div> -->
       </div>
-      <div class="username" *ngIf='allData'>{{ allData.result.name }}</div>
-      <div class="user-image-div" *ngIf='allData'>
-        <img
-          class="user-image"
-          src="{{ allData.result.profilePic }}"
-          alt="user"
-        />
-      </div>
-      <div class="user-email username" *ngIf='allData'>{{ allData.result.email }}</div>
-      <div class="user-role username" *ngIf='allData'>{{ allData.result.role.name }}</div>
-      <!-- <div class="user-bio">{{userData.bio}}</div> -->
-    </div>
-
-      <!-- <div class="user-bio">{{userData.bio}}</div> -->
-    <div class="table">
-      <div class="timesheet-container">
-        User Logs <img src="/assets/calendar.svg" class="calendar-icon" alt="image" />
-      </div>  
-      <app-table [userData]="tableData"></app-table>
     </div>
   </div>
 </div>

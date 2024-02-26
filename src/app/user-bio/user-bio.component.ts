@@ -68,12 +68,6 @@ export class UserBioComponent implements OnInit {
   ngOnInit (): void {
     this.email = this.activatedRoute.snapshot.paramMap.get('id') || '';
     this.getUesrData();
-    // this.storedUserData = localStorage.getItem('userData');
-    if(this.storedUserData) {
-      // const userData = JSON.parse(this.storedUserData);
-      // this.userData = userData;
-      // console.log(this.userData);
-    }
   }
 
   getUesrData () {
@@ -89,6 +83,7 @@ export class UserBioComponent implements OnInit {
       },
     );
   }
+
 
   refreshTime () {
     this.getDate();
