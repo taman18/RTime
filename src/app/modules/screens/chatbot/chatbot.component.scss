@@ -1,0 +1,175 @@
+// Styles for custom title
+.custom-title-class {
+    font-size: 20px;
+    color: var(--text-color);
+    /* Your desired color */
+}
+
+// Styles for custom text
+.custom-text-class {
+    font-size: 16px;
+    color: var(--text-color);
+        /* Your desired color */
+}
+
+.swal2-content {
+    color: var(--text-color) !important;
+}
+
+//   chatbot scss
+
+
+/* Styles for the chatbot container */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color:var(--bg-color);
+    color: white;
+    
+}
+.header-tittle{
+    font-size:20px;
+    color:var(--primary-color);
+}
+/* Style for logo */
+.logo {
+    width: 40px;/* Adjust the width as needed */
+    height: 40px;
+    border-radius: 50%;
+}
+
+.chatbot {
+    display: flex;
+    flex-direction: column;
+    bottom:10px;
+    right: 20px;
+    width: 400px;
+    height:550px;
+    border: 1px solid var(--grey-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: var(--sub-bg-color);
+    color: var(--text-color);
+    position: absolute;
+    top: 60%;
+    left: 70%;
+}
+
+/* Styles for the messages container */
+.messages {
+    max-height: 300px;
+    /* Limit the height of the messages container */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+}
+
+/* Styles for individual messages */
+.message {
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* Styles for messages from user1 */
+.user1 {
+    background-color:var(--light-pink);
+    color: var(--text-color);
+    align-self: flex-start;
+    width: fit-content;
+    margin-right: 40px;
+}
+
+/* Styles for messages from user2 */
+.user2 {
+    background-color: var(--sub-bg-color);
+    color: var(--text-color);
+    align-self: flex-end;
+    margin-left: auto;
+    width: fit-content;
+}
+
+/* text-msg style*/
+.input-line {
+    position:absolute;
+    top:80%;
+    width:95%;
+    border-bottom: 2px solid var(--bg-color); /* Style of the line */
+    margin-bottom: 15px; 
+    margin:auto 2px 15px;/* Spacing between line and input field */
+  }
+  
+
+/* Styles for input field */
+input[type="text"] {
+    width:280px;
+    /* Adjust the width of the input field */
+    border: 1px solid var(--sub-bg-color);
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    outline: none;
+}                  
+
+// text msg div
+.text-msg {
+    display: flex;
+    flex-direction: row;
+    margin: auto 13px;
+    position: absolute;
+    top: 85%;
+}
+
+
+
+/* Styles for send button */
+button {
+    width: 60px;
+    /* Adjust the width of the send button */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right:0;
+    font-size: 14px;
+    background-color:var(--primary-color);
+    /* Blue background for the send button */
+    color: #fff;
+    /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover styles for send button */
+button:hover {
+    background-color: var(--primary-color);
+    /* Darker blue on hover */
+}
+
+.close-btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Style for close icon */
+.close-icon {
+    width: 20px;
+    /* Adjust the width as needed */
+    height: 20px;
+    /* Adjust the height as needed */
+    fill: red;
+    /* Adjust the color as needed */
+}
+
+.close-btn:hover .close-icon {
+    fill: #555;
+    /* Adjust the hover color as needed */
+}
+.send-btn{
+    margin-left: 10px;
+}

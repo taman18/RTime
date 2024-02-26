@@ -1,6 +1,6 @@
 import { ActiveUser, ApiResponse, DashboardService, IncorrectTimeSheetResponse,
   TimeSheetHoursResponse, User } from 'src/app/services/dashboard.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,7 +30,20 @@ export class DashboardComponent implements OnInit {
   public meridiem: any;
   public date: any;
   public time: any;
+  showChatbot: boolean = false;
+  showScrollTop: boolean = false;
 
+  @HostListener('window:scroll', [])
+  onScroll (): void {
+    this.showScrollTop = (window.scrollY > 200); // Show button when scrolled down
+  }
+
+  scrollToTop (): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
+  }
+  toggleChatbot () {
+    this.showChatbot = !this.showChatbot;
+  }
   constructor (private router: Router,
     private dashboardService: DashboardService) {
     this.refreshTime();

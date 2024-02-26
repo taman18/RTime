@@ -78,3 +78,34 @@ body.dark-theme{
 //   background-color: #121212;
 //   color: #ffffff;
 // }
+.swal2-modal {
+  background-color:var(--bg-color);
+  padding:15px;
+  margin:0px;
+  border:2px solid  var(--sidebar-hover);
+  border-radius: 15px;
+}
+
+.mat-typography p {
+  margin:5px 0;
+  color:var(--primary-color);
+}
+
+.swal2-actions{
+  margin:5px 0;
+  width:100%;
+}
+.swal2-info {
+  border-color: var(--sidebar-hover);
+  color: var(--primary-color);
+}
+.swal2-html-container{
+  color:var(--text-color) !important;
+}
+.swal2-icon{
+  margin: .5em auto 0.6em;
+}
+.mat-typography h2{
+  margin:0;
+  color:var(--text-color);
+}

@@ -136,5 +136,8 @@
             <app-rtime-line-chart [showCountryIcon]="true"></app-rtime-line-chart>
          </div>
       </div>
+      <span><img src="assets/images/relinns logo.png" class="mat-icon-position" alt="Logo" (click)="toggleChatbot()" ></span>
+     
+      <app-chatbot [showPopUp]="showChatbot" (popUp)="toggleChatbot()"></app-chatbot>
    </div>
    <!-- </div> -->
