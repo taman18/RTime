@@ -11,7 +11,7 @@ export class AllUsersService {
   U3ZmY4MjE2OTE4ZWI0ZTQyMyIsImlhdCI6MTcwODYwOTExMSwi
   ZXhwIjoxNzExMjAxMTExfQ.mwxf6rMfvS3mVMpmKXvfBbpfTS3Iaps-Ho3DnjwQwp8`;
 
-  private apiUrl = 'http://192.168.1.32:8000/admin/users?page=1&limit=20';
+  private apiUrl = 'http://192.168.1.40:8000/admin/users?page=1&limit=20';
   constructor (private http: HttpClient) {
     // console.log('hi');
   }
