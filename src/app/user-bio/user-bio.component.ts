@@ -1,5 +1,5 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { UserDataService } from '../services/user-data.service';
 
 @Component({
@@ -49,40 +49,7 @@ export class UserBioComponent implements OnInit {
         type:'inputText',
       },
     ],
-    tbody: [
-      {
-        device_ip:'101.214.12.4',
-        location: 'mohali',
-        date: '10/10/2022',
-        login_time: '9:55',
-        logout_time: '19:47',
-        duration: '9:32 min',
-      },
-      {
-        device_ip:'101.214.12.4',
-        location: 'mohali',
-        date: '11/10/2022',
-        login_time: '9:40',
-        logout_time: '19:23',
-        duration: '9:21 min',
-      },
-      {
-        device_ip:'101.214.12.4',
-        location: 'mohali',
-        date: '12/10/2022',
-        login_time: '10:31',
-        logout_time: '20:07',
-        duration: '10:45 min',
-      },
-      {
-        device_ip:'101.214.12.4',
-        location: 'mohali',
-        date: '13/10/2022',
-        login_time: '9:12',
-        logout_time: '20:54',
-        duration: '10:06 min',
-      },
-    ],
+    tbody: [],
   };
   // Check if data exists in local storage
 
@@ -92,6 +59,7 @@ export class UserBioComponent implements OnInit {
   constructor (
     private userdataService: UserDataService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) {
     this.refreshTime();
 
@@ -113,7 +81,8 @@ export class UserBioComponent implements OnInit {
       (userdata: any) => {
         // console.log('hi');
         this.allData = userdata;
-        console.log(this.allData);
+        this.tableData.tbody = userdata.result;
+        console.log(this.tableData.tbody);
       },
       (error) => {
         console.log(error);
@@ -146,5 +115,10 @@ export class UserBioComponent implements OnInit {
   refreshBtn () {
     console.log('clicked');
     this.getUesrData();
+    this.refreshTime();
+  }
+  goBack () {
+    // console.log('back')
+    this.router.navigate([ '/user-management' ]);
   }
 }

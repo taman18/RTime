@@ -1,7 +1,4 @@
 <div class="large-container">
-  <div class="side">
-    <app-sidebar></app-sidebar>
-  </div>
 
   <div class="main-container">
     <div class="top-section">
@@ -12,8 +9,18 @@
     </div>
     </div>
     <div class="userBio">
-      <div class="left"></div>
-      <div class="right"></div>
+      <div class="upper" (click)="goBack()">
+        <img class="arrow" src="/assets/single-left-arrow-blue.svg" alt="arrow">
+        <p class="user-mngt-txt">User Management Details</p>
+      </div>
+      <div class="user-data">
+          <div class="user-pic">
+          </div>
+          <div class="user-roles">
+            
+          </div>
+
+      </div>
       <div class="username" *ngIf='allData'>{{ allData.result.name }}</div>
       <div class="user-image-div" *ngIf='allData'>
         <img

@@ -1,11 +1,12 @@
 .main-container {
-    position: fixed;
-    left:15%;
+  position:relative;
+    left:200px;
+    width: calc(100vw - 200px);
     top:5%;
     padding:20px;
     .top-section {
       display: flex;
-      width:calc(100vw - 250px);
+      width:100%;
       justify-content: space-between;
       flex-wrap: wrap;
       // margin-left: 200px;
@@ -38,13 +39,21 @@
     font-size:20px;
     padding-left:15px;
   }
-  .large-container{
-    position:relative;
-  }
   .refresh-txt{
     font-weight: bolder;
   }
   .refresh-button{
     background-color: black;
     border:none;
+  }
+
+  @media screen and (max-width:1200px)
+  {
+    .main-container{
+      position: relative !important;
+      left:100px !important;
+      width: calc(100vw - 100px) !important;
+      overflow: auto !important;
+      height:fit-content; 
+    }
   }

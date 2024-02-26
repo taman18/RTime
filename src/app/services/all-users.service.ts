@@ -7,21 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class AllUsersService {
 
-  public token =
-    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDc0ZTU3ZmY4Mj
-    E2OTE4ZWI0ZTQyMyIsImlhdCI6MTcwODYwOTExMSwiZXhwIjoxNzExMjAx
-    MTExfQ.mwxf6rMfvS3mVMpmKXvfBbpfTS3Iaps-Ho3DnjwQwp8`;
+  public token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDc
+  0ZTU3ZmY4MjE2OTE4ZWI0ZTQyMyIsImlhdCI6MTcwODYwOTExMSwi
+  ZXhwIjoxNzExMjAxMTExfQ.mwxf6rMfvS3mVMpmKXvfBbpfTS3Iaps-Ho3DnjwQwp8`;
 
-  private apiUrl = 'http://192.168.1.23:8000/admin/users?page=1&limit=2';
+  private apiUrl = 'http://192.168.1.23:8000/admin/users?page=1&limit=20';
   constructor (private http: HttpClient) {
     // console.log('hi');
   }
-  getData (): Observable<any> {
-    return this.http.get<any>(this.apiUrl, {
-      headers: {
-        Authorization: `Bearer ${ this.token }`,
-      },
-    });
-
+  getData (): Promise<any> {
+    return this.http
+      .get<any>(this.apiUrl, {
+        headers: {
+          Authorization: `Bearer ${ this.token }`,
+        },
+      })
+      .toPromise();
   }
 }

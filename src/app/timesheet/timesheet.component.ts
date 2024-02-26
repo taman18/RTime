@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { SearchService } from '../services/search.service';
 import { TimesheetService } from '../services/timesheet.service';
-
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
@@ -11,6 +12,7 @@ export class TimesheetComponent implements OnInit {
   public date:any;
   public time:any;
   userData: any;
+  public apiData:any;
   public meridiem:any;
   // public button:boolean = false;
   public tableHeading:[] = [];
@@ -18,52 +20,20 @@ export class TimesheetComponent implements OnInit {
   data: any[] = [];  // Your data goes here
   filteredData: any[] = [];
   searchTerm: string = '';
-
-  constructor (private timesheetService:TimesheetService, private searchService: SearchService) {
-    this.timesheetService.getData();
-    // console.log('hi');
-    this.refreshTime();
-  }
-  ngOnInit () {
-    // this.getData();
-    this.getUesrData();
-    this.searchService.search$.subscribe((searchTerm) => {
-      this.searchTerm = searchTerm;
-      this.filterData();
-    });
-  }
-  filterData (): void {
-    this.filteredData = this.data.filter((item) =>
-      item.name.toLowerCase().includes(this.searchTerm.toLowerCase()),
-    );
-  }
-
-  getUesrData () {
-    this.timesheetService.getData().subscribe(
-      (userdata: any) => {
-        console.log('hi');
-        console.log(userdata.result.data);
-        console.log(this.tableHeading);
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
-  }
   public myData: any = {
     thead: [
       {
-        id:'project_ID',
+        id:'_projectId',
         text:'project ID',
         type: 'inputText',
       },
       {
-        id:'prjectName',
+        id:'_projectId',
         text:'Project Name',
         type:'inputText',
       },
       {
-        id: 'Name',
+        id: 'username',
         text: 'Name',
         type: 'inputText',
       },
@@ -89,27 +59,54 @@ export class TimesheetComponent implements OnInit {
         type:'inputText',
       },
     ],
-    tbody: [
-      {
-        project_ID: '213178',
-        prjectName: 'R Time',
-        Name: 'Tamanjeet',
-        description: 'Working on API integration',
-        from_date: '10-02-2024',
-        to_date: '02-02-2024',
-        total_time: '21',
-      },
-      {
-        project_ID: '121764',
-        prjectName: 'Bot penguine',
-        Name: 'Ishika',
-        description: 'UI integration',
-        from_date: '11-01-2024',
-        to_date: '03-02-2024',
-        total_time: '23',
-      },
-    ],
+    tbody: [],
   };
+
+
+
+  constructor (private timesheetService:TimesheetService) {
+    this.getUesrData();
+    this.refreshTime();
+  }
+
+
+
+  async getUesrData () {
+    await this.timesheetService.getData().then(
+      (userdata: any) => {
+        // console.log(userdata.result);
+        this.apiData = userdata.result;
+        this.myData.tbody = userdata.result;
+        console.log(this.myData.tbody);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
+
+
+
+  ngOnInit (): void {
+    this.myData.body = this.apiData;
+    console.log(this.myData.body);
+  }
+
+
+  dataSource: MatTableDataSource<any> | undefined;
+  displayedColumns: string[] = [ 'column1', 'column2', 'column3' ]; // Adjust column names
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
+
+
+  filterData (): void {
+    this.filteredData = this.data.filter((item) =>
+      item.name.toLowerCase().includes(this.searchTerm.toLowerCase()),
+    );
+  }
+
+
+
 
   getData () {
   //   this.timesheetService.getData().subscribe(
@@ -129,67 +126,6 @@ export class TimesheetComponent implements OnInit {
   //   console.log(data);
   }
 
-
-
-
-  public tableData: any = {
-    thead: [
-      {
-        id:'Project_Id',
-        text:'Project Id',
-        type: 'inputText',
-      },
-      {
-        id:'Project_Name',
-        text:'Project Name',
-        type:'inputText',
-      },
-      {
-        id: 'User_Name',
-        text: 'User Name',
-        type: 'inputText',
-      },
-      {
-        id: 'Description',
-        text: 'Decription',
-        type: 'inputText',
-      },
-
-      {
-        id:'Log_Hours',
-        text: 'Log Hours',
-        type: 'inputText',
-      },
-      // {
-      //   id:'action',
-      //   text:'Action',
-      //   type:'toggle',
-      // },
-    ],
-    tbody: [
-      {
-        Project_Id:'F102164',
-        Project_Name: 'R Time',
-        User_Name: 'Aakash',
-        Description: 'Navbar UI',
-        Log_Hours:'9 hrs 34 minutes',
-      },
-      {
-        Project_Id:'F1402164',
-        Project_Name: 'Bot penguin',
-        User_Name: 'Raman',
-        Description: 'Integration of all components',
-        Log_Hours:'10 hrs 56 minutes',
-      },
-      {
-        Project_Id:'D475164',
-        Project_Name: 'Kardi',
-        User_Name: 'Varun',
-        Description: 'API integration',
-        Log_Hours:'9 hrs 12 minutes',
-      },
-    ],
-  };
   refreshTime () {
     this.getDate();
   }
@@ -219,6 +155,7 @@ export class TimesheetComponent implements OnInit {
   }
   refreshBtn () {
     // console.log('clicked');
+    this.refreshTime();
     this.getUesrData();
   }
 }
