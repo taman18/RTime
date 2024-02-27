@@ -5,9 +5,10 @@
    <!--TopBar-->
    <div class="top-section">
       <div class="date-container">{{ date }} - {{ time }} {{ meridiem }}
-</div>
-      <div class="refresh-container"><img class="refresh-img" src="../assets/images/refresh2.png" alt="">
-         <span>Refresh</span>
+      </div>
+      <div class="refresh-container"(click)="reload()">
+         <img class="refresh-img" src="../assets/images/refresh2.png" alt="">
+         Refresh
       </div>
    </div>
 
@@ -126,18 +127,15 @@
 
 
    <!--Charts-->
-   <div class="charts-section">
+   <div class="charts-section"></div>
       <div class="row">
          <div class="col-md-6">
-            <app-rtime-circular-chart [showCountryIcon]="true"></app-rtime-circular-chart>
+            <app-rtime-circular-chart ></app-rtime-circular-chart>
          </div>
 
          <div class="col-md-6">
-            <app-rtime-line-chart [showCountryIcon]="true"></app-rtime-line-chart>
+            <app-rtime-line-chart ></app-rtime-line-chart>
          </div>
       </div>
-      <span><img src="assets/images/relinns logo.png" class="mat-icon-position" alt="Logo" (click)="toggleChatbot()" ></span>
-     
-      <app-chatbot [showPopUp]="showChatbot" (popUp)="toggleChatbot()"></app-chatbot>
    </div>
    <!-- </div> -->

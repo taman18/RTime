@@ -185,6 +185,7 @@ border-radius: 50%;
   border-top:2px solid rgb(39, 39, 39);
   border-radius: 20px;
   padding:20px;
+  background-color:var(--sub-bg-color);
   // border:1px solid  var(--text-color);
   padding:0;
   width:100%;
@@ -225,7 +226,7 @@ top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background-color: #ccc;
+background-color: var(--bg-color);
 transition: .4s;
 border-radius: 34px;
 }
@@ -237,7 +238,7 @@ height: 16px;
 width: 16px;
 left: 2px;
 bottom: 2px;
-background-color:  var(--text-color);
+background-color:  var(--grey-color);
 transition: .4s;
 border-radius: 50%;
 }
@@ -283,7 +284,8 @@ display: flex;
 text-decoration: none;
 }
 .admin-name{
-margin:0;
+  color:var(--text-color);
+  margin:0;
 }
 
 .active-link{
@@ -318,14 +320,14 @@ width: 100px !important  ;
   display: none !important;
   // width:100px !important;
 }
+.profile-info{
+  display: none;
+}
 .theme-name{
   display: none;
 }
 .sidebar-wrapper{
   width:100px;
-}
-.admin-location{
-  padding-left:15px;
 }
 .user-image{
   position: relative;
@@ -334,22 +336,14 @@ width: 100px !important  ;
 .admin-name{
   position: relative;
   top:20px;
-  color:var(--text-color)
 }
-.admin-location{
-      position: relative;
-      top:20px;
-      display:flex;
-      align-items: center;
-      color: var(--text-color)
-}
+
 }
 /* sidebar.component.css */
 .sidebar {
 /* Your sidebar styles here */
 transition: width 0.3s ease; /* Add transition for smooth animation */
 }
-
 .sidebar.collapsed {
 width: 50px; /* Set the collapsed width */
 }
@@ -363,7 +357,12 @@ width: 50px; /* Set the collapsed width */
 }
 
 .admin-location {
-  color:  var(--grey-color);
+  position: relative;
+      // top:20px;
+      display:flex;
+      align-items: center;
+      padding-left:15px;
+      color: var(--text-color);
 }
 
 .side-link:hover {

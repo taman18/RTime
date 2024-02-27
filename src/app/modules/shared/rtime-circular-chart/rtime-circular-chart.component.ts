@@ -30,10 +30,11 @@ export class RtimeCircularChartComponent implements AfterViewInit {
    */
   @Output() startDateChange = new EventEmitter<any>();
   @Output() endDateChange = new EventEmitter<any>();
-  @Input() title = 'Teams';
+  @Input() title = 'Projects';
   @Input() labelContainer = [
-    { color: '#4DAAE2', title: 'Team 1', value: 30 },
-    { color: '#282828', title: 'Team 2', value: 70 },
+    { color: '#4DAAE2', title: 'RTime', value: 30 },
+    { color: '#282828', title: 'Zoho', value: 70 },
+    { color: '#0C4335', title: 'Kardi', value: 45 },
 
   ];
 
@@ -134,7 +135,7 @@ export class RtimeCircularChartComponent implements AfterViewInit {
     };
     Plotly.newPlot(graphDiv, [ {
       values: [ 19, 26, 55 ],
-      labels: [ 'Residential', 'Non-Residential', 'Utility' ],
+      labels: [ 'RTime', 'Zoho', 'Kardi' ],
       type: 'pie',
       hole: .7,
       // hoverinfo: 'none',

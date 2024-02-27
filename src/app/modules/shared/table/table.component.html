@@ -1,23 +1,23 @@
 <div class="outer-div">
-  <div class="main-container">
+  <div class="main-container-div">
     <div class="search-bar">
-      <input class="search-input search" type="text" placeholder="Search..." />
+      <input class="search-input search" type="text"  name="searchData" placeholder="Search..." />
       <div class="search-btn-div">
-        <button class="search-button">Export Report</button>
+        <button class="search-button" (click)="exportexcel()">Export Report</button>
       </div>
     </div>
-    <table class="myTable table-striped table-dark">
+    <table  id='excel-table' class="myTable table-striped table-dark">
       <thead>
         <tr class="table-row">
-          <th class="heading" scope="col" *ngFor="let item of heading">
+          <th class="heading" scope="col" *ngFor="let item of userData.thead" >
             {{ item.text
-            }}<span><img class="arrow" src="./assets/sort.svg" alt="" /></span>
+            }}<span><img class="arrow" src="./assets/sort.svg" alt=""  (click)="sort(item.text)"/></span>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of data">
-          <td class="table-data" *ngFor="let col of heading">
+        <tr *ngFor="let row of userData.tbody | paginate:{itemsPerPage: 20, currentPage: p};">
+          <td class="table-data" *ngFor="let col of userData.thead">
             <span *ngIf="col.type === 'inputText'">
               <a class="clicked-data" *ngIf="col.id === 'name' || col.id=== 'Project_Id'; else otherContent" (click)="showUser(row)">
                 {{ row[col.id] }}
@@ -43,6 +43,9 @@
                 />
               </a>
             </span>
+            <span *ngIf="col.type === 'role'">
+              <p class = "role-text">{{ row[col.id].name }}</p>
+            </span>
             <span *ngIf="col.type === 'toggle'">
               <label class="switch">
                 <input type="checkbox" />
@@ -59,11 +62,13 @@
           </td> -->
         </tr>
       </tbody>
+      
     </table>
     <div class="pagination">
       <div class="pagination-container d-flex">
         <div class="left-container d-flex align-items-center position-relative">
-          <p class="mb-0">Showing 1 to 3 of 20 entries</p>
+          <!-- <p class="mb-0">Showing 1 to 3 of 20 entries</p> -->
+          <pagination-controls (pageChange)= "p= $event"></pagination-controls>
           <!-- <ul class="select-box-dropdown">
                 <li  class="options-box justify-content-between" >
                     <span >3</span>
@@ -74,13 +79,13 @@
                 <span>1</span>
             </div>   -->
         </div>
-        <div class="right-container">
+        <!-- <div class="right-container">
           <img src="/assets/double-left-arrow.svg" class="arrow arrow-icon" />
           <img src="/assets/single-left-arrow.svg" class="arrow arrow-icon" />
           <span class="active-page">1</span>
           <img src="/assets/single-right-arrow.svg" class="arrow arrow-icon" />
           <img src="/assets/double-right-arrow.svg" class="arrow arrow-icon" />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

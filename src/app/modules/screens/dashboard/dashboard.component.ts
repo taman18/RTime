@@ -1,6 +1,8 @@
 import { ActiveUser, ApiResponse, DashboardService, IncorrectTimeSheetResponse,
   TimeSheetHoursResponse, User } from 'src/app/services/dashboard.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+// import { MissedTimeSheets } from '../../interfaces/dashboard';
+import { MissedTimeSheets, ProjectsTimeSheetEntry } from '../../interfaces/dashboard';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,35 +17,24 @@ export class DashboardComponent implements OnInit {
   missedTimeSheet: number  = 0;
   totalTimeSheetHours: TimeSheetHoursResponse[] = [];
   totalCountOfIncorrectTimesheet: IncorrectTimeSheetResponse[] = [];
+  totalProjectHours: ProjectsTimeSheetEntry [] = [];
+  totalMissedTimeSheets: MissedTimeSheets [] = [];
 
 
-  activeUsers = [
-    { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
-    { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
-    { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
-    { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
-    { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
-  ];
+  // activeUsers = [
+  //   { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
+  //   { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
+  //   { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
+  //   { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
+  //   { name: 'Tom Holand', imageUrl: '../assets/images/Ellipse 524.png' },
+  // ];
 
   showFilters = false;
 
   public meridiem: any;
   public date: any;
   public time: any;
-  showChatbot: boolean = false;
-  showScrollTop: boolean = false;
 
-  @HostListener('window:scroll', [])
-  onScroll (): void {
-    this.showScrollTop = (window.scrollY > 200); // Show button when scrolled down
-  }
-
-  scrollToTop (): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
-  }
-  toggleChatbot () {
-    this.showChatbot = !this.showChatbot;
-  }
   constructor (private router: Router,
     private dashboardService: DashboardService) {
     this.refreshTime();
@@ -51,6 +42,11 @@ export class DashboardComponent implements OnInit {
   refreshTime () {
     this.getDate();
   }
+
+  reload () {
+    window.location.reload();
+  }
+
   getDate () {
     // Get current date and time
     const currentDateAndTime: Date = new Date();
@@ -74,6 +70,8 @@ export class DashboardComponent implements OnInit {
     this.getFilledMissedTimeSheetToday();
     this.getTotalTimesheetHours();
     this.getTotalCountOfIncorrectTimesheet();
+    this.getTotalProjectHours();
+    this.getTotalMissedTimeSheets();
   }
 
   getTotalUsers ()
@@ -113,6 +111,22 @@ export class DashboardComponent implements OnInit {
   {
     this.dashboardService.getTotalCountOfIncorrectTimesheetYesterday().subscribe((users: {result : IncorrectTimeSheetResponse[]}) => {
       this.totalCountOfIncorrectTimesheet = users.result;
+      console.log(users);
+    });
+  }
+
+  getTotalProjectHours ()
+  {
+    this.dashboardService.getTotalTimesheetHoursByProject().subscribe((users: {result : ProjectsTimeSheetEntry[]}) => {
+      this.totalProjectHours = users.result;
+      console.log(users);
+    });
+  }
+
+  getTotalMissedTimeSheets ()
+  {
+    this.dashboardService.getMissedTimesheetBythirtyDays().subscribe((users: {result : MissedTimeSheets []}) => {
+      this.totalMissedTimeSheets = users.result;
       console.log(users);
     });
   }

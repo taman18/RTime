@@ -1,6 +1,7 @@
 .container-fluid {
   padding: 20px;
   background-color: var(--bg-color);
+  min-height: 100vh;
   // width: calc(100vw - 255px);
   // margin-left:188px;
   // width:100%;
@@ -35,6 +36,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .refresh-img {
@@ -96,7 +98,7 @@ h3 {
   width: 15px;
   border-radius: 50%;
   background-color: var(--primary-green);
-  border: 3px solid var(--primary-black);
+  border: 3px solid var(--sub-bg-color);
   position: absolute;
   right: 0;
   bottom: 1px;
@@ -355,42 +357,3 @@ h6 {
     gap: 1rem;
   }
 }
-
- // Chatbot UI
- .mat-icon-position{
-  position:absolute;
-  right:10%;
-  top:940px;
-  cursor: pointer;
-  font-size: 24px; /* Adjust the font size as needed */
-  color: #333; /* Adjust the color for the light theme */
-  transition: color 0.3s ease;
-  transform: scale(1.5);
-  border-radius: 50%;
-  width:40px;
-  height: 40px;
- 
- 
-  &:hover {
-    color: var(--primary-color); /* Adjust the hover color for the light theme */
-  }
- }
- 
- 
- // @media screen and (max-width:826px){
- //   .mat-icon-position{
- //     position:absolute;
- //     top:75%;
- //     left:90%;
- //     padding-left:180px;
- //   }
- // }
- // @media screen and (max-width:1071px){
- //   .mat-icon-position{
- //     position:absolute;
- //     top:75%;
- //     left:80%;
- //     padding-left:120px;
- //   }
- // }
- 

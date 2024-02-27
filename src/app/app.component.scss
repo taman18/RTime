@@ -15,3 +15,14 @@
         // width:100px !important;
     }
 }
+
+/* main.component.css */
+.content {
+    margin-left: 250px; /* Set the initial width of the sidebar */
+    transition: margin-left 0.5s ease; /* Add transition for smooth animation */
+  }
+  
+  .content.collapsed {
+    margin-left: 50px; /* Set the margin for the collapsed state */
+  }
+  

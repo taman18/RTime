@@ -56,4 +56,7 @@ export class SidebarComponent {
       break;
     }
   }
+  user () {
+    console.log('hi');
+  }
 }

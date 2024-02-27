@@ -7,19 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class AllUsersService {
 
-  public token =
-    localStorage.getItem('token');
-
-  private apiUrl = 'http://192.168.1.23:8000/admin/users?page=1&limit=2';
+  private apiUrl = 'http://192.168.1.32:8000/admin/users?page=1&limit=20';
   constructor (private http: HttpClient) {
-    console.log('hi');
+    // console.log('hi');
   }
-  getData (): Observable<any> {
-    return this.http.get<any>(this.apiUrl, {
-      headers: {
-        Authorization: `Bearer ${ this.token }`,
-      },
-    });
-
+  getData (): Promise<any> {
+    return this.http
+      .get<any>(this.apiUrl, {
+        headers: {
+          Authorization: `Bearer ${ localStorage.getItem('token') }`,
+        },
+      })
+      .toPromise();
   }
 }

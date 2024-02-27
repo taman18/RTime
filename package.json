@@ -26,10 +26,16 @@
     "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
+    "chart.js": "^4.4.1",
+    "jsoneditor": "^10.0.1",
+    "ng2-order-pipe": "^0.1.5",
+    "ng2-search-filter": "^0.5.1",
+    "ngx-pagination": "^6.0.3",
     "plotly.js-dist-min": "^2.29.1",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.10.5",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

@@ -1,7 +1,9 @@
 .main-container {
-  position:fixed;
-  left:15%;
-  top:4%;
+  // position:fixed;
+  // left:15%;
+  // top:4%;
+  background-color: black;
+  left: 0 !important;
   padding:20px;
   .top-section {
     display: flex;
@@ -40,9 +42,9 @@
   // border:1px solid white;
   padding-left:15px;
 }
-.large-container{
-  position:relative;
-}
+// .large-container{
+//   position:relative;
+// }
 .refresh-txt{
   font-weight: bolder;
 }

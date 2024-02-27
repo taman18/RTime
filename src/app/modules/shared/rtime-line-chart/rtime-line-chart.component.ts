@@ -29,10 +29,9 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
    */
   @Output() startDateChange = new EventEmitter<any>();
   @Output() endDateChange = new EventEmitter<any>();
-  @Input() title = 'Teams';
+  @Input() title = 'Missed Timesheets';
   @Input() labelContainer = [
-    { color: '#1F77B4', title: 'Missed Timesheets', value: 11 },
-    { color: '#FF7F0E', title: 'Filled Timesheets', value: 29 },
+    { color: '#1F77B4', title: 'No of Missed Timesheets', value: 11 },
 
   ];
 
@@ -59,11 +58,11 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
       type: 'scatter',
     };
 
-    const trace2: Partial<Plotly.ScatterData> = { // Explicitly type trace2
-      x: [ 1, 2, 3, 4 ],
-      y: [ 16, 5, 11, 9 ],
-      type: 'scatter',
-    };
+    // const trace2: Partial<Plotly.ScatterData> = { // Explicitly type trace2
+    //   x: [ 1, 2, 3, 4 ],
+    //   y: [ 16, 5, 11, 9 ],
+    //   type: 'scatter',
+    // };
 
     const config = {
       responsive: true,
@@ -98,7 +97,7 @@ export class RtimeLineChartComponent implements OnInit, AfterViewInit {
       },
     };
 
-    const data: Partial<Plotly.ScatterData>[] = [ trace1, trace2 ]; // Explicitly type data
+    const data: Partial<Plotly.ScatterData>[] = [ trace1 ]; // Explicitly type data
 
     Plotly.newPlot('myDiv', data, layout, config);
   }

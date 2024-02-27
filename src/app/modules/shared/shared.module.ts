@@ -8,6 +8,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { RtimeCircularChartComponent } from './rtime-circular-chart/rtime-circular-chart.component';
 import { RtimeLineChartComponent } from './rtime-line-chart/rtime-line-chart.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -22,6 +23,7 @@ import { TableComponent } from './table/table.component';
   ],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
