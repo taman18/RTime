@@ -12,7 +12,10 @@
   </div>
    <div class="table">
     <div class="user-container">User Management</div>
-       <app-table [userData]="tableData" (ProfileClickEvent)="onProfileClick($event)"></app-table>
+       <app-table [userData]="tableData" (messageEvent)="receiveMessage($event)" (ProfileClickEvent)="onProfileClick($event)"></app-table>
    </div>
 </div>
 </div>
+
+
+    

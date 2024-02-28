@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AllUsersService } from '../services/all-users.service';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
@@ -21,7 +21,7 @@ export class UserManagementComponent implements OnInit {
         type: 'image',
       },
       {
-        id: '_id',
+        id: 'emp_id',
         text: 'Id',
         type: 'inputText',
       },
@@ -55,25 +55,32 @@ export class UserManagementComponent implements OnInit {
   }
 
 
-
   async getUesrData () {
     await this.allusers.getData().then(
       (userdata: any) => {
         // console.log(userdata.result);
         this.apiData = userdata.result;
         this.tableData.tbody = userdata.result;
-        console.log(this.tableData.tbody);
+
+        // console.log(this.tableData.tbody);
       },
       (error) => {
         console.log(error);
       },
     );
   }
+  receivedMessage: any;
+
+  receiveMessage (message: any) {
+    this.receivedMessage = message;
+    console.log('-----taman----', this.receivedMessage);
+    this.tableData.tbody = this.receivedMessage;
+  }
 
 
   ngOnInit (): void {
     this.tableData.body = this.apiData;
-    console.log(this.tableData.body);
+    // console.log(this.tableData.body);
   }
   refreshTime () {
     this.getDate();

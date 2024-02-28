@@ -6,7 +6,7 @@ import { LoginService } from '../services/login.service';
   styleUrls: [ './login.component.scss' ],
 })
 export class LoginComponent {
-
+  GOOGLE_URL = 'https://950a-203-100-78-18.ngrok-free.app/google';
   public date:any;
   public time:any;
   public meridiem:any;
@@ -35,7 +35,7 @@ export class LoginComponent {
     // console.log();
     // console.log(this.time+' '+meridiem);
   }
-  signIn () {
-    this.loginService.login();
+  openUrl () {
+    window.open(this.GOOGLE_URL, '_self');
   }
 }

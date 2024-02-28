@@ -3,10 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
-  OnInit,
   Output,
-  ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/services/user-data.service';
@@ -16,9 +13,12 @@ import { UserDataService } from 'src/app/services/user-data.service';
   templateUrl: './table.component.html',
   styleUrls: [ './table.component.scss' ],
 })
-export class TableComponent implements OnInit, OnChanges {
+export class TableComponent  {
   // timesheetService: any;
-  constructor (private router: Router) {
+  constructor (
+    private router: Router,
+    private userdataservice: UserDataService,
+  ) {
     // console.log('hi');
   }
   @Input() data: any;
@@ -32,60 +32,61 @@ export class TableComponent implements OnInit, OnChanges {
   p: number = 1;
   users: any;
   firstName: any;
-
-  ngOnInit () {
-    console.log();
-    // console.log(this.button);
-  }
-
-  ngOnChanges () {
-    console.log('-------------', this.userData);
-
-    // this.users = this.userData;
-    // this.heading = this.userData.thead;
-    // // console.log(this.heading);
-    // this.data = this.userData.tbody;
-    // // console.log(this.data);
-    // this.button = this.showButton;
-  }
+  searchQuery: string = '';
+  public myData: any;
+  public result: any;
+  public error:boolean = true;
   @Output() dataEmitter = new EventEmitter<any>();
   @Output() ProfileClickEvent = new EventEmitter<any>();
-  // emitData () {
-  //   const dataToSend = 'Hello, Parent!';
-  //   this.dataEmitter.emit(dataToSend);
-  // }
-  // editModal () {
-  //   const dataToSend = 'Hello, Parent!';
-  //   this.dataEmitter.emit(dataToSend);
-  // }
-  // deleteModal () {
 
-  // }
-  // blockModal () {
+  sendDataToParent (data: any) {
+    if(!data)
+    {
+      // console.log('jaraha h')
+      this.result = '';
+    }
+    //for email
+    // console.log("------------------------",data);
+    else if (data.includes('@')) {
+      this.result = data.toLowerCase();
+    }
+    else {
+      // for name
+      this.result = data.split(' ');
 
-  // }
+      for (let i = 0; i < this.result.length; i++) {
+        this.result[i] =
+          this.result[i][0].toUpperCase() + this.result[i].slice(1);
+      }
+      this.result = this.result.join(' ');
+      // console.log("-----------------",this.result);
+    }
+    this.userdataservice.getData(this.result).subscribe(
+      (data: any) => {
+        if (data.result.length === 0) {
+          this.error = false;
+          console.log('no data found');
+        }
+        else{
+          this.error = true;
+          this.sendMessage(data.result);
+          console.log(data.result);
+        }
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
+  @Output() messageEvent = new EventEmitter<object>();
+
+  sendMessage (data:any) {
+    this.messageEvent.emit(data);
+  }
 
   showUser (name: any) {
     const userData = name.email;
-    // console.log(userData);
-
-    // localStorage.setItem('userData', JSON.stringify(userData.email));
-    // console.log(userData);
     this.ProfileClickEvent.emit(name.email);
-  }
-  getData () {
-    // this.userdataService.getData(this.userData).subscribe(
-    //   (response: any) => {
-    //     // console.log('taman');
-    //     this.userData = response;
-    //     console.log(this.userData);
-    //   },
-    //   (error:any) => {
-    //     // console.log('taman');
-    //     console.error('Error fetching data', error);
-    //     // console.log('hi');
-    //   },
-    // );
   }
 
   //excel logic
@@ -103,5 +104,4 @@ export class TableComponent implements OnInit, OnChanges {
     this.key = key;
     this.reverse = !this.reverse;
   }
-
 }

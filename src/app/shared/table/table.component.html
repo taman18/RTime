@@ -1,22 +1,22 @@
 <div class="outer-div">
   <div class="main-container-div">
     <div class="search-bar">
-      <input class="search-input search" type="text"  name="searchData" placeholder="Search..." />
+      <input class="search-input search" type="text" [(ngModel)]="searchQuery" name="searchData" placeholder="Search..." (keydown.enter)="sendDataToParent(searchQuery)"/> 
       <div class="search-btn-div">
-        <button class="search-button" (click)="exportexcel()">Export Report</button>
+        <button class="search-button" (click)="exportexcel()" *ngIf="error">Export Report</button>
       </div>
     </div>
-    <table  id='excel-table' class="myTable table-striped table-dark">
+    <table  id='excel-table' *ngIf="error ; else showError" class="myTable table-striped table-dark">
       <thead>
         <tr class="table-row">
           <th class="heading" scope="col" *ngFor="let item of userData.thead" >
             {{ item.text
-            }}<span><img class="arrow" src="./assets/sort.svg" alt=""  (click)="sort(item.text)"/></span>
+            }}<span><img *ngIf="item.id !== 'profilePic' && item.id !== 'action'" class="arrow" src="./assets/sort.svg" alt=""  (click)="sort(item.text)"/></span>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of userData.tbody | orderBy: key: reverse | paginate:{itemsPerPage: 20, currentPage: p};">
+        <tr *ngFor="let row of userData.tbody | orderBy: key: reverse | paginate:{itemsPerPage:100, currentPage: p};">
           <td class="table-data" *ngFor="let col of userData.thead">
             <span *ngIf="col.type === 'inputText'">
               <a class="clicked-data" *ngIf="col.id === 'name' || col.id=== 'Project_Id'; else otherContent" (click)="showUser(row)">
@@ -52,9 +52,8 @@
                 <span class="slider round"></span>
               </label>
             </span>
-            <span *ngIf="col.id==='_projectId'">
-              <p>{{row[col.id]._id}}</p>
-            </span>
+
+            
             
 
             <!-- <span *ngIf="col.id==='_projectName'">
@@ -74,7 +73,10 @@
       </tbody>
       
     </table>
-    <div class="pagination">
+    <ng-template #showError >
+     <p class="error">No Data Found</p>
+    </ng-template>
+    <div class="pagination" *ngIf="error">
       <div class="pagination-container d-flex">
         <div class="left-container d-flex align-items-center position-relative">
           <!-- <p class="mb-0">Showing 1 to 3 of 20 entries</p> -->

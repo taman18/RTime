@@ -14,54 +14,12 @@ export class TimesheetComponent implements OnInit {
   userData: any;
   public apiData:any;
   public meridiem:any;
-  // public button:boolean = false;
   public tableHeading:[] = [];
   public tableBody:[] = [];
   data: any[] = [];  // Your data goes here
   filteredData: any[] = [];
   searchTerm: string = '';
-  public myData: any = {
-    thead: [
-      {
-        id:'_projectId',
-        text:'project ID',
-        type: 'inputText',
-      },
-      {
-        id:'_projectName',
-        text:'Project Name',
-        type:'inputText',
-      },
-      {
-        id: 'username',
-        text: 'Name',
-        type: 'inputText',
-      },
-      {
-        id: 'description',
-        text: 'Description',
-        type: 'inputText',
-      },
-
-      {
-        id:'from_date',
-        text: 'From Date',
-        type: 'inputText',
-      },
-      {
-        id:'to_date',
-        text:'To Date',
-        type:'inputText',
-      },
-      {
-        id:'total_time',
-        text:'Total Time',
-        type:'inputText',
-      },
-    ],
-    tbody: [],
-  };
-
+  public receivedMessage: any;
 
 
   constructor (private timesheetService:TimesheetService) {
@@ -75,8 +33,20 @@ export class TimesheetComponent implements OnInit {
     await this.timesheetService.getData().then(
       (userdata: any) => {
         this.apiData = userdata.result;
-        this.myData.tbody = userdata.result.data;
-        console.log(this.myData.tbody);
+        this.userData.tbody = userdata.result.data;
+        console.log('aaaa: ', userdata.result.data);
+        this.userData.tbody = userdata.result.data.map((item: any) => {
+          return {
+            ...item,
+            _id: item._projectId._id,
+            _projectName: item._projectId.projectName,
+            username: item.username,
+            from_date: item.startTime,
+            to_date: item.endTime,
+            update_time:item.updatedAt,
+          };
+        });
+        // console.log( this.myData.tbody)
       },
       (error) => {
         console.log(error);
@@ -85,10 +55,14 @@ export class TimesheetComponent implements OnInit {
   }
 
 
+  receiveMessage (message: string) {
+    this.receivedMessage = message;
+  }
+
 
   ngOnInit (): void {
-    this.myData.body = this.apiData;
-    console.log(this.myData.body);
+    this.userData.body = this.apiData;
+    console.log(this.userData.body);
   }
 
 
@@ -105,25 +79,6 @@ export class TimesheetComponent implements OnInit {
   }
 
 
-
-
-  getData () {
-  //   this.timesheetService.getData().subscribe(
-  //     (response) => {
-  //       console.log('taman');
-  //       this.userData = response;
-  //       console.log(this.userData);
-
-  //     },
-  //     (error) => {
-  //       console.log('taman');
-  //       console.error('Error fetching data', error);
-  //       console.log('hi');
-  //     },
-  //   );
-  //   const data = this.timesheetService.getData();
-  //   console.log(data);
-  }
 
   refreshTime () {
     this.getDate();
@@ -143,17 +98,13 @@ export class TimesheetComponent implements OnInit {
     currentHour = currentHour % 12 || 12;
     this.date = `${ currentDay  }/${  currentMonth  }/${  currentYear }`;
     this.time = `${ currentHour  }:${  currentMinute  }:${  currentSecond }`;
-    // console.log();
-    // console.log(this.time+' '+meridiem);
 
   }
   receivedData: string | undefined;
   handleData (data: string) {
     this.receivedData = data;
-    // console.log(this.receivedData);
   }
   refreshBtn () {
-    // console.log('clicked');
     this.refreshTime();
     this.getUesrData();
   }
