@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
 export class DashboardService {
   // userUrl="http://localhost:8000/admin/totalusers";
   constructor (private http: HttpClient) {
-    console.log('dashboard service!');
+    // console.log('dashboard service!');
   }
 
   getUsers (): Observable<User> {

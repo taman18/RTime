@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LogoutService } from 'src/app/services/logout.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { Router } from '@angular/router';
 import { ThemeService } from 'src/app/services/theme.service';
 
@@ -12,13 +14,27 @@ export class SidebarComponent {
   isDarkMode: boolean;
   public check:boolean = true;
   toggleSidebar = false;
-
+  profileData: any = {};
+  public userdata:any = {
+    profilePic: '',
+    name: '',
+    email:'',
+  };
+  fetchProfileData () {
+    this.profile.getProfileData().subscribe((data: any) => {
+      this.profileData = data;
+      this.userdata = this.profileData.result;
+      console.log('ghfgjmhj,j', this.userdata.name);
+    });
+  }
   toggleSidebarFn () {
     this.toggleSidebar = !this.toggleSidebar;
     console.log(this.toggleSidebar);
   }
 
   constructor (private themeService: ThemeService,
+    private profile: ProfileService,
+    private log :LogoutService,
     private route: Router) {
     this.isDarkMode = this.themeService.isDarkModeOne();
     this.themeService.currentTheme.subscribe((theme) => {
@@ -28,6 +44,7 @@ export class SidebarComponent {
         this.themeService.setDarkMode(true);
       }
     });
+    this.fetchProfileData();
   }
   dashboard () {
     this.route.navigate([ '/dashboard' ]);
@@ -58,5 +75,22 @@ export class SidebarComponent {
   }
   user () {
     console.log('hi');
+  }
+
+  logout (): void {
+    this.log.logout().subscribe(
+      (response) => {
+
+        console.log('Logged out successfully');
+        localStorage.removeItem('token');
+        // this.router.navigate("http://192.168.1.17:4200/login");
+        window.location.href = 'http://192.168.1.17:4200/login';
+
+      },
+      (error) => {
+
+        console.error('Logout failed', error);
+      },
+    );
   }
 }

@@ -1,10 +1,20 @@
 import * as Plotly from 'plotly.js-dist-min';
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  ViewChild } from '@angular/core';
 import { MatDateRangePicker, MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { DropdownService } from 'src/app/services/dropdown.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { ProjectsTimeSheetEntry } from '../../interfaces/dashboard';
 import { SharedService } from 'src/app/services/shared.service';
 
 
@@ -13,7 +23,8 @@ import { SharedService } from 'src/app/services/shared.service';
   templateUrl: './rtime-circular-chart.component.html',
   styleUrls: [ './rtime-circular-chart.component.scss' ],
 })
-export class RtimeCircularChartComponent implements AfterViewInit {
+// export class RtimeCircularChartComponent implements AfterViewInit {
+export class RtimeCircularChartComponent implements OnChanges {
   showCalendar = true;
   showCountryDropdown = false;
   selectedCountry = { name: '', dial_code: '' };
@@ -33,10 +44,11 @@ export class RtimeCircularChartComponent implements AfterViewInit {
   @Input() title = 'Projects';
   @Input() labelContainer = [
     { color: '#4DAAE2', title: 'RTime', value: 30 },
-    { color: '#282828', title: 'Zoho', value: 70 },
-    { color: '#0C4335', title: 'Kardi', value: 45 },
+    { color: '#287865', title: 'Zoho', value: 70 },
+    { color: '#0C4ff5', title: 'Kardi', value: 45 },
 
   ];
+  @Input() pieChartData: ProjectsTimeSheetEntry[] = [];
 
   @Input() chartData!: {
     datasets: [{
@@ -71,6 +83,22 @@ export class RtimeCircularChartComponent implements AfterViewInit {
     },
   };
 
+  colors = [ '#357BC3', '#0C4335', '#282828', '#975399', '#q844d5', '#q3q436', '#q3q4d2' ];
+
+  ngOnChanges () {
+    console.log('hi', this.pieChartData);
+
+    this.labelContainer = [];
+    let i = 0;
+    for(const data of this.pieChartData) {
+      this.labelContainer.push({ title: data.projectName, value: data.totalHours, color: this.colors[i] });
+      i++;
+    }
+
+    this.renderGraph();
+
+  }
+
   @ViewChild('plotlyContainer') plotlyContainer: ElementRef | undefined;
   // @ViewChild('picker') picker: MatDateRangePicker<any>;
   graphId = 'graph';
@@ -95,9 +123,9 @@ export class RtimeCircularChartComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit () {
-    this.renderGraph();
-  }
+  // ngAfterViewInit () {
+  //   this.renderGraph();
+  // }
 
   getCountries () {
     // this.sharedService.getAllCountries()
@@ -134,14 +162,17 @@ export class RtimeCircularChartComponent implements AfterViewInit {
       displayModeBar: false,
     };
     Plotly.newPlot(graphDiv, [ {
-      values: [ 19, 26, 55 ],
-      labels: [ 'RTime', 'Zoho', 'Kardi' ],
+      // values: [ 11, 26, 55 ],
+      values: this.pieChartData.map((proj) => proj.totalHours),
+      // labels: [ 'RTime', 'Zoho', 'Kardi' ],
+      labels: this.pieChartData.map((proj) => proj.projectName),
       type: 'pie',
       hole: .7,
       // hoverinfo: 'none',
       textinfo: 'none',
       marker: {
-        colors: [ '#357BC3', '#0C4335', '#282828' ],
+        // colors: [ '#357BC3', '#0C4335', '#282828', '#999999' ],
+        colors: this.pieChartData.map((proj, i) => this.colors[i]),
       },
     } ], this.layout, config);
   }

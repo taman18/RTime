@@ -1,8 +1,11 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { SharedModule } from 'src/app/modules/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
+import { UserManagementComponent } from './user-management.component';
 @NgModule({
-  declarations: [],
+  declarations: [
+    UserManagementComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,

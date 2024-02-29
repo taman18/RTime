@@ -1,11 +1,10 @@
 .main-container {
   position:relative;
     // left:200px;
-    width: calc(100vw - 220px);
+    width: calc(100vw - 200px);
     min-height: 100vh;
-    background-color: #121212;
-
     top:5%;
+    background-color: var(--bg-color);
     padding:20px;
     .top-section {
       display: flex;
@@ -15,14 +14,14 @@
       // margin-left: 200px;
       margin-bottom:15px;
       .date-container {
-        color: var(--primary-white);
+        color:var(--text-color);
         display: inline-block;
-        background-color: var(--primary-black);
+        background-color: var(--sub-bg-color);
         padding: 8px 16px;
         border-radius: 8px;
       }
       .refresh-container {
-        background-color: var(--primary-black);
+        background-color: var(--sub-bg-color);
         padding: 8px 16px;
         border-radius: 8px;
         color: var(--primary-green);
@@ -37,7 +36,7 @@
     }
   }
   .timesheet-container{
-    color: white;
+    color: var(--text-color);
     // margin-left:210px;
     font-size:20px;
     padding-left:15px;
@@ -49,6 +48,7 @@
     background-color: black;
     border:none;
   }
+
   @media screen and (max-width:1200px)
   {
     .main-container{
@@ -58,9 +58,4 @@
       overflow: auto !important;
       height:fit-content; 
     }
-  }
-  .user-container{
-    font-size:20px;
-    padding-left:15px;
-    color: white;
   }

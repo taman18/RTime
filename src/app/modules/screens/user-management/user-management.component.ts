@@ -1,28 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { AllUsersService } from 'src/app/services/all-users.service';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: [ './user-management.component.scss' ],
 })
 export class UserManagementComponent implements OnInit {
-  public date:any;
-  public time:any;
-  public meridiem:any;
-  public button:boolean = true;
+  public date: any;
+  public time: any;
+  public meridiem: any;
+  public button: boolean = true;
+  public apiData: any;
   public tableData: any = {
     thead: [
       {
-        id:'profile_picture',
-        text:'Profile Picture',
+        id: 'profilePic',
+        text: 'Profile Picture',
         type: 'image',
       },
       {
-        id:'id',
-        text:'Id',
-        type:'inputText',
+        id: 'emp_id',
+        text: 'Id',
+        type: 'inputText',
       },
       {
         id: 'name',
@@ -36,71 +37,51 @@ export class UserManagementComponent implements OnInit {
       },
 
       {
-        id:'role',
+        id: 'role',
         text: 'Role',
-        type: 'inputText',
+        type: 'role',
       },
       {
-        id:'action',
-        text:'Action',
-        type:'toggle',
+        id: 'action',
+        text: 'Action',
+        type: 'toggle',
       },
     ],
-    tbody: [
-      {
-        id:'name',
-        name:'Taman',
-        email:'taman@relinns.com',
-        role: 'development',
-        // profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-      },
-      {
-        id:'name',
-        name:'Vishakha',
-        email: 'vishakha@relinns.com',
-        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-      },
-      {
-        id:'name',
-        name:'Nitesh',
-        email: 'nitesh2@relinns.com',
-        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-      },
-      {
-        id:'name',
-        name:'satyam',
-        email: 'nitesh@relinns.com',
-        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-      },
-      {
-        id:'name',
-        name:'Ankit',
-        email: 'ankit@relinns.com',
-        profile_picture: 'https://www.w3schools.com/howto/img_avatar.png',
-      },
-    ],
+    tbody: [],
   };
-  constructor (
-    private router: Router,
-    private allusers: AllUsersService,
-  ) {
+  constructor (private router: Router, private allusers: AllUsersService) {
+    this.getUesrData();
     this.refreshTime();
   }
-  getUesrData () {
-    this.allusers.getData().subscribe(
+
+
+  async getUesrData () {
+    await this.allusers.getData().then(
       (userdata: any) => {
-        console.log(userdata);
+        // console.log(userdata.result);
+        this.apiData = userdata.result;
+        this.tableData.tbody = userdata.result;
+
+        // console.log(this.tableData.tbody);
       },
       (error) => {
         console.log(error);
       },
     );
   }
-  ngOnInit () {
-    // this.getData();
-    this.getUesrData();
+  receivedMessage: any;
+
+  receiveMessage (message: any) {
+    this.receivedMessage = message;
+    console.log('-----taman----', this.receivedMessage);
+    this.tableData.tbody = this.receivedMessage;
   }
 
+
+  ngOnInit (): void {
+    this.tableData.body = this.apiData;
+    // console.log(this.tableData.body);
+  }
   refreshTime () {
     this.getDate();
   }
@@ -117,11 +98,10 @@ export class UserManagementComponent implements OnInit {
     const currentSecond: number = currentDateAndTime.getSeconds();
     this.meridiem = currentHour >= 12 ? 'PM' : 'AM';
     currentHour = currentHour % 12 || 12;
-    this.date = `${ currentDay  }/${  currentMonth  }/${  currentYear }`;
-    this.time = `${ currentHour  }:${  currentMinute  }:${  currentSecond }`;
+    this.date = `${ currentDay }/${ currentMonth }/${ currentYear }`;
+    this.time = `${ currentHour }:${ currentMinute }:${ currentSecond }`;
     // console.log();
     // console.log(this.time+' '+meridiem);
-
   }
   receivedData: string | undefined;
 
@@ -137,5 +117,10 @@ export class UserManagementComponent implements OnInit {
 
   onProfileClick (event: any) {
     this.router.navigate([ `/userbio/${ event }` ]);
+  }
+  refreshBtn () {
+    // console.log('clicked')
+    this.getUesrData();
+    this.refreshTime();
   }
 }

@@ -4,7 +4,8 @@
 @use '@angular/material' as mat;
 
 @include mat.core();
-
+@import 'node_modules/ngx-toastr/toastr.css';
+// @import 'ngx-toastr/toastr-bs4-alert';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker

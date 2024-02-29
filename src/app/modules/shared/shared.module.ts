@@ -1,4 +1,6 @@
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,6 +22,7 @@ import { TableComponent } from './table/table.component';
     RtimeLineChartComponent,
     RtimeCircularChartComponent,
     TableComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -32,12 +35,14 @@ import { TableComponent } from './table/table.component';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    FormsModule,
   ],
   exports: [
     SidebarComponent,
     RtimeCircularChartComponent,
     RtimeLineChartComponent,
     TableComponent,
+    LoaderComponent,
   ],
 })
 export class SharedModule { }

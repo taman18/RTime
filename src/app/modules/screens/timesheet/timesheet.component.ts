@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SearchService } from '../services/search.service';
-import { TimesheetService } from '../services/timesheet.service';
+import { SearchService } from '../../../services/search.service';
+import { TimesheetService } from '../../../services/timesheet.service';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
@@ -23,12 +24,12 @@ export class TimesheetComponent implements OnInit {
   public myData: any = {
     thead: [
       {
-        id:'_projectId',
+        id:'_id',
         text:'project ID',
         type: 'inputText',
       },
       {
-        id:'_projectId',
+        id:'_projectName',
         text:'Project Name',
         type:'inputText',
       },
@@ -54,8 +55,8 @@ export class TimesheetComponent implements OnInit {
         type:'inputText',
       },
       {
-        id:'total_time',
-        text:'Total Time',
+        id:'update_time',
+        text:'Updated Time',
         type:'inputText',
       },
     ],
@@ -74,9 +75,21 @@ export class TimesheetComponent implements OnInit {
   async getUesrData () {
     await this.timesheetService.getData().then(
       (userdata: any) => {
-        // console.log(userdata.result);
         this.apiData = userdata.result;
-        this.myData.tbody = userdata.result;
+        this.myData.tbody = userdata.result.data;
+        console.log('aaaa: ', userdata.result.data);
+
+        this.myData.tbody = userdata.result.data.map((item: any) => {
+          return {
+            ...item,
+            _id: item._projectId._id,
+            _projectName: item._projectId.projectName,
+            username: item.username,
+            from_date: item.startTime,
+            to_date: item.endTime,
+            update_time:item.updatedAt,
+          };
+        });
         console.log(this.myData.tbody);
       },
       (error) => {
@@ -86,10 +99,12 @@ export class TimesheetComponent implements OnInit {
   }
 
 
-
   ngOnInit (): void {
     this.myData.body = this.apiData;
     console.log(this.myData.body);
+    interval(1000).subscribe(() => {
+      this.getDate();
+    });
   }
 
 

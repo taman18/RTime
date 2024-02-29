@@ -1,50 +1,64 @@
 .main-container {
-  // position:fixed;
-  // left:15%;
-  // top:4%;
-  background-color: black;
-  left: 0 !important;
-  padding:20px;
-  .top-section {
-    display: flex;
-    // width:calc(100vw - 250px);
-    justify-content: space-between;
-    flex-wrap: wrap;
-    // margin-left: 200px;
-    margin-bottom:15px;
-    .date-container {
-      color: var(--primary-white);
-      display: inline-block;
-      background-color: var(--primary-black);
-      padding: 8px 16px;
-      border-radius: 8px;
-    }
-    .refresh-container {
-      background-color: var(--primary-black);
-      padding: 8px 16px;
-      border-radius: 8px;
-      color: var(--primary-green);
+  position:relative;
+    left:200px;
+    width: calc(100vw - 200px);
+    top:5%;
+    padding:20px;
+    .top-section {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      span {
-        margin-left: 5px;
+      width:100%;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      // margin-left: 200px;
+      margin-bottom:15px;
+      .date-container {
+        color: var(--primary-white);
+        display: inline-block;
+        background-color: var(--primary-black);
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+      .refresh-container {
+        background-color: var(--primary-black);
+        padding: 8px 16px;
+        border-radius: 8px;
+        color: var(--primary-green);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        span {
+          margin-left: 5px;
+        }
       }
     }
   }
-}
-.user-container{
-  // margin-left:10px;
-  color: white;
-  font-size:20px;
-  margin-bottom:1px;
-  width:100%;
-  // border:1px solid white;
-  padding-left:15px;
-}
-// .large-container{
-//   position:relative;
-// }
-.refresh-txt{
-  font-weight: bolder;
-}
+  .timesheet-container{
+    color: white;
+    // margin-left:210px;
+    font-size:20px;
+    padding-left:15px;
+  }
+  .refresh-txt{
+    font-weight: bolder;
+  }
+  .refresh-button{
+    background-color: black;
+    border:none;
+  }
+  @media screen and (max-width:1200px)
+  {
+    .main-container{
+      position: relative !important;
+      left:100px !important;
+      width: calc(100vw - 100px) !important;
+      overflow: auto !important;
+      height:fit-content; 
+    }
+  }
+  .user-container{
+    font-size:20px;
+    padding-left:15px;
+    color: white;
+    margin-bottom:3px;
+  }

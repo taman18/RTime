@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
-import { Router } from '@angular/router';
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,13 +10,20 @@ export class LoginComponent {
   public date:any;
   public time:any;
   public meridiem:any;
+  public GOOGLE_URL:any = 'https://09e3-203-100-78-18.ngrok-free.app/google'
 
-  constructor (private loginService: LoginService, private routes: Router) {
+    ;
+  constructor (private loginService: LoginService) {
     this.refreshTime();
   }
   refreshTime () {
     this.getDate();
   }
+
+  openURL () {
+    window.open(this.GOOGLE_URL, '_self');
+  }
+
   getDate () {
     // Get current date and time
     const currentDateAndTime: Date = new Date();
@@ -38,11 +42,7 @@ export class LoginComponent {
     // console.log();
     // console.log(this.time+' '+meridiem);
   }
-  signIn () {
-    this.loginService.login();
-  }
-  loginWithGoogle () {
-    this.routes.navigate([ '/dashboard' ]);
-  }
-
+  // signIn () {
+  //   this.loginService.login();
+  // }
 }

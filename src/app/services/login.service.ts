@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
   login ():void {
-    const token = 'random token';
-    localStorage.setItem('token', token);
-  }
+    // const token = localStorage.getItem('token');
+    // localStorage.setItem('token', token);
 
+
+  }
 }
