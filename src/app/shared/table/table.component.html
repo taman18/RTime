@@ -1,40 +1,70 @@
 <div class="outer-div">
   <div class="main-container-div">
     <div class="search-bar">
-      <input class="search-input search" type="text" [(ngModel)]="searchQuery" name="searchData" placeholder="Search..." (keydown.enter)="sendDataToParent(searchQuery)"/> 
+      <input
+        class="search-input search"
+        type="text"
+        [(ngModel)]="searchQuery"
+        name="searchData"
+        placeholder="Search..."
+        (keydown.enter)="sendDataToParent(searchQuery)"
+      />
       <div class="search-btn-div">
-        <button class="search-button" (click)="exportexcel()" *ngIf="error">Export Report</button>
+        <button class="search-button" (click)="exportexcel()" *ngIf="error">
+          Export Report
+        </button>
       </div>
     </div>
-    <table  id='excel-table' *ngIf="error ; else showError" class="myTable table-striped table-dark">
+    <table
+      id="excel-table"
+      *ngIf="error; else showError"
+      class="myTable table-striped table-dark"
+    >
       <thead>
         <tr class="table-row">
-          <th class="heading" scope="col" *ngFor="let item of userData.thead" >
+          <th class="heading" scope="col" *ngFor="let item of userData.thead">
             {{ item.text
-            }}<span><img *ngIf="item.id !== 'profilePic' && item.id !== 'action'" class="arrow" src="./assets/sort.svg" alt=""  (click)="sort(item.text)"/></span>
+            }}<span
+              ><img
+                *ngIf="item.id !== 'profilePic' && item.id !== 'action'"
+                class="arrow"
+                src="./assets/sort.svg"
+                alt=""
+                (click)="sort(item.text)"
+            /></span>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of userData.tbody | orderBy: key: reverse | paginate:{itemsPerPage:100, currentPage: p};">
+        <tr
+          *ngFor="
+            let row of userData.tbody
+              | orderBy : key : reverse
+              | paginate : { itemsPerPage: 100, currentPage: p }
+          "
+        >
           <td class="table-data" *ngFor="let col of userData.thead">
-            <span *ngIf="col.type === 'inputText'">
-              <a class="clicked-data" *ngIf="col.id === 'name' || col.id=== 'Project_Id'; else otherContent" (click)="showUser(row)">
+            <div *ngIf="col.type === 'inputText'" class="user-text">
+              <a
+                class="clicked-data user-text"
+                *ngIf="
+                  col.id === 'name' || col.id === 'Project_Id';
+                  else otherContent
+                "
+                (click)="showUser(row)"
+              >
                 {{ row[col.id] }}
               </a>
               <ng-template #otherContent>
                 <!-- Content to show when col.id is not 'name' -->
-                <span>
+                <div class="user-text">
                   <!-- Add your alternate content or action here -->
                   {{ row[col.id] }}
-                </span>
+                </div>
               </ng-template>
-            </span>
-            
-            
-            
+            </div>
             <span *ngIf="col.type === 'image'">
-              <a href="#" (click)="showUser(row)">
+              <a href="#" (click)="showUser(row)" class="user-text">
                 <img
                   *ngIf="row[col.id]"
                   class="table-image"
@@ -44,60 +74,29 @@
               </a>
             </span>
             <span *ngIf="col.type === 'role'">
-              <p>{{ row[col.id].name }}</p>
+              <p class="user-text">{{ row[col.id].name }}</p>
             </span>
             <span *ngIf="col.type === 'toggle'">
-              <label class="switch">
-                <input type="checkbox" />
-                <span class="slider round"></span>
+              <label class="switch" >
+                <input type="checkbox" >
+                <span class="slider round" *ngIf="col.status==='true' ; else other"></span>
+                <ng-template #other checked>
+                  <span class="slider round"></span>
+                </ng-template>
               </label>
             </span>
-
-            
-            
-
-            <!-- <span *ngIf="col.id==='_projectName'">
-              <p>{{row[col.id]._id}}</p>
-            </span> -->
-
-
           </td>
-          <!-- <td class="table-data" *ngIf="button">
-            <div class="d-flex">
-              <button class="button" id="edit">Edit</button>
-            <button class="button" id="delete">Delete</button>
-            <button class="button" id="block">Block</button>
-            </div>
-          </td> -->
         </tr>
       </tbody>
-      
     </table>
-    <ng-template #showError >
-     <p class="error">No Data Found</p>
+    <ng-template #showError>
+      <p class="error">No Data Found</p>
     </ng-template>
     <div class="pagination" *ngIf="error">
       <div class="pagination-container d-flex">
         <div class="left-container d-flex align-items-center position-relative">
-          <!-- <p class="mb-0">Showing 1 to 3 of 20 entries</p> -->
-          <pagination-controls (pageChange)= "p= $event"></pagination-controls>
-          <!-- <ul class="select-box-dropdown">
-                <li  class="options-box justify-content-between" >
-                    <span >3</span>
-                    <img src="assets/images/dropdown-check.svg" alt="">
-                </li>
-            </ul> -->
-          <!-- <div class="pagination-dropdown d-flex align-items-center justify-content-center" >
-                <span>1</span>
-            </div>   -->
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
-        <!-- <div class="right-container">
-          <img src="/assets/double-left-arrow.svg" class="arrow arrow-icon" />
-          <img src="/assets/single-left-arrow.svg" class="arrow arrow-icon" />
-          <span class="active-page">1</span>
-          <img src="/assets/single-right-arrow.svg" class="arrow arrow-icon" />
-          <img src="/assets/double-right-arrow.svg" class="arrow arrow-icon" />
-        </div> -->
       </div>
     </div>
   </div>

@@ -43,7 +43,7 @@ export class UserManagementComponent implements OnInit {
       },
       {
         id: 'action',
-        text: 'Action',
+        text: 'Active  ',
         type: 'toggle',
       },
     ],
@@ -58,7 +58,7 @@ export class UserManagementComponent implements OnInit {
   async getUesrData () {
     await this.allusers.getData().then(
       (userdata: any) => {
-        // console.log(userdata.result);
+        console.log(userdata.result);
         this.apiData = userdata.result;
         this.tableData.tbody = userdata.result;
 

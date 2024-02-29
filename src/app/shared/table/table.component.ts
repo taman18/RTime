@@ -1,11 +1,7 @@
 import * as XLSX from 'xlsx';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToggleService } from 'src/app/services/toggle.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
@@ -13,11 +9,13 @@ import { UserDataService } from 'src/app/services/user-data.service';
   templateUrl: './table.component.html',
   styleUrls: [ './table.component.scss' ],
 })
-export class TableComponent  {
+export class TableComponent {
   // timesheetService: any;
+  isDisabled: boolean = true;
   constructor (
     private router: Router,
     private userdataservice: UserDataService,
+    private togleservice : ToggleService,
   ) {
     // console.log('hi');
   }
@@ -35,13 +33,12 @@ export class TableComponent  {
   searchQuery: string = '';
   public myData: any;
   public result: any;
-  public error:boolean = true;
+  public error: boolean = true;
   @Output() dataEmitter = new EventEmitter<any>();
   @Output() ProfileClickEvent = new EventEmitter<any>();
 
   sendDataToParent (data: any) {
-    if(!data)
-    {
+    if (!data) {
       // console.log('jaraha h')
       this.result = '';
     }
@@ -49,8 +46,7 @@ export class TableComponent  {
     // console.log("------------------------",data);
     else if (data.includes('@')) {
       this.result = data.toLowerCase();
-    }
-    else {
+    } else {
       // for name
       this.result = data.split(' ');
 
@@ -66,8 +62,7 @@ export class TableComponent  {
         if (data.result.length === 0) {
           this.error = false;
           console.log('no data found');
-        }
-        else{
+        } else {
           this.error = true;
           this.sendMessage(data.result);
           console.log(data.result);
@@ -80,7 +75,7 @@ export class TableComponent  {
   }
   @Output() messageEvent = new EventEmitter<object>();
 
-  sendMessage (data:any) {
+  sendMessage (data: any) {
     this.messageEvent.emit(data);
   }
 
@@ -103,5 +98,45 @@ export class TableComponent  {
   sort (key: any) {
     this.key = key;
     this.reverse = !this.reverse;
+  }
+  toggleButton (email:any) {
+    this.isDisabled = !this.isDisabled;
+    // console.log(email);
+    if(this.isDisabled === true)
+    {
+      //for true
+      this.blockUser(email, true);
+      // console.log('true',email);
+      this.getUesrData(email);
+    }
+    else{
+      //for false
+      this.blockUser(email, false);
+      // console.log('false',email)
+      this.getUesrData(email);
+    }
+  }
+  blockUser (email:string, status:boolean)
+  {
+    this.togleservice.getData(email, status)
+      .then((response) => {
+        // Handle the response here
+        console.log('API Response:', response);
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error('API Error:', error);
+      });
+  }
+
+  getUesrData (email:any) {
+    this.userdataservice.getData(email).subscribe(
+      (email: any) => {
+        console.log('hi', email.result[0].status);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
   }
 }
