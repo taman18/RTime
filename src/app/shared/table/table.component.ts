@@ -24,7 +24,7 @@ export class TableComponent {
   @Input() showButton: any;
   public heading: any;
   public keys: any;
-  public button: boolean = false;
+  public button: boolean = true;
   fileName = 'ExcelSheet.xlsx';
   public searchData: any;
   p: number = 1;
@@ -34,6 +34,7 @@ export class TableComponent {
   public myData: any;
   public result: any;
   public error: boolean = true;
+  inputValue: boolean = false;
   @Output() dataEmitter = new EventEmitter<any>();
   @Output() ProfileClickEvent = new EventEmitter<any>();
 
@@ -118,6 +119,7 @@ export class TableComponent {
   }
   blockUser (email:string, status:boolean)
   {
+    console.log(email);
     this.togleservice.getData(email, status)
       .then((response) => {
         // Handle the response here
@@ -139,4 +141,13 @@ export class TableComponent {
       },
     );
   }
+  changeStatus (email:any, status:boolean) {
+    this.togleservice.getData(email, status);
+  }
+  toggleFunction (email:any, status:boolean) {
+    // console.log('Input value is now:', email,status);
+    this.changeStatus(email, status);
+    this.getUesrData(email);
+  }
+
 }

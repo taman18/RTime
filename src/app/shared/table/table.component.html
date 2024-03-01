@@ -77,13 +77,25 @@
               <p class="user-text">{{ row[col.id].name }}</p>
             </span>
             <span *ngIf="col.type === 'toggle'">
-              <label class="switch" >
-                <input type="checkbox" >
-                <span class="slider round" *ngIf="col.status==='true' ; else other"></span>
-                <ng-template #other checked>
+              <ng-container *ngIf="row.status===true; else other">
+                <label class="switch"  >
+                  <input type="checkbox" checked (change)="toggleFunction(row.email,false)">
                   <span class="slider round"></span>
-                </ng-template>
+                </label>
+              </ng-container>
+              <ng-template #other>
+                <label class="switch">
+                  <input type="checkbox"  (change)="toggleFunction(row.email,true)">
+                  <span class="slider round"></span>
+                </label>
+              </ng-template>
+            <!-- <ng-template #other>
+              <label class="switch" >
+                <input type="checkbox" click="blockUser(row.email,true)">
+                <span class="slider round"></span>
               </label>
+            </ng-template> -->
+            <!-- {{!row.status}} -->
             </span>
           </td>
         </tr>

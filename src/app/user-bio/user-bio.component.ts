@@ -51,11 +51,6 @@ export class UserBioComponent implements OnInit {
     ],
     tbody: [],
   };
-  // Check if data exists in local storage
-
-
-  // Now `userData` contains the object previously stored in local storage
-  // Use it as needed
   constructor (
     private userdataService: UserDataService,
     private activatedRoute: ActivatedRoute,
