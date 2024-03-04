@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SearchService } from '../../../services/search.service';
 import { TimesheetService } from '../../../services/timesheet.service';
+import { ToastrService } from 'ngx-toastr';
 import { interval } from 'rxjs';
 @Component({
   selector: 'app-timesheet',
@@ -23,11 +23,6 @@ export class TimesheetComponent implements OnInit {
   searchTerm: string = '';
   public myData: any = {
     thead: [
-      {
-        id:'_id',
-        text:'project ID',
-        type: 'inputText',
-      },
       {
         id:'_projectName',
         text:'Project Name',
@@ -54,18 +49,19 @@ export class TimesheetComponent implements OnInit {
         text:'To Date',
         type:'inputText',
       },
-      {
-        id:'update_time',
-        text:'Updated Time',
-        type:'inputText',
-      },
+      // {
+      //   id:'update_time',
+      //   text:'Updated Time',
+      //   type:'inputText',
+      // },
     ],
     tbody: [],
   };
 
 
 
-  constructor (private timesheetService:TimesheetService) {
+  constructor (private timesheetService:TimesheetService,
+    private toastr:ToastrService) {
     this.getUesrData();
     this.refreshTime();
   }
@@ -77,7 +73,7 @@ export class TimesheetComponent implements OnInit {
       (userdata: any) => {
         this.apiData = userdata.result;
         this.myData.tbody = userdata.result.data;
-        console.log('aaaa: ', userdata.result.data);
+        // console.log('aaaa: ', userdata.result.data);
 
         this.myData.tbody = userdata.result.data.map((item: any) => {
           return {
@@ -90,10 +86,11 @@ export class TimesheetComponent implements OnInit {
             update_time:item.updatedAt,
           };
         });
-        console.log(this.myData.tbody);
+        // console.log(this.myData.tbody);
       },
-      (error) => {
+      (error:any) => {
         console.log(error);
+        this.toastr.error('Something went wrong, please try again later !');
       },
     );
   }
@@ -119,28 +116,6 @@ export class TimesheetComponent implements OnInit {
       item.name.toLowerCase().includes(this.searchTerm.toLowerCase()),
     );
   }
-
-
-
-
-  getData () {
-  //   this.timesheetService.getData().subscribe(
-  //     (response) => {
-  //       console.log('taman');
-  //       this.userData = response;
-  //       console.log(this.userData);
-
-  //     },
-  //     (error) => {
-  //       console.log('taman');
-  //       console.error('Error fetching data', error);
-  //       console.log('hi');
-  //     },
-  //   );
-  //   const data = this.timesheetService.getData();
-  //   console.log(data);
-  }
-
   refreshTime () {
     this.getDate();
   }
@@ -157,20 +132,15 @@ export class TimesheetComponent implements OnInit {
     const currentSecond: number = currentDateAndTime.getSeconds();
     this.meridiem = currentHour >= 12 ? 'PM' : 'AM';
     currentHour = currentHour % 12 || 12;
-    this.date = `${ currentDay  }/${  currentMonth  }/${  currentYear }`;
-    this.time = `${ currentHour  }:${  currentMinute  }:${  currentSecond }`;
-    // console.log();
-    // console.log(this.time+' '+meridiem);
+    this.date = `${ currentDay }/${ currentMonth }/${ currentYear }`;
+    this.time = `${ currentHour }:${ currentMinute }:${ currentSecond }`;
+    const isoDate = currentDateAndTime.toISOString();
+    return isoDate;
+  }
 
-  }
-  receivedData: string | undefined;
-  handleData (data: string) {
-    this.receivedData = data;
-    // console.log(this.receivedData);
-  }
   refreshBtn () {
-    // console.log('clicked');
     this.refreshTime();
     this.getUesrData();
   }
+
 }

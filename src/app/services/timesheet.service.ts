@@ -6,16 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TimesheetService {
-  private apiUrl = 'http://192.168.1.40:8000/aggregation/v1/timesheet/admin/get?page=1&limit=20';
+  private apiUrl = 'http://192.168.1.32:8000/aggregation/v1/timesheet/admin/get?page=1&limit=20';
   private getUserURL = 'http://192.168.1.32:8000/user/profile';
+  public token = localStorage.getItem('token');
   constructor (private http: HttpClient) {
-    // console.log('hi');
+    // console.log(this.token);
   }
   getData (): Promise<any> {
     return this.http
       .get<any>(this.apiUrl, {
         headers: {
-          Authorization: `Bearer ${ localStorage.getItem('token') }`,
+          Authorization: `Bearer ${ this.token }`,
         },
       })
       .toPromise();

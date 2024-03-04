@@ -1,6 +1,7 @@
 import * as XLSX from 'xlsx';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToggleService } from 'src/app/services/toggle.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
@@ -10,9 +11,11 @@ import { UserDataService } from 'src/app/services/user-data.service';
 })
 export class TableComponent {
   // timesheetService: any;
+  isDisabled: boolean = true;
   constructor (
     private router: Router,
     private userdataservice: UserDataService,
+    private togleservice: ToggleService,
   ) {
     // console.log('hi');
   }
@@ -21,7 +24,7 @@ export class TableComponent {
   @Input() showButton: any;
   public heading: any;
   public keys: any;
-  public button: boolean = false;
+  public button: boolean = true;
   fileName = 'ExcelSheet.xlsx';
   public searchData: any;
   p: number = 1;
@@ -31,10 +34,12 @@ export class TableComponent {
   public myData: any;
   public result: any;
   public error: boolean = true;
+  inputValue: boolean = false;
   @Output() dataEmitter = new EventEmitter<any>();
   @Output() ProfileClickEvent = new EventEmitter<any>();
 
   sendDataToParent (data: any) {
+    console.log(data);
     if (!data) {
       // console.log('jaraha h')
       this.result = '';
@@ -96,4 +101,52 @@ export class TableComponent {
     this.key = key;
     this.reverse = !this.reverse;
   }
+  toggleButton (email: any) {
+    this.isDisabled = !this.isDisabled;
+    // console.log(email);
+    if (this.isDisabled === true) {
+      //for true
+      this.blockUser(email, true);
+      // console.log('true',email);
+      this.getUesrData(email);
+    } else {
+      //for false
+      this.blockUser(email, false);
+      // console.log('false',email)
+      this.getUesrData(email);
+    }
+  }
+  blockUser (email: string, status: boolean) {
+    console.log(email);
+    this.togleservice
+      .getData(email, status)
+      .then((response) => {
+        // Handle the response here
+        console.log('API Response:', response);
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error('API Error:', error);
+      });
+  }
+
+  getUesrData (email: any) {
+    this.userdataservice.getData(email).subscribe(
+      (email: any) => {
+        // console.log('hi', email.result[0].status);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
+  changeStatus (email: any, status: boolean) {
+    this.togleservice.getData(email, status);
+  }
+  toggleFunction (email: any, status: boolean) {
+    // console.log('Input value is now:', email,status);
+    this.changeStatus(email, status);
+    this.getUesrData(email);
+  }
+
 }

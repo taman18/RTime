@@ -1,5 +1,5 @@
 <!--Dashboard Design-->
-<div class="d-flex">
+<div class="d-flex dashbord-container">
    <app-sidebar></app-sidebar>
    <div class="container-fluid dashboard">
 
@@ -70,7 +70,7 @@
                <div class="d-flex justify-content-between align-items-center total-users">
                   <div class="text-container">
                      <p style="margin-bottom: 8px;">
-                        Total Timesheet hours
+                        Total Timesheet hours Today
                      </p>
                      <h3 class="users-count">{{totalTimeSheetHours}}</h3>
                   </div>
@@ -86,7 +86,7 @@
                <div class="d-flex justify-content-between align-items-center total-users total-bot-users">
                   <div class="text-container">
                      <p style="margin-bottom: 8px;">
-                        Incorrect Timesheet Count
+                        Incorrect Timesheet Count Yesterday
                      </p>
                      <h3 class="users-count">{{totalCountOfIncorrectTimesheet}}</h3>
                   </div>

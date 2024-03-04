@@ -2,8 +2,11 @@
   position:relative;
     left:200px;
     width: calc(100vw - 200px);
-    top:5%;
+    // top:5%;
     padding:20px;
+    background-color: var(--bg-color);
+    // height:100vh;
+    min-height:100vh;
     .top-section {
       display: flex;
       width:100%;
@@ -12,14 +15,14 @@
       // margin-left: 200px;
       margin-bottom:15px;
       .date-container {
-        color: var(--primary-white);
+        color: var(--text-color);
         display: inline-block;
-        background-color: var(--primary-black);
+        background-color: var(--sub-bg-color);
         padding: 8px 16px;
         border-radius: 8px;
       }
       .refresh-container {
-        background-color: var(--primary-black);
+        background-color: var(--sub-bg-color);
         padding: 8px 16px;
         border-radius: 8px;
         color: var(--primary-green);
@@ -33,11 +36,13 @@
       }
     }
   }
-  .timesheet-container{
-    color: white;
-    // margin-left:210px;
+.large-container{
+  background-color: var(--bg-color);
+}
+  .user-container-txt{
+    color: var(--text-color);
     font-size:20px;
-    padding-left:15px;
+    margin:0;
   }
   .refresh-txt{
     font-weight: bolder;
@@ -59,6 +64,14 @@
   .user-container{
     font-size:20px;
     padding-left:15px;
-    color: white;
-    margin-bottom:3px;
+    // color: white;
+    // margin-bottom:3px;
+  }
+  @media (max-width:1200px){
+    .main-container{
+      position: absolute;
+      left:120px;
+      width:calc(100vw - 130px);
+      height:100vh;
+    }
   }

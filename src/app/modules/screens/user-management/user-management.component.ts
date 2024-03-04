@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AllUsersService } from 'src/app/services/all-users.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
@@ -43,13 +44,14 @@ export class UserManagementComponent implements OnInit {
       },
       {
         id: 'action',
-        text: 'Action',
+        text: 'Active  ',
         type: 'toggle',
       },
     ],
     tbody: [],
   };
-  constructor (private router: Router, private allusers: AllUsersService) {
+  constructor (private router: Router, private allusers: AllUsersService,
+    private toastr: ToastrService) {
     this.getUesrData();
     this.refreshTime();
   }
@@ -66,6 +68,7 @@ export class UserManagementComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.toastr.error('Something went wrong, please try again later !');
       },
     );
   }
@@ -73,7 +76,7 @@ export class UserManagementComponent implements OnInit {
 
   receiveMessage (message: any) {
     this.receivedMessage = message;
-    console.log('-----taman----', this.receivedMessage);
+    // console.log('-----taman----', this.receivedMessage);
     this.tableData.tbody = this.receivedMessage;
   }
 
@@ -81,6 +84,9 @@ export class UserManagementComponent implements OnInit {
   ngOnInit (): void {
     this.tableData.body = this.apiData;
     // console.log(this.tableData.body);
+    interval(1000).subscribe(() => {
+      this.getDate();
+    });
   }
   refreshTime () {
     this.getDate();

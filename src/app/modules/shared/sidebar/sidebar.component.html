@@ -4,7 +4,7 @@
     <div class="image">
       <img
         class="relinns-logo"
-        src="./assets/images/relinns logo.png"
+        src="/assets/relinns logo.png"
         alt="relinns"
         (click)="toggleSidebarFn()"
       />
@@ -12,80 +12,30 @@
     </div>
     <div class="side-data">
       <ul>
-        <a>
-          <li
-          routerLink="/dashboard"
-          (click)="dashboard()"
-          routerLinkActive="active-link"
-          class="side-link">
+        <a routerLink="/dashboard" routerLinkActive="active" class="side-link">
+          <li class="side-link" routerLinkActive="active">
             <span class="nav-text">
-              <img
-                class="side-icons"
-                src="/assets/dashboard-icon.svg"
-                alt="DashBoard"
-                (click)="user()"
-              />
-              <h6 class="side-text">DashBoard</h6>
+              <img class="side-icons" src="/assets/dashboard-icon.svg" alt="" />
+              <h6 class="side-text">Dashboard</h6>
             </span>
           </li>
         </a>
-        <a>
-          <li
-            routerLink="/usermanagement"
-            (click)="usermanagent()"
-            routerLinkActive="active-link"
-            class="side-link"
-          >
+        <a routerLink="/user-management" routerLinkActive="active" class="side-link">
+          <li class="side-link" routerLinkActive="active">
             <span class="nav-text">
-              <img
-                class="side-icons"
-                src="/assets/user-icon.svg"
-                alt="user Management"
-              />
+              <img class="side-icons" src="/assets/user-icon.svg" alt="User Management" />
               <h6 class="side-text">User Management</h6>
             </span>
           </li>
         </a>
-        <a>
-          <li
-            routerLink="/timesheet"
-            (click)="timesheet()"
-            routerLinkActive="active-link"
-            class="side-link"
-          >
-            <span class="nav-text timesheet">
-              <img
-                class="side-icons timesheet-container"
-                src="/assets/customer-icon.svg"
-                alt="timesheet"
-              />
+        <a routerLink="/timesheet" routerLinkActive="active"  class="side-link">
+          <li class="side-link" routerLinkActive="active">
+            <span class="nav-text">
+              <img class="side-icons" src="/assets/customer-icon.svg" alt="" />
               <h6 class="side-text">Timesheet</h6>
             </span>
           </li>
-        </a>
-        <!-- <a>
-          <li
-            routerLink="/chatbot"
-            routerLinkActive="active-link"
-            class="side-link"
-          >
-            <span class="nav-text timesheet">
-              <img
-                class="side-icons timesheet-container"
-                src="./assets/bots-icon.svg"
-                alt="chatbot"
-              />
-              <span class="side-text">Chat Bot</span>
-            </span>
-          </li>
-        </a> -->
-        <!-- <a><li> -->
-
-        <!-- <span class="nav-text">
-           <img class="side-icons" src="./assets/master-icon.svg" alt="timesheet">
-           <span class="side-text">Master Control</span>
-          </span> -->
-        <!-- </li></a> -->
+        </a>  
       </ul>
     </div>
     <div class="theme">
@@ -98,20 +48,6 @@
         </label>
       </div>
     </div>
-
-    <!-- <div class="profile"> -->
-      <!-- <div class="user-image-container">
-        <a href=""
-          ><img class="user-image" src="/assets/user-image.png" alt="user"
-        /></a> -->
-      <!-- </div> -->
-
-      <!-- <div class="profile-info"> -->
-         <!-- <p class="admin-name">Akhil Rawat</p>
-        <p class="admin-location">Chandigarh, India</p>
-          -->
-      <!-- </div> -->
-      <!-- Modal -->
       <div class="profile" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img class="user-image" [src]="userdata.profilePic" alt="user">
         <div class="profile-info">
@@ -132,20 +68,25 @@
           <div class="profile-image text-center ">
             <img class="profile-picture" [src]="userdata.profilePic" alt="Profile Picture">
           </div>
-          <h2 class="text-center">
-            {{userdata.name}}
-          </h2>
-          <h6 class="text-center">
-            {{ userdata.email }}
-          </h6>
+          <div class="data">
+            <h2 class="text-data">
+              {{userdata.name}}
+            </h2>
+            <h5 class="text-data">
+              {{userdata.emp_id}}
+            </h5>
+            <h6 class="text-data">
+              {{ userdata.email }}
+            </h6>
+          </div>
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" style="height:48px; border-radius: 12px;" (click)="logout()">Logout</button>
           </div>
         </div>
       </div>
     </div>
-
-      </div>
+</div>
   
   
   <div class="router-container"></div>

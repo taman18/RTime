@@ -1,20 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root',
 })
-export class AllUsersService {
-  public pageNum:number = 1;
+export class ToggleService {
+  public blockUser:any;
+  public status:any;
   public token = localStorage.getItem('token');
-  private apiUrl = `http://192.168.1.32:8000/admin/users?page=${ this.pageNum }&limit=20`;
+  private apiUrl = 'http://192.168.1.32:8000/admin//user-enable-disable';
   constructor (private http: HttpClient) {
     // console.log('hi');
   }
-  getData (): Promise<any> {
+  getData (email:string, status:boolean): Promise<any> {
+    const requestData = { email, status };
     return this.http
-      .get<any>(this.apiUrl, {
+      .put<any>(this.apiUrl, requestData, {
         headers: {
           Authorization: `Bearer ${ this.token }`,
         },

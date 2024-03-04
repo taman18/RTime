@@ -12,17 +12,22 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthGuard implements CanActivate {
+  public token:any = localStorage.getItem('token');
   constructor (private router: Router) {
-    console.log('auth guard');
+    // console.log('auth guard');
   }
   canActivate (
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    if (!localStorage.getItem('token')) {
+
+    if (!this.token) {
+      alert('please login first');
       this.router.navigate([ '/login' ]);
-      return true;
-    } else {
       return false;
+
+    }
+    else {
+      return true;
     }
   }
 }

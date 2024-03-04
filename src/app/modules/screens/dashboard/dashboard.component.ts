@@ -1,14 +1,13 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  ActiveUser, ApiResponse, DashboardService, IncorrectTimeSheetResponse,
-  TimeSheetHoursResponse, User,
-} from 'src/app/services/dashboard.service';
+import { ActiveUser, ApiResponse,
+  DashboardService, IncorrectTimeSheetResponse,
+  TimeSheetHoursResponse, User } from 'src/app/services/dashboard.service';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { MissedTimeSheets, ProjectsTimeSheetEntry } from '../../interfaces/dashboard';
 import { TimesheetService } from 'src/app/services/timesheet.service';
 import { ToastrService } from 'ngx-toastr';
-import { UserDataService } from 'src/app/services/user-data.service';
 import { interval } from 'rxjs';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -28,7 +27,7 @@ export class DashboardComponent implements OnInit {
   showChatbotIcon: boolean = false;
   public getToken: any;
   showFilters = false;
-  showToast : boolean = false;
+  canShowToast : boolean = true;
 
   public meridiem: any;
   public date: any;
@@ -41,7 +40,7 @@ export class DashboardComponent implements OnInit {
     private timesheetService: TimesheetService,
     private elRef: ElementRef,
   ) {
-    console.log('constructor called');
+    // console.log('constructor called');
   }
 
   ngOnInit () {
@@ -53,7 +52,6 @@ export class DashboardComponent implements OnInit {
     this.getTotalProjectHours();
     this.getTotalMissedTimeSheets();
     this.addScrollListener();
-
     this.route.queryParams.subscribe((params) => {
       // const token = params['token'];
       const { token } = params;
@@ -91,14 +89,14 @@ export class DashboardComponent implements OnInit {
   }
 
   showToastFunction () {
-    if (this.showToast = false) {
+    if (this.canShowToast === true) {
       this.toastr.error('Something went wrong, please try again later !');
-      this.showToast = true;
-    }
+      this.canShowToast = false;
 
-    setTimeout(() => {
-      this.showToast = false;
-    }, 3000);
+      setTimeout(() => {
+        this.canShowToast = true;
+      }, 3000);
+    }
   }
 
   toggleChatbot () {
@@ -139,25 +137,18 @@ export class DashboardComponent implements OnInit {
     this.time = `${ currentHour }:${ currentMinute }:${ currentSecond }`;
   }
 
-  getDataUser () {
-    this.timesheetService.getProfileData().subscribe(
-      (response) => {
+  async getDataUser () {
+    try {
+      const response = await this.timesheetService.getProfileData().toPromise();
 
+      if (response.success === true) {
         this.userData = response;
-        console.log('taman', this.userData.result.email);
-        if (response.success === true) {
-        }
-      }, (error) => {
-        this.router.navigate([ 'login' ]);
-        console.log(error);
-        this.toastr.error('Something went wrong, please try again later !');
-      },
-    );
+      }
+    } catch (error) {
+      this.router.navigate([ 'login' ]);
+      this.showToastFunction();
+    }
   }
-
-
-
-
 
 
   getTotalUsers () {
@@ -168,9 +159,7 @@ export class DashboardComponent implements OnInit {
         },
         (error) => {
           console.error('Error fetching users:', error.totalUserCount.err);
-          this.toastr.error('Something went wrong, please try again later !');
-
-
+          this.showToastFunction();
         },
       );
   }
@@ -184,7 +173,7 @@ export class DashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching active users:', error);
-        this.toastr.error('Something went wrong, please try again later !');
+        this.showToastFunction();
       },
     );
   }
@@ -197,7 +186,7 @@ export class DashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching filled and missed timesheets:', error);
-        this.toastr.error('Something went wrong, please try again later !');
+        this.showToastFunction();
       },
     );
   }
@@ -211,7 +200,7 @@ export class DashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching total timesheet hours:', error);
-        this.toastr.error('Something went wrong, please try again later !');
+        this.showToastFunction();
       },
     );
   }
@@ -220,11 +209,11 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getTotalCountOfIncorrectTimesheetYesterday().subscribe(
       (response: { result: IncorrectTimeSheetResponse[] }) => {
         this.totalCountOfIncorrectTimesheet = response.result;
-        console.log(response);
+        // console.log(response);
       },
       (error) => {
         console.error('Error fetching total count of incorrect timesheet:', error);
-        this.toastr.error('Something went wrong, please try again later !');
+        this.showToastFunction();
       },
     );
   }
@@ -238,7 +227,7 @@ export class DashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching total project hours:', error);
-        this.toastr.error('Something went wrong, please try again later !');
+        this.showToastFunction();
       },
     );
   }
@@ -251,7 +240,7 @@ export class DashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching total missed time sheets:', error);
-        this.toastr.error('Something went wrong, please try again later !');
+        this.showToastFunction();
       },
     );
   }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LocalizedString } from '@angular/compiler';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,12 +10,11 @@ export class AppComponent {
   title = 'RTime';
   showSideBar:boolean = false;
 
-  public istoken:any = localStorage.getItem('token');
+  // public istoken:any = localStorage.getItem('token');
   constructor (private route:Router) {
-    if(this.istoken) {
-      console.log('login krooo', this.istoken);
-      route.navigate([ 'dashboard' ]);
-    }
+    // if(this.istoken) {
+    //   // console.log('login krooo', this.istoken);
+    //   // this.route.navigate([ 'dashboard' ]);
+    // }
   }
-
 }

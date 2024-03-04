@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './modules/screens/dashboard/dashboard.component';
+import { ErrorComponent } from './modules/screens/error/error.component';
 import { LoginComponent } from './modules/shared/login/login.component';
 import { NgModule } from '@angular/core';
 import { TimesheetComponent } from './modules/screens/timesheet/timesheet.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'userbio/:id', component: UserBioComponent },
   { path: 'user-management', component: UserManagementComponent },
   { path: 'timesheet', component: TimesheetComponent },
-
+  { path: '**', component:ErrorComponent },
 ];
 
 @NgModule({

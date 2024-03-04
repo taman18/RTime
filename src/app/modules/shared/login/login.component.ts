@@ -1,25 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.scss' ],
 })
-export class LoginComponent {
-
+export class LoginComponent implements OnInit {
+  GOOGLE_URL = 'https://536a-203-100-78-18.ngrok-free.app/google';
   public date:any;
   public time:any;
   public meridiem:any;
-  public GOOGLE_URL:any = 'https://09e3-203-100-78-18.ngrok-free.app/google'
-
-    ;
-  constructor (private loginService: LoginService) {
+  public token:any;
+  constructor (private loginService: LoginService,
+   private router : Router) {
     this.refreshTime();
+    this.token = localStorage.getItem('token');
   }
   refreshTime () {
     this.getDate();
   }
-
+  ngOnInit () {
+    if(this.token)
+    {
+      this.router.navigate([ '/dashboard' ]);
+    }
+  }
   openURL () {
     window.open(this.GOOGLE_URL, '_self');
   }
@@ -42,7 +48,8 @@ export class LoginComponent {
     // console.log();
     // console.log(this.time+' '+meridiem);
   }
-  // signIn () {
-  //   this.loginService.login();
-  // }
+  openUrl () {
+    window.open(this.GOOGLE_URL, '_self');
+  }
+
 }

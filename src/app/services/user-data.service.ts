@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserDataService {
-  public token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDc
-  0ZTU3ZmY4MjE2OTE4ZWI0ZTQyMyIsImlhdCI6MTcwODYwOTExMSwi
-  ZXhwIjoxNzExMjAxMTExfQ.mwxf6rMfvS3mVMpmKXvfBbpfTS3Iaps-Ho3DnjwQwp8`;
 
-  private apiUrl = 'http://192.168.1.32:8000/admin/user?email=';
+
+
+  private apiUrl = 'http://192.168.1.32:8000/admin/users?searchTerm=';
+  public token = localStorage.getItem('token');
   constructor (private http: HttpClient) {
     // console.log('hi');
   }
-  getData (email:string): Observable<any> {
-    return this.http.get<any>(this.apiUrl + email, {
+  getData (search:string): Observable<any> {
+    return this.http.get<any>(this.apiUrl + search, {
       headers: {
         Authorization: `Bearer ${ this.token }`,
       },

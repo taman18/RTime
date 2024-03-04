@@ -46,36 +46,13 @@ export class SidebarComponent {
     });
     this.fetchProfileData();
   }
-  dashboard () {
-    this.route.navigate([ '/dashboard' ]);
-  }
-  usermanagent () {
-    this.route.navigate([ '/user-management' ]);
-  }
-  timesheet () {
-    this.route.navigate([ '/timesheet' ]);
-  }
+
   toggleTheme () {
     this.isDarkMode = !this.isDarkMode;
     this.themeService.setDarkMode(this.isDarkMode);
     this.themeService.currentTheme.next(this.isDarkMode ? 'dark' : 'light');
   }
 
-  onrouteClick (route: string) {
-    switch (route) {
-    case 'usermanagement':
-      this.route.navigate([ '/user-management' ]);
-      break;
-    case 'timesheet':
-      this.route.navigate([ '/timesheet' ]);
-      break;
-    default:
-      break;
-    }
-  }
-  user () {
-    console.log('hi');
-  }
 
   logout (): void {
     this.log.logout().subscribe(
@@ -83,8 +60,9 @@ export class SidebarComponent {
 
         console.log('Logged out successfully');
         localStorage.removeItem('token');
+
         // this.router.navigate("http://192.168.1.17:4200/login");
-        window.location.href = 'http://192.168.1.17:4200/login';
+        window.location.href = 'http://192.168.1.35:4200/login';
 
       },
       (error) => {

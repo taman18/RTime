@@ -10,14 +10,6 @@ li{
   list-style-type:none;
 }
 
-// .side-link{
-//   background-color: #1a2249;;
-//   border:2px solid rgb(83, 113, 255);
-//   border-radius:5px;
-//   width:100%;
-// }
-
-
 .sidebar-wrapper {
   width: 200px;
   background-color:  var(--sub-bg-color);
@@ -37,9 +29,6 @@ li{
       padding: 10px;
       cursor: pointer;
 
-      &:hover {
-        background-color:  var(--sidebar-hover);
-      }
       h6 {
         color:  var(--text-color);
         display: flex;
@@ -187,10 +176,10 @@ border-radius: 50%;
   border-radius: 20px;
   padding:20px;
   background-color:var(--sub-bg-color);
-  // border:1px solid  var(--text-color);
   padding:0;
   width:100%;
   height:30%;
+  cursor: pointer;
 }
 .side-icons{
 height:20px;
@@ -239,13 +228,14 @@ height: 16px;
 width: 16px;
 left: 2px;
 bottom: 2px;
-background-color:  var(--grey-color);
+background-color:  var(--secondary-bg-color);
 transition: .4s;
 border-radius: 50%;
 }
 
+
 input:checked + .toggle-slider {
-background-color:  var(--blue-color);
+background-color:  var(--grey-color);
 }
 
 input:checked + .toggle-slider:before {
@@ -288,19 +278,12 @@ text-decoration: none;
   color:var(--text-color);
   margin:0;
 }
-
-.active-link{
-background-color: #1a2249;;
-border:2px solid rgb(83, 113, 255);
-border-radius:5px;
-width:100%;
-}
 .admin-location{
 color:  var(--grey-color);
 }
-.side-link:hover{
-background-color:  var(--sub-bg-color);
-}
+// .side-link:hover{
+// background-color:  var(--sub-bg-color);
+// }
 // .side-text{
 //   display: none !important;
 //   // width:100px !important;
@@ -311,7 +294,11 @@ background-color:  var(--sub-bg-color);
   display: none !important;
   // width:100px !important;
 }
+
 .theme-name{
+  display: none;
+}
+.profile-info{
   display: none;
 }
 width: 100px !important  ;
@@ -320,6 +307,9 @@ width: 100px !important  ;
 .side-text{
   display: none !important;
   // width:100px !important;
+}
+.text-center{
+  display: none;
 }
 .profile-info{
   display: none;
@@ -349,14 +339,6 @@ transition: width 0.3s ease; /* Add transition for smooth animation */
 width: 50px; /* Set the collapsed width */
 }
 
-.active-link {
-  background-color: #1a2249;
-  ;
-  border: 2px solid rgb(83, 113, 255);
-  border-radius: 5px;
-  width: 100%;
-}
-
 .admin-location {
   position: relative;
       // top:20px;
@@ -366,10 +348,10 @@ width: 50px; /* Set the collapsed width */
       color: var(--text-color);
 }
 
-.side-link:hover {
-  background-color: var(--sub-bg-color);
-  ;
-}
+// .side-link:hover {
+//   background-color: var(--sub-bg-color);
+//   ;
+// }
 
 $font-family: NotoSans-Regular;
 $secondary-bg-color: var(--secondary-bg-color);
@@ -470,12 +452,16 @@ button {
 .close {
     border-radius: 50%;
     height: 35px;
-    margin-left:330px;
+    // margin-left:330px;
     width: 35px !important;
     background-color: transparent;
     color: $text-color;
     border-color: $text-color;
     font-size: larger;
+    border: 1px solid var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 a {
@@ -485,4 +471,24 @@ a {
 .button-sty
 {
   margin-top:0px !important;
+}
+.user-name{
+color:var(--text-color);
+}
+.user-email{
+  color:var(--text-color);
+}
+.active{
+  background-color: var(--bg-color);
+  border-radius:5px;
+  width:100%;
+}
+.data{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.text-data{
+  color: var(--text-color);
 }
